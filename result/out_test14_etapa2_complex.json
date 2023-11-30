@@ -1,27 +1,12 @@
 [ {
-  "command" : "createPlaylist",
-  "user" : "melodicwanderer",
-  "timestamp" : 305,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "search",
-  "user" : "melodicwanderer",
-  "timestamp" : 315,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "select",
-  "user" : "melodicwanderer",
-  "timestamp" : 320,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "load",
-  "user" : "melodicwanderer",
-  "timestamp" : 325,
-  "message" : "The username doesn't exist"
+  "message" : "The username doesn't exist."
 }, {
-  "command" : "addRemoveInPlaylist",
-  "user" : "melodicwanderer",
-  "timestamp" : 330,
   "message" : "The username doesn't exist"
 }, {
   "command" : "search",
@@ -77,19 +62,10 @@
   "timestamp" : 380,
   "message" : "Please load a source before liking or unliking."
 }, {
-  "command" : "repeat",
-  "user" : "melodicwanderer",
-  "timestamp" : 480,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "search",
-  "user" : "soundseeker21",
-  "timestamp" : 625,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "select",
-  "user" : "soundseeker21",
-  "timestamp" : 630,
   "message" : "The username doesn't exist."
 }, {
   "command" : "search",

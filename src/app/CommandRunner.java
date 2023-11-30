@@ -32,9 +32,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
             return objectNode;
         }
@@ -55,9 +52,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -78,10 +72,7 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("message", "The username doesn't exist");
+            objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
         }
@@ -89,15 +80,22 @@ public class CommandRunner {
 
     public static ObjectNode playPause(CommandInput commandInput) {
         User user = Admin.getUser(commandInput.getUsername());
-        String message = user.playPause();
+        if (user != null) {
+            String message = user.playPause();
 
-        ObjectNode objectNode = objectMapper.createObjectNode();
-        objectNode.put("command", commandInput.getCommand());
-        objectNode.put("user", commandInput.getUsername());
-        objectNode.put("timestamp", commandInput.getTimestamp());
-        objectNode.put("message", message);
+            ObjectNode objectNode = objectMapper.createObjectNode();
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", message);
 
-        return objectNode;
+            return objectNode;
+        } else {
+            ObjectNode objectNode = objectMapper.createObjectNode();
+            objectNode.put("message", "The username doesn't exist.");
+
+            return objectNode;
+        }
     }
 
     public static ObjectNode repeat(CommandInput commandInput) {
@@ -114,9 +112,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -138,9 +133,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -161,9 +153,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -184,9 +173,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -207,9 +193,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -230,9 +213,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -253,9 +233,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
             return objectNode;
         }
@@ -274,9 +251,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
             return objectNode;
         }
@@ -296,9 +270,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist");
 
             return objectNode;
@@ -319,9 +290,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -342,9 +310,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("result", "The username doesn't exist.");
 
             return objectNode;
@@ -365,9 +330,6 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
@@ -388,10 +350,7 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("stats", "The username doesn't exist.");
+            objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
         }
@@ -411,10 +370,7 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("result", "The username doesn't exist.");
+            objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
         }
@@ -434,10 +390,7 @@ public class CommandRunner {
             return objectNode;
         } else {
             ObjectNode objectNode = objectMapper.createObjectNode();
-            objectNode.put("command", commandInput.getCommand());
-            objectNode.put("user", commandInput.getUsername());
-            objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("result", "The username doesn't exist.");
+            objectNode.put("message", "The username doesn't exist.");
 
             return objectNode;
         }

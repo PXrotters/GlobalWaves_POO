@@ -1,7 +1,4 @@
 [ {
-  "command" : "search",
-  "user" : "melodicmind42",
-  "timestamp" : 60,
   "message" : "The username doesn't exist."
 }, {
   "command" : "select",
@@ -9,24 +6,12 @@
   "timestamp" : 65,
   "message" : "Please conduct a search before making a selection."
 }, {
-  "command" : "select",
-  "user" : "melodicmind42",
-  "timestamp" : 70,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "load",
-  "user" : "melodicmind42",
-  "timestamp" : 75,
-  "message" : "The username doesn't exist"
+  "message" : "The username doesn't exist."
 }, {
-  "command" : "status",
-  "user" : "melodicmind42",
-  "timestamp" : 90,
-  "stats" : "The username doesn't exist."
+  "message" : "The username doesn't exist."
 }, {
-  "command" : "like",
-  "user" : "melodicmind42",
-  "timestamp" : 120,
   "message" : "The username doesn't exist."
 }, {
   "command" : "search",
@@ -50,23 +35,11 @@
   "timestamp" : 1159,
   "message" : "Please load a source before returning to the previous track."
 }, {
-  "command" : "search",
-  "user" : "melodicmind42",
-  "timestamp" : 1385,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "select",
-  "user" : "melodicmind42",
-  "timestamp" : 1390,
   "message" : "The username doesn't exist."
 }, {
-  "command" : "load",
-  "user" : "melodicmind42",
-  "timestamp" : 1440,
-  "message" : "The username doesn't exist"
+  "message" : "The username doesn't exist."
 }, {
-  "command" : "like",
-  "user" : "melodicmind42",
-  "timestamp" : 1455,
   "message" : "The username doesn't exist."
 } ]
