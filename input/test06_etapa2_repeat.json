@@ -69,6 +69,15 @@
   },
   {
     "command": "search",
+    "username": "bob35",
+    "timestamp": 6,
+    "type": "song",
+    "filters": {
+      "name": "Retro Rhythms"
+    }
+  },
+  {
+    "command": "search",
     "username": "alice22",
     "timestamp": 10,
     "type": "song",
@@ -88,6 +97,12 @@
     "timestamp": 20
   },
   {
+    "command": "select",
+    "username": "bob35",
+    "timestamp": 25,
+    "itemNumber": 1
+  },
+  {
     "command": "status",
     "username": "alice22",
     "timestamp": 30
@@ -96,6 +111,12 @@
     "command": "repeat",
     "username": "alice22",
     "timestamp": 31
+  },
+  {
+    "command": "createPlaylist",
+    "username": "bob35",
+    "timestamp": 31,
+    "playlistName": "Playlist bengos"
   },
   {
     "command": "status",
@@ -120,6 +141,11 @@
   {
     "command": "status",
     "username": "alice22",
+    "timestamp": 1000
+  },
+  {
+    "command": "load",
+    "username": "bob35",
     "timestamp": 1000
   },
   {
@@ -155,6 +181,12 @@
     "playlistId": 1
   },
   {
+    "command": "removeAlbum",
+    "username": "melodymaster",
+    "timestamp": 1010,
+    "name": "Harmonic Horizons"
+  },
+  {
     "command": "search",
     "username": "alice22",
     "timestamp": 1010,
@@ -173,6 +205,12 @@
     "command": "load",
     "username": "alice22",
     "timestamp": 1012
+  },
+  {
+    "command": "addRemoveInPlaylist",
+    "username": "bob35",
+    "timestamp": 1012,
+    "playlistId": 1
   },
   {
     "command": "addRemoveInPlaylist",
@@ -234,6 +272,15 @@
   },
   {
     "command": "search",
+    "username": "carol19",
+    "timestamp": 1021,
+    "type": "playlist",
+    "filters": {
+      "name": "My"
+    }
+  },
+  {
+    "command": "search",
     "username": "alice22",
     "timestamp": 1022,
     "type": "song",
@@ -259,6 +306,12 @@
     "playlistId": 1
   },
   {
+    "command": "select",
+    "username": "carol19",
+    "timestamp": 1025,
+    "itemNumber": 1
+  },
+  {
     "command": "search",
     "username": "alice22",
     "timestamp": 1026,
@@ -272,6 +325,11 @@
     "username": "alice22",
     "timestamp": 1027,
     "itemNumber": 1
+  },
+  {
+    "command": "follow",
+    "username": "carol19",
+    "timestamp": 1027
   },
   {
     "command": "load",
@@ -293,10 +351,36 @@
     "username": "alice22",
     "timestamp": 1037
   },
+
+  {
+    "command": "printCurrentPage",
+    "username": "alice22",
+    "timestamp": 1038
+  },
+  {
+    "command": "search",
+    "username": "carol19",
+    "timestamp": 1039,
+    "type": "playlist",
+    "filters": {
+      "owner": "bo"
+    }
+  },
+  {
+    "command": "printCurrentPage",
+    "username": "carol19",
+    "timestamp": 1040
+  },
   {
     "command": "status",
     "username": "alice22",
     "timestamp": 2099
+  },
+  {
+    "command": "select",
+    "username": "carol19",
+    "timestamp": 2100,
+    "itemNumber": 1
   },
   {
     "command": "repeat",
@@ -309,9 +393,20 @@
     "timestamp": 2101
   },
   {
+    "command": "changePage",
+    "username": "carol19",
+    "timestamp": 2102,
+    "nextPage": "LikedContent"
+  },
+  {
     "command": "status",
     "username": "alice22",
     "timestamp": 2334
+  },
+  {
+    "command": "follow",
+    "username": "carol19",
+    "timestamp": 2335
   },
   {
     "command": "repeat",
@@ -322,6 +417,11 @@
     "command": "status",
     "username": "alice22",
     "timestamp": 2336
+  },
+  {
+    "command": "printCurrentPage",
+    "username": "carol19",
+    "timestamp": 2338
   },
   {
     "command": "status",

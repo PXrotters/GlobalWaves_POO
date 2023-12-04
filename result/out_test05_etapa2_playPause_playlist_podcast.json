@@ -28,6 +28,17 @@
 }, {
   "command" : "search",
   "user" : "alice22",
+  "timestamp" : 55,
+  "message" : "Search returned 0 results",
+  "results" : [ ]
+}, {
+  "command" : "select",
+  "user" : "alice22",
+  "timestamp" : 57,
+  "message" : "The selected ID is too high."
+}, {
+  "command" : "search",
+  "user" : "alice22",
   "timestamp" : 60,
   "message" : "Search returned 1 results",
   "results" : [ "TED Radio Hour" ]
@@ -47,7 +58,7 @@
   "timestamp" : 73,
   "stats" : {
     "name" : "The Power of Design",
-    "remainedTime" : 3061,
+    "remainedTime" : 3066,
     "repeat" : "No Repeat",
     "shuffle" : false,
     "paused" : false

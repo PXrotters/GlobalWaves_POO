@@ -22,7 +22,7 @@ public final class CheckerConstants {
     public static final String COMPLEX_TEST = "complex";
     public static final Integer SIMPLE_TEST_POINTS = 4;
     public static final Integer ERROR_TEST_POINTS = 4;
-    public static final Integer COMPLEX_TEST_POINTS = 8;
+    public static final Integer COMPLEX_TEST_POINTS = 10;
     public static final int MAX_POINTS = 100;
     public static final int FIVE_POINTS = 5;
     public static final int ZERO_POINTS = 0;

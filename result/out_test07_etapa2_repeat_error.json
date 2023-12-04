@@ -20,6 +20,8 @@
   "timestamp" : 1120,
   "message" : "Please select a source before attempting to load."
 }, {
+  "message" : "The username doesn't exist."
+}, {
   "command" : "status",
   "user" : "emily30",
   "timestamp" : 1190,
@@ -46,6 +48,8 @@
   "timestamp" : 2000,
   "message" : "Please load a source before setting the repeat status."
 }, {
+  "message" : "The username doesn't exist."
+}, {
   "command" : "status",
   "user" : "emily30",
   "timestamp" : 2100,
@@ -61,6 +65,8 @@
   "user" : "emily30",
   "timestamp" : 2135,
   "message" : "Please load a source before setting the repeat status."
+}, {
+  "message" : "The username doesn't exist."
 }, {
   "command" : "status",
   "user" : "emily30",
@@ -83,6 +89,12 @@
   "user" : "emily30",
   "timestamp" : 2290,
   "message" : "Please load a source before setting the repeat status."
+}, {
+  "message" : "The username doesn't exist."
+}, {
+  "message" : "The username doesn't exist."
+}, {
+  "message" : "The username doesn't exist."
 }, {
   "command" : "load",
   "user" : "emily30",
@@ -116,6 +128,8 @@
   "timestamp" : 3190,
   "message" : "Successfully selected 99 Problems."
 }, {
+  "message" : "The username doesn't exist."
+}, {
   "command" : "load",
   "user" : "emily30",
   "timestamp" : 3195,
@@ -137,6 +151,8 @@
     "paused" : false
   }
 }, {
+  "message" : "The username doesn't exist."
+}, {
   "command" : "addRemoveInPlaylist",
   "user" : "emily30",
   "timestamp" : 3240,
@@ -152,6 +168,8 @@
   "user" : "emily30",
   "timestamp" : 3270,
   "message" : "Please load a source before setting the repeat status."
+}, {
+  "message" : "The username doesn't exist."
 }, {
   "command" : "select",
   "user" : "emily30",
@@ -179,6 +197,10 @@
   "timestamp" : 3335,
   "message" : "Please load a source before setting the repeat status."
 }, {
+  "message" : "The username doesn't exist."
+}, {
+  "message" : "The username doesn't exist."
+}, {
   "command" : "status",
   "user" : "emily30",
   "timestamp" : 3400,
@@ -195,19 +217,24 @@
   "timestamp" : 3405,
   "message" : "A playlist with the same name already exists."
 }, {
+  "message" : "The username doesn't exist."
+}, {
   "command" : "repeat",
   "user" : "emily30",
   "timestamp" : 3435,
   "message" : "Please load a source before setting the repeat status."
 }, {
-  "command" : "status",
+  "command" : "showPlaylists",
   "user" : "emily30",
-  "timestamp" : 3450,
-  "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
-    "repeat" : "No Repeat",
-    "shuffle" : false,
-    "paused" : true
-  }
+  "timestamp" : 3438,
+  "result" : [ {
+    "name" : "My favourite songs",
+    "songs" : [ "99 Problems" ],
+    "visibility" : "public",
+    "followers" : 0
+  } ]
+}, {
+  "message" : "The username doesn't exist."
+}, {
+  "message" : "The username doesn't exist."
 } ]

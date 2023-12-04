@@ -83,6 +83,14 @@
     ]
   },
   {
+    "command": "addEvent",
+    "username": "melodymaster",
+    "timestamp": 185,
+    "name": "Event1",
+    "description": "Primul Event adaugat!",
+    "date": "01-01-2022"
+  },
+  {
     "command": "select",
     "username": "bob35",
     "timestamp": 190,
@@ -101,11 +109,21 @@
   },
   {
     "command": "search",
-    "username": "bob35",
+    "username": "carol19",
     "timestamp": 270,
     "type": "song",
     "filters": {
-      "name": "Crazy"
+      "name": "D",
+      "genre": "Pop"
+    }
+  },
+  {
+    "command": "search",
+    "username": "david27",
+    "timestamp": 270,
+    "type": "artist",
+    "filters": {
+      "name": "m"
     }
   },
   {
@@ -118,6 +136,44 @@
     "command": "load",
     "username": "bob35",
     "timestamp": 320
+  },
+  {
+    "command": "select",
+    "username": "david27",
+    "timestamp": 320,
+    "itemNumber": 1
+  },
+  {
+    "command": "addRemoveInPlaylist",
+    "username": "bob35",
+    "timestamp": 340,
+    "playlistId": 1
+  },
+  {
+    "command": "search",
+    "username": "bob35",
+    "timestamp": 340,
+    "type": "song",
+    "filters": {
+      "name": "R"
+    }
+  },
+  {
+    "command": "select",
+    "username": "bob35",
+    "timestamp": 340,
+    "itemNumber": 2
+  },
+  {
+    "command": "load",
+    "username": "bob35",
+    "timestamp": 340
+  },
+  {
+    "command": "select",
+    "username": "carol19",
+    "timestamp": 340,
+    "itemNumber": 3
   },
   {
     "command": "addRemoveInPlaylist",
@@ -135,10 +191,24 @@
     }
   },
   {
+    "command": "removeAlbum",
+    "username": "Ed Sheeran",
+    "timestamp": 375,
+    "name": "Album1"
+  },
+  {
     "command": "select",
     "username": "bob35",
     "timestamp": 390,
     "itemNumber": 1
+  },
+  {
+    "command": "addEvent",
+    "username": "melodymaster",
+    "timestamp": 395,
+    "name": "Event2",
+    "description": "Al doilea Event adaugat!",
+    "date": "02-13-2021"
   },
   {
     "command": "load",
@@ -150,6 +220,17 @@
     "username": "bob35",
     "timestamp": 430,
     "playlistId": 1
+  },
+  {
+    "command": "printCurrentPage",
+    "username": "david27",
+    "timestamp": 430
+  },
+  {
+    "command": "removeAlbum",
+    "username": "melodymaster",
+    "timestamp": 430,
+    "name": "Album1"
   },
   {
     "command": "search",
@@ -172,6 +253,19 @@
     "timestamp": 433
   },
   {
+    "command": "addMerch",
+    "username": "melodymaster",
+    "timestamp": 433,
+    "name": "Merch1",
+    "description": "Primul Merch adaugat!",
+    "price": 100
+  },
+  {
+    "command": "load",
+    "username": "carol19",
+    "timestamp": 434
+  },
+  {
     "command": "status",
     "username": "bob35",
     "timestamp": 434
@@ -188,14 +282,64 @@
     "timestamp": 446
   },
   {
+    "command": "repeat",
+    "username": "carol19",
+    "timestamp": 690
+  },
+  {
+    "command": "addEvent",
+    "username": "melodymaster",
+    "timestamp": 785,
+    "name": "Event2",
+    "description": "Al doilea Event adaugat!",
+    "date": "05-02-2021"
+  },
+  {
+    "command": "repeat",
+    "username": "carol19",
+    "timestamp": 950
+  },
+  {
     "command": "status",
     "username": "bob35",
     "timestamp": 1000
   },
   {
+    "command": "like",
+    "username": "carol19",
+    "timestamp": 1115
+  },
+  {
+    "command": "removeAlbum",
+    "username": "melodymaster",
+    "timestamp": 1200,
+    "name": "Harmonic Horizons"
+  },
+  {
+    "command": "search",
+    "username": "carol19",
+    "timestamp": 1500,
+    "type": "playlist",
+    "filters": {
+      "name": "M"
+    }
+  },
+  {
     "command": "status",
     "username": "bob35",
     "timestamp": 2400
+  },
+  {
+    "command": "select",
+    "username": "carol19",
+    "timestamp": 2435,
+    "itemNumber": 1
+  },
+  {
+    "command": "removeEvent",
+    "username": "melodymaster",
+    "timestamp": 2440,
+    "name": "Event1"
   },
   {
     "command": "search",
@@ -211,6 +355,11 @@
     "username": "bob35",
     "timestamp": 2450,
     "itemNumber": 1
+  },
+  {
+    "command": "printCurrentPage",
+    "username": "carol19",
+    "timestamp": 2455
   },
   {
     "command": "load",
@@ -237,6 +386,11 @@
     "username": "bob35",
     "timestamp": 2510,
     "itemNumber": 1
+  },
+  {
+    "command": "follow",
+    "username": "carol19",
+    "timestamp": 2515
   },
   {
     "command": "load",
@@ -300,6 +454,7 @@
     "username": "bob35",
     "timestamp": 2800
   },
+
   {
     "command": "shuffle",
     "username": "bob35",
@@ -312,9 +467,21 @@
     "timestamp": 2900
   },
   {
+    "command": "removeAlbum",
+    "username": "melodymaster",
+    "timestamp": 3000,
+    "name": "Harmonic Horizons"
+  },
+  {
     "command": "status",
     "username": "bob35",
     "timestamp": 3250
+  },
+  {
+    "command": "changePage",
+    "username": "carol19",
+    "timestamp": 3251,
+    "nextPage": "LikedContent"
   },
   {
     "command": "status",
@@ -330,6 +497,11 @@
     "command": "status",
     "username": "bob35",
     "timestamp": 3660
+  },
+  {
+    "command": "printCurrentPage",
+    "username": "david27",
+    "timestamp": 3900
   },
   {
     "command": "status",
@@ -368,6 +540,11 @@
     "seed": 4096
   },
   {
+    "command": "printCurrentPage",
+    "username": "david27",
+    "timestamp": 4400
+  },
+  {
     "command": "status",
     "username": "bob35",
     "timestamp": 4410
@@ -378,8 +555,18 @@
     "timestamp": 4750
   },
   {
+    "command": "printCurrentPage",
+    "username": "carol19",
+    "timestamp": 5000
+  },
+  {
     "command": "status",
     "username": "bob35",
     "timestamp": 5100
+  },
+  {
+    "command": "showPlaylists",
+    "username": "bob35",
+    "timestamp": 6000
   }
 ]

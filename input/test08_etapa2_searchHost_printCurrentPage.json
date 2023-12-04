@@ -33,6 +33,15 @@
     "city": "Los Angeles"
   },
   {
+    "command": "search",
+    "username": "jack29",
+    "timestamp": 50,
+    "type": "host",
+    "filters": {
+      "name": "sound"
+    }
+  },
+  {
     "command": "addPodcast",
     "username": "soundseeker",
     "timestamp": 51,
@@ -107,6 +116,16 @@
     ]
   },
   {
+    "command": "showPodcasts",
+    "username": "soundseeker",
+    "timestamp": 53
+  },
+  {
+    "command": "printCurrentPage",
+    "username": "jack29",
+    "timestamp": 53
+  },
+  {
     "command": "addPodcast",
     "username": "soundseeker",
     "timestamp": 53,
@@ -135,6 +154,12 @@
     ]
   },
   {
+    "command": "select",
+    "username": "jack29",
+    "timestamp": 57,
+    "itemNumber": 1
+  },
+  {
     "command": "search",
     "username": "alice22",
     "timestamp": 60,
@@ -150,6 +175,13 @@
     "itemNumber": 1
   },
   {
+    "command": "addAnnouncement",
+    "username": "alice22",
+    "timestamp": 67,
+    "name": "Announcement1",
+    "description": "Primul anunt adaugat!"
+  },
+  {
     "command": "load",
     "username": "alice22",
     "timestamp": 70
@@ -158,6 +190,13 @@
     "command": "status",
     "username": "alice22",
     "timestamp": 73
+  },
+  {
+    "command": "addAnnouncement",
+    "username": "soundseeker",
+    "timestamp": 74,
+    "name": "Announcement1",
+    "description": "Primul anunt adaugat!"
   },
   {
     "command": "search",
@@ -183,6 +222,11 @@
     "command": "status",
     "username": "alice22",
     "timestamp": 86
+  },
+  {
+    "command": "printCurrentPage",
+    "username": "jack29",
+    "timestamp": 90
   },
   {
     "command": "playPause",
@@ -221,10 +265,25 @@
     "timestamp": 3225
   },
   {
+    "command": "search",
+    "username": "david27",
+    "timestamp": 3225,
+    "type": "playlist",
+    "filters": {
+      "owner": "alice22"
+    }
+  },
+  {
     "command": "addRemoveInPlaylist",
     "username": "alice22",
     "timestamp": 3230,
     "playlistId": 1
+  },
+  {
+    "command": "removePodcast",
+    "username": "soundseeker",
+    "timestamp": 3233,
+    "name": "Podcast1"
   },
   {
     "command": "search",
@@ -242,6 +301,12 @@
     "itemNumber": 1
   },
   {
+    "command": "removePodcast",
+    "username": "soundseeker",
+    "timestamp": 3243,
+    "name": "Harmony & History"
+  },
+  {
     "command": "load",
     "username": "alice22",
     "timestamp": 3245
@@ -255,6 +320,12 @@
     "city": "Los Angeles"
   },
   {
+    "command": "select",
+    "username": "david27",
+    "timestamp": 3247,
+    "itemNumber": 1
+  },
+  {
     "command": "addUser",
     "timestamp": 3247,
     "type": "host",
@@ -265,14 +336,23 @@
   {
     "command": "showPodcasts",
     "username": "soundseeker",
-    "timestamp": 3250,
-    "playlistId": 1
+    "timestamp": 3250
+  },
+  {
+    "command": "follow",
+    "username": "david27",
+    "timestamp": 3250
   },
   {
     "command": "addRemoveInPlaylist",
     "username": "alice22",
     "timestamp": 3250,
     "playlistId": 1
+  },
+  {
+    "command": "showPlaylists",
+    "username": "alice22",
+    "timestamp": 3252
   },
   {
     "command": "search",
@@ -282,6 +362,11 @@
     "filters": {
       "owner": "alice22"
     }
+  },
+  {
+    "command": "deleteUser",
+    "username": "david27",
+    "timestamp": 3257
   },
   {
     "command": "select",
@@ -295,9 +380,24 @@
     "timestamp": 3265
   },
   {
+    "command": "search",
+    "username": "carol19",
+    "timestamp": 3267,
+    "type": "podcast",
+    "filters": {
+      "name": "Auditory"
+    }
+  },
+  {
     "command": "status",
     "username": "alice22",
     "timestamp": 3270
+  },
+  {
+    "command": "select",
+    "username": "carol19",
+    "timestamp": 3300,
+    "itemNumber": 1
   },
   {
     "command": "status",
@@ -305,8 +405,33 @@
     "timestamp": 3448
   },
   {
+    "command": "load",
+    "username": "carol19",
+    "timestamp": 3450
+  },
+  {
     "command": "status",
     "username": "alice22",
     "timestamp": 4000
+  },
+  {
+    "command": "showPlaylists",
+    "username": "alice22",
+    "timestamp": 4005
+  },
+  {
+    "command": "deleteUser",
+    "username": "soundseeker",
+    "timestamp": 4010
+  },
+  {
+    "command": "status",
+    "username": "carol19",
+    "timestamp": 4500
+  },
+  {
+    "command": "deleteUser",
+    "username": "soundseeker",
+    "timestamp": 100000
   }
 ]
