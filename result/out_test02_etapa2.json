@@ -26,10 +26,20 @@
     "paused" : false
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 240,
+  "message" : "alice22 has changed status successfully."
+}, {
   "command" : "like",
   "user" : "alice22",
   "timestamp" : 280,
-  "message" : "Please load a source before liking or unliking."
+  "message" : "Like registered successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 390,
+  "message" : "alice22 has changed status successfully."
 }, {
   "command" : "search",
   "user" : "alice22",

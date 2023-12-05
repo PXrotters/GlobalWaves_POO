@@ -75,7 +75,9 @@ public class Admin {
         }
 
         for (User user : users) {
-            user.simulateTime(elapsed);
+            if (user.isOnline()) {
+                user.simulateTime(elapsed);
+            }
         }
     }
 
@@ -107,10 +109,21 @@ public class Admin {
         return topPlaylists;
     }
 
+    public static List<String> getOnlineUser() {
+        List<String> onlineUsers = new ArrayList<>();
+        for (User user : users) {
+            if (user.isOnline()) {
+                onlineUsers.add(user.getUsername());
+            }
+        }
+        return onlineUsers;
+    }
+
     public static void reset() {
         users = new ArrayList<>();
         songs = new ArrayList<>();
         podcasts = new ArrayList<>();
         timestamp = 0;
     }
+
 }

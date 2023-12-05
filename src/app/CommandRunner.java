@@ -21,6 +21,10 @@ public class CommandRunner {
         if (user != null) {
             ArrayList<String> results = user.search(filters, type);
             String message = "Search returned " + results.size() + " results";
+            if (user.isOnline() == false) {
+                message = user.getUsername() + " is offline.";
+                results = new ArrayList<>();
+            }
 
             ObjectNode objectNode = objectMapper.createObjectNode();
             objectNode.put("command", commandInput.getCommand());
@@ -414,6 +418,38 @@ public class CommandRunner {
         objectNode.put("command", commandInput.getCommand());
         objectNode.put("timestamp", commandInput.getTimestamp());
         objectNode.put("result", objectMapper.valueToTree(playlists));
+
+        return objectNode;
+    }
+
+    public static ObjectNode switchConnectionStatus(CommandInput commandInput) {
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user != null) {
+            String message = user.getConnectionStatus(user);
+            ObjectNode objectNode = objectMapper.createObjectNode();
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", message);
+
+            return objectNode;
+        } else {
+            ObjectNode objectNode = objectMapper.createObjectNode();
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+
+            return objectNode;
+        }
+    }
+
+    public static ObjectNode getOnlineUsers(CommandInput commandInput) {
+        List<String> results = Admin.getOnlineUser();
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        objectNode.put("result", objectMapper.valueToTree(results));
 
         return objectNode;
     }

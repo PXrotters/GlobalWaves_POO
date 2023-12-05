@@ -80,7 +80,6 @@ public final class Main {
 
         for (CommandInput command : commands) {
             Admin.updateTimestamp(command.getTimestamp());
-
             String commandName = command.getCommand();
             switch (commandName) {
                 case "search" -> outputs.add(CommandRunner.search(command));
@@ -104,6 +103,8 @@ public final class Main {
                 case "getPreferredGenre" -> outputs.add(CommandRunner.getPreferredGenre(command));
                 case "getTop5Songs" -> outputs.add(CommandRunner.getTop5Songs(command));
                 case "getTop5Playlists" -> outputs.add(CommandRunner.getTop5Playlists(command));
+                case "switchConnectionStatus" -> outputs.add(CommandRunner.switchConnectionStatus(command));
+                case "getOnlineUsers" -> outputs.add(CommandRunner.getOnlineUsers(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

@@ -4356,6 +4356,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 5409,
+  "message" : "alice22 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "alice22",
   "timestamp" : 5414,
@@ -4366,6 +4371,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 5419,
+  "message" : "alice22 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 5419,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 5419,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "alice22",
@@ -4431,6 +4450,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "bob35",
+  "timestamp" : 5720,
+  "message" : "bob35 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 5725,
@@ -4441,6 +4465,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "bob35",
+  "timestamp" : 5730,
+  "message" : "bob35 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 5730,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 5730,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "bob35",
@@ -4506,6 +4544,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "carol19",
+  "timestamp" : 6031,
+  "message" : "carol19 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "carol19",
   "timestamp" : 6036,
@@ -4516,6 +4559,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "carol19",
+  "timestamp" : 6041,
+  "message" : "carol19 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 6041,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6041,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "carol19",
@@ -4581,6 +4638,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "david27",
+  "timestamp" : 6342,
+  "message" : "david27 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "david27",
   "timestamp" : 6347,
@@ -4591,6 +4653,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "david27",
+  "timestamp" : 6352,
+  "message" : "david27 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 6352,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6352,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "david27",
@@ -4656,6 +4732,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "emily30",
+  "timestamp" : 6653,
+  "message" : "emily30 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "emily30",
   "timestamp" : 6658,
@@ -4666,6 +4747,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "emily30",
+  "timestamp" : 6663,
+  "message" : "emily30 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 6663,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6663,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "emily30",
@@ -4731,6 +4826,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "frank21",
+  "timestamp" : 6964,
+  "message" : "frank21 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "frank21",
   "timestamp" : 6969,
@@ -4741,6 +4841,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "frank21",
+  "timestamp" : 6974,
+  "message" : "frank21 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 6974,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6974,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "frank21",
@@ -4806,6 +4920,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "grace25",
+  "timestamp" : 7275,
+  "message" : "grace25 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "grace25",
   "timestamp" : 7280,
@@ -4816,6 +4935,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "grace25",
+  "timestamp" : 7285,
+  "message" : "grace25 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 7285,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 7285,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "grace25",
@@ -4881,6 +5014,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "henry26",
+  "timestamp" : 7586,
+  "message" : "henry26 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "henry26",
   "timestamp" : 7591,
@@ -4891,6 +5029,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "henry26",
+  "timestamp" : 7596,
+  "message" : "henry26 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 7596,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 7596,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "henry26",
@@ -4956,6 +5108,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "irene33",
+  "timestamp" : 7897,
+  "message" : "irene33 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "irene33",
   "timestamp" : 7902,
@@ -4966,6 +5123,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "irene33",
+  "timestamp" : 7907,
+  "message" : "irene33 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 7907,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 7907,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "irene33",
@@ -5031,6 +5202,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "jack29",
+  "timestamp" : 8208,
+  "message" : "jack29 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "jack29",
   "timestamp" : 8213,
@@ -5041,6 +5217,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jack29",
+  "timestamp" : 8218,
+  "message" : "jack29 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "barmstrong",
+  "timestamp" : 8218,
+  "message" : "The username barmstrong doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 8218,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "jack29",

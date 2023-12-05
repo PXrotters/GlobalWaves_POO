@@ -4356,6 +4356,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 5410,
+  "message" : "alice22 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "alice22",
   "timestamp" : 5415,
@@ -4366,6 +4371,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "alice22",
+  "timestamp" : 5420,
+  "message" : "alice22 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 5420,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 5420,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "alice22",
@@ -4431,6 +4450,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "bob35",
+  "timestamp" : 5721,
+  "message" : "bob35 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 5726,
@@ -4441,6 +4465,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "bob35",
+  "timestamp" : 5731,
+  "message" : "bob35 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 5731,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 5731,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "bob35",
@@ -4506,6 +4544,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "carol19",
+  "timestamp" : 6032,
+  "message" : "carol19 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "carol19",
   "timestamp" : 6037,
@@ -4516,6 +4559,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "carol19",
+  "timestamp" : 6042,
+  "message" : "carol19 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 6042,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6042,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "carol19",
@@ -4581,6 +4638,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "david27",
+  "timestamp" : 6343,
+  "message" : "david27 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "david27",
   "timestamp" : 6348,
@@ -4591,6 +4653,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "david27",
+  "timestamp" : 6353,
+  "message" : "david27 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 6353,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6353,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "david27",
@@ -4656,6 +4732,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "emily30",
+  "timestamp" : 6654,
+  "message" : "emily30 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "emily30",
   "timestamp" : 6659,
@@ -4666,6 +4747,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "emily30",
+  "timestamp" : 6664,
+  "message" : "emily30 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 6664,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6664,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "emily30",
@@ -4731,6 +4826,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "frank21",
+  "timestamp" : 6965,
+  "message" : "frank21 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "frank21",
   "timestamp" : 6970,
@@ -4741,6 +4841,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "frank21",
+  "timestamp" : 6975,
+  "message" : "frank21 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 6975,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 6975,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "frank21",
@@ -4806,6 +4920,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "grace25",
+  "timestamp" : 7276,
+  "message" : "grace25 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "grace25",
   "timestamp" : 7281,
@@ -4816,6 +4935,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "grace25",
+  "timestamp" : 7286,
+  "message" : "grace25 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 7286,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 7286,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "grace25",
@@ -4881,6 +5014,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "henry26",
+  "timestamp" : 7587,
+  "message" : "henry26 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "henry26",
   "timestamp" : 7592,
@@ -4891,6 +5029,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "henry26",
+  "timestamp" : 7597,
+  "message" : "henry26 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 7597,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 7597,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "henry26",
@@ -4956,6 +5108,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "irene33",
+  "timestamp" : 7898,
+  "message" : "irene33 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "irene33",
   "timestamp" : 7903,
@@ -4966,6 +5123,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "irene33",
+  "timestamp" : 7908,
+  "message" : "irene33 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 7908,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 7908,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "irene33",
@@ -5031,6 +5202,11 @@
     "paused" : true
   }
 }, {
+  "command" : "switchConnectionStatus",
+  "user" : "jack29",
+  "timestamp" : 8209,
+  "message" : "jack29 has changed status successfully."
+}, {
   "command" : "status",
   "user" : "jack29",
   "timestamp" : 8214,
@@ -5041,6 +5217,20 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jack29",
+  "timestamp" : 8219,
+  "message" : "jack29 has changed status successfully."
+}, {
+  "command" : "switchConnectionStatus",
+  "user" : "jsimpson",
+  "timestamp" : 8219,
+  "message" : "The username jsimpson doesn't exist."
+}, {
+  "command" : "getOnlineUsers",
+  "timestamp" : 8219,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
   "command" : "shuffle",
   "user" : "jack29",

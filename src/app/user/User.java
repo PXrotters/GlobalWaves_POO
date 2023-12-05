@@ -12,6 +12,7 @@ import app.searchBar.Filters;
 import app.searchBar.SearchBar;
 import app.utils.Enums;
 import lombok.Getter;
+import fileio.input.CommandInput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +33,14 @@ public class User {
     private final Player player;
     private final SearchBar searchBar;
     private boolean lastSearched;
+    @Getter
+    private boolean online;  //vedem daca userul este sau nu online
 
     public User(String username, int age, String city) {
         this.username = username;
         this.age = age;
         this.city = city;
+        this.online = true;
         playlists = new ArrayList<>();
         likedSongs = new ArrayList<>();
         followedPlaylists = new ArrayList<>();
@@ -315,6 +319,16 @@ public class User {
 
         String preferredGenre = mostLikedIndex != -1 ? genres[mostLikedIndex] : "unknown";
         return "This user's preferred genre is %s.".formatted(preferredGenre);
+    }
+
+    public String getConnectionStatus(User user) {
+        if (online) {
+            online = false;
+        } else {
+            online = true;
+        }
+        String message = user.getUsername() + " has changed status successfully.";
+        return message;
     }
 
     public void simulateTime(int time) {
