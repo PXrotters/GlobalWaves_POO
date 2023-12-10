@@ -1,18 +1,95 @@
 [ {
-  "message" : "The username doesn't exist."
+  "command" : "addUser",
+  "user" : "melodymaster",
+  "timestamp" : 5,
+  "message" : "The username melodymaster has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "rhythmrider",
+  "timestamp" : 10,
+  "message" : "The username rhythmrider has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "beatblazer",
+  "timestamp" : 15,
+  "message" : "The username beatblazer has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "harmonichero",
+  "timestamp" : 20,
+  "message" : "The username harmonichero has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "melodicmind42",
+  "timestamp" : 25,
+  "message" : "The username melodicmind42 has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "rhythmicrider58",
+  "timestamp" : 30,
+  "message" : "The username rhythmicrider58 has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "harmonyhunter73",
+  "timestamp" : 35,
+  "message" : "The username harmonyhunter73 has been added successfully."
+}, {
+  "command" : "addUser",
+  "user" : "irene33",
+  "timestamp" : 40,
+  "message" : "The username irene33 is already taken."
+}, {
+  "command" : "addAlbum",
+  "user" : "rhythmrider",
+  "timestamp" : 50,
+  "message" : "rhythmrider has added new album successfully."
+}, {
+  "command" : "addAlbum",
+  "user" : "beatblazer",
+  "timestamp" : 55,
+  "message" : "beatblazer has added new album successfully."
+}, {
+  "command" : "search",
+  "user" : "melodicmind42",
+  "timestamp" : 60,
+  "message" : "Search returned 3 results",
+  "results" : [ "Radio Ga Ga", "Rhythm Rise", "Rhythmic Revolution" ]
 }, {
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 65,
   "message" : "Please conduct a search before making a selection."
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "select",
+  "user" : "melodicmind42",
+  "timestamp" : 70,
+  "message" : "Successfully selected Rhythmic Revolution."
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "load",
+  "user" : "melodicmind42",
+  "timestamp" : 75,
+  "message" : "Playback loaded successfully."
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "status",
+  "user" : "melodicmind42",
+  "timestamp" : 90,
+  "stats" : {
+    "name" : "Rhythmic Revolution",
+    "remainedTime" : 185,
+    "repeat" : "No Repeat",
+    "shuffle" : false,
+    "paused" : false
+  }
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "like",
+  "user" : "melodicmind42",
+  "timestamp" : 120,
+  "message" : "Like registered successfully."
+}, {
+  "user" : "melodicmind42",
+  "command" : "printCurrentPage",
+  "timestamp" : 135,
+  "message" : "Liked songs:\n\t[Rhythmic Revolution]\n\nFollowed playlists:\n\t[]"
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -35,11 +112,29 @@
   "timestamp" : 1159,
   "message" : "Please load a source before returning to the previous track."
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "search",
+  "user" : "melodicmind42",
+  "timestamp" : 1385,
+  "message" : "Search returned 2 results",
+  "results" : [ "Rapid Rhythms", "Rapid Fire" ]
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "select",
+  "user" : "melodicmind42",
+  "timestamp" : 1390,
+  "message" : "Successfully selected Rapid Rhythms."
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "load",
+  "user" : "melodicmind42",
+  "timestamp" : 1440,
+  "message" : "Playback loaded successfully."
 }, {
-  "message" : "The username doesn't exist."
+  "command" : "like",
+  "user" : "melodicmind42",
+  "timestamp" : 1455,
+  "message" : "Like registered successfully."
+}, {
+  "user" : "melodicmind42",
+  "command" : "printCurrentPage",
+  "timestamp" : 1480,
+  "message" : "Liked songs:\n\t[Rhythmic Revolution, Rapid Rhythms]\n\nFollowed playlists:\n\t[]"
 } ]

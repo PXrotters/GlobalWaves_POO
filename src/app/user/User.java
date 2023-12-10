@@ -1,5 +1,6 @@
 package app.user;
 
+import app.PageSystem.HomePage;
 import app.audio.Collections.AudioCollection;
 import app.audio.Collections.Playlist;
 import app.audio.Collections.PlaylistOutput;
@@ -13,16 +14,17 @@ import app.searchBar.SearchBar;
 import app.utils.Enums;
 import lombok.Getter;
 import fileio.input.CommandInput;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    @Getter
+    @Getter @Setter
     private String username;
-    @Getter
+    @Getter @Setter
     private int age;
-    @Getter
+    @Getter @Setter
     private String city;
     @Getter
     private ArrayList<Playlist> playlists;
@@ -35,12 +37,33 @@ public class User {
     private boolean lastSearched;
     @Getter
     private boolean online;  //vedem daca userul este sau nu online
+    @Getter @Setter
+    private int typeofuser = 0;  //1-normal 2-artist 3-host;
+    @Getter @Setter
+    private int currentPage = 0; //1-Home 2-LikedContent 3-Artist 4-Host
 
     public User(String username, int age, String city) {
         this.username = username;
         this.age = age;
         this.city = city;
         this.online = true;
+        playlists = new ArrayList<>();
+        likedSongs = new ArrayList<>();
+        followedPlaylists = new ArrayList<>();
+        player = new Player();
+        searchBar = new SearchBar(username);
+        lastSearched = false;
+        typeofuser = 1;
+        currentPage = 1;
+    }
+
+    public User(String username, int age, String city, int typeofuser) {
+        this.username = username;
+        this.age = age;
+        this.city = city;
+        this.online = true;
+        this.typeofuser = typeofuser;
+        currentPage = 1;
         playlists = new ArrayList<>();
         likedSongs = new ArrayList<>();
         followedPlaylists = new ArrayList<>();
@@ -327,8 +350,7 @@ public class User {
         } else {
             online = true;
         }
-        String message = user.getUsername() + " has changed status successfully.";
-        return message;
+        return user.getUsername() + " has changed status successfully.";
     }
 
     public void simulateTime(int time) {

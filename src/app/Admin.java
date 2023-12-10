@@ -1,10 +1,14 @@
 package app;
 
+import app.PageSystem.HomePage;
+import app.audio.Collections.Album;
 import app.audio.Collections.Playlist;
 import app.audio.Collections.Podcast;
 import app.audio.Files.Episode;
 import app.audio.Files.Song;
+import app.user.Artist;
 import app.user.User;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.*;
 
 import java.util.*;
@@ -21,6 +25,115 @@ public class Admin {
             users.add(new User(userInput.getUsername(), userInput.getAge(), userInput.getCity()));
         }
     }
+
+    public static ObjectNode CurrentPage(String username, int timestamp) {
+        User user1 = null;
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                user1 = user;
+                break;
+            }
+        }
+        if (user1 != null) {
+            if (user1.getCurrentPage() == 1) {
+                HomePage home = new HomePage(user1.getLikedSongs(), user1.getFollowedPlaylists());
+                return home.showPage(home, username, timestamp);
+            }
+        } else {
+            return null;
+        }
+        return null;
+    }
+
+    public static String AddAlbum(String username, String name, List<SongInput> album_songs, int releaseYear, String description) {
+        boolean found = false;
+        Artist artist = null;
+        boolean found_album = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                found = true;
+                artist = (Artist) user;
+                break;
+            }
+        }
+        if (!found) {
+            return "The username " + username + " doesn't exist.";
+        } else {
+            ArrayList<Album> albums = artist.getAlbums();
+            for (Album album_search : albums) {
+                if (album_search.getName().equals(name)) {
+                    found_album = true;
+                    break;
+                }
+            }
+            if (!found_album) {
+                Album album = new Album(name, username, album_songs, releaseYear, description);
+                Set<String> songNamesSet = new HashSet<>();
+                boolean duplicateFound = false;
+                for (SongInput song : album_songs) {
+                    if (songNamesSet.contains(song.getName())) {
+                        duplicateFound = true;
+                        break;
+                    } else {
+                        songNamesSet.add(song.getName());
+                    }
+                }
+                if (duplicateFound) {
+                    return username + " has the same song at least twice in this album.";
+                } else {
+                    artist.addAlbum(album);
+                    for (SongInput song : album_songs) {
+                        Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
+                        songs.add(newsong);
+                    }
+                    return username + " has added new album successfully.";
+                }
+            } else {
+                return username + " has another album with the same name.";
+            }
+        }
+    }
+
+    public static ObjectNode ShowAlbum (String username, int timestamp) {
+        Artist artist = null;
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                artist = (Artist) user;
+                break;
+            }
+        }
+        return artist.showAlbums(username, timestamp);
+    }
+
+    public static String AddUser(String username, int age, String city, int type) {
+        boolean found = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            if (type == 1) {
+                User user = new User(username, age, city, type);
+                users.add(user);
+                return "The username " + username + " has been added successfully.";
+            } else if (type == 2) {
+                ArrayList<Album> albums = new ArrayList<>();
+                Artist artist = new Artist(username, age, city, albums);
+                users.add(artist);
+                return "The username " + username + " has been added successfully.";
+            } else {
+                return "TODO FOR HOST";
+            }
+        } else {
+            return "The username " + username + " is already taken.";
+        }
+    }
+
 
     public static void setSongs(List<SongInput> songInputList) {
         songs = new ArrayList<>();
@@ -112,7 +225,7 @@ public class Admin {
     public static List<String> getOnlineUser() {
         List<String> onlineUsers = new ArrayList<>();
         for (User user : users) {
-            if (user.isOnline()) {
+            if (user.isOnline() && user.getTypeofuser() == 1) {
                 onlineUsers.add(user.getUsername());
             }
         }

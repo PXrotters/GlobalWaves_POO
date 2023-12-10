@@ -1,10 +1,14 @@
 package app;
 
+import app.audio.Collections.Album;
+import app.audio.Collections.Playlist;
 import app.audio.Collections.PlaylistOutput;
 import app.player.PlayerStats;
 import app.searchBar.Filters;
+import app.user.Artist;
 import app.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.CommandInput;
 
@@ -21,7 +25,7 @@ public class CommandRunner {
         if (user != null) {
             ArrayList<String> results = user.search(filters, type);
             String message = "Search returned " + results.size() + " results";
-            if (user.isOnline() == false) {
+            if (!user.isOnline()) {
                 message = user.getUsername() + " is offline.";
                 results = new ArrayList<>();
             }
@@ -186,7 +190,12 @@ public class CommandRunner {
     public static ObjectNode like(CommandInput commandInput) {
         User user = Admin.getUser(commandInput.getUsername());
         if (user != null) {
-            String message = user.like();
+            String message = null;
+            if (!user.isOnline()) {
+                message = user.getUsername() + " is offline.";
+            } else {
+                message = user.like();
+            }
 
             ObjectNode objectNode = objectMapper.createObjectNode();
             objectNode.put("command", commandInput.getCommand());
@@ -453,4 +462,80 @@ public class CommandRunner {
 
         return objectNode;
     }
+
+    public static ObjectNode AddUser(CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        String typeOfUser = commandInput.getType();
+        int type = 0;
+        if (typeOfUser.equals("user")){
+            type = 1;
+        } else if (typeOfUser.equals("artist")){
+            type = 2;
+        } else {
+            type = 3;
+        }
+            String message = Admin.AddUser(commandInput.getUsername(), commandInput.getAge(), commandInput.getCity(), type);
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", message);
+        return objectNode;
+    }
+
+    public static ObjectNode AddAlbum(CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        String message;
+        int type = 0;
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user != null) {
+            type = user.getTypeofuser();
+        }
+        if (type == 1) {
+            message = "The username " + commandInput.getUsername() + " is not an artist.";
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", message);
+            objectNode.put("X", type);
+            return objectNode;
+        } else if (type == 2) {
+            message = Admin.AddAlbum(commandInput.getUsername(), commandInput.getName(), commandInput.getSongs(), commandInput.getReleaseYear(), commandInput.getDescription());
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", message);
+            return objectNode;
+        } else if (type == 3) {
+            objectNode.put("message", "TODO");
+            return objectNode;
+        } else {
+            objectNode.put("message", "False");
+            return objectNode;
+        }
+    }
+
+    public static ObjectNode ShowAlbum(CommandInput commandInput) {
+        ObjectNode result = Admin.ShowAlbum(commandInput.getUsername(), commandInput.getTimestamp());
+        return result;
+    }
+
+    public static ObjectNode PrintCurrentPage(CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user != null) {
+            int type = user.getTypeofuser();
+            int Page = user.getCurrentPage();
+            if (type == 1) {
+                ObjectNode result = Admin.CurrentPage(commandInput.getUsername(), commandInput.getTimestamp());
+                return result;
+            } else {
+                objectNode.put("message", "False");
+                return objectNode;
+            }
+        } else {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        }
+    }
+
 }

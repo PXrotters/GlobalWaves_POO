@@ -26,6 +26,11 @@
     "paused" : false
   }
 }, {
+  "command" : "addUser",
+  "user" : "soundseeker",
+  "timestamp" : 50,
+  "message" : "TODO FOR HOST"
+}, {
   "command" : "search",
   "user" : "alice22",
   "timestamp" : 55,
@@ -36,6 +41,11 @@
   "user" : "alice22",
   "timestamp" : 57,
   "message" : "The selected ID is too high."
+}, {
+  "user" : "alice22",
+  "command" : "printCurrentPage",
+  "timestamp" : 58,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -149,6 +159,16 @@
   "timestamp" : 3245,
   "message" : "Playback loaded successfully."
 }, {
+  "command" : "addUser",
+  "user" : "magichost",
+  "timestamp" : 3247,
+  "message" : "TODO FOR HOST"
+}, {
+  "command" : "addUser",
+  "user" : "magichost",
+  "timestamp" : 3247,
+  "message" : "TODO FOR HOST"
+}, {
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
   "timestamp" : 3250,
@@ -180,6 +200,11 @@
     "shuffle" : false,
     "paused" : false
   }
+}, {
+  "user" : "alice22",
+  "command" : "printCurrentPage",
+  "timestamp" : 3275,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
 }, {
   "command" : "status",
   "user" : "alice22",

@@ -1,46 +1,56 @@
 [ {
+  "command" : "addUser",
+  "user" : "melodymaster",
+  "timestamp" : 1,
+  "message" : "The username melodymaster has been added successfully."
+}, {
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 2,
+  "message" : "melodymaster has added new album successfully."
+}, {
   "command" : "search",
   "user" : "bob35",
   "timestamp" : 6,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
+  "message" : "Search returned 1 results",
+  "results" : [ "Retro Rhythms" ]
 }, {
   "command" : "search",
   "user" : "alice22",
   "timestamp" : 10,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
+  "message" : "Search returned 1 results",
+  "results" : [ "Night Pulse" ]
 }, {
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 15,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected Night Pulse."
 }, {
   "command" : "load",
   "user" : "alice22",
   "timestamp" : 20,
-  "message" : "Please select a source before attempting to load."
+  "message" : "Playback loaded successfully."
 }, {
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 25,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected Retro Rhythms."
 }, {
   "command" : "status",
   "user" : "alice22",
   "timestamp" : 30,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
+    "name" : "Night Pulse",
+    "remainedTime" : 230,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : true
+    "paused" : false
   }
 }, {
   "command" : "repeat",
   "user" : "alice22",
   "timestamp" : 31,
-  "message" : "Please load a source before setting the repeat status."
+  "message" : "Repeat mode changed to repeat once."
 }, {
   "command" : "createPlaylist",
   "user" : "bob35",
@@ -51,33 +61,33 @@
   "user" : "alice22",
   "timestamp" : 32,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
-    "repeat" : "No Repeat",
+    "name" : "Night Pulse",
+    "remainedTime" : 228,
+    "repeat" : "Repeat Once",
     "shuffle" : false,
-    "paused" : true
+    "paused" : false
   }
 }, {
   "command" : "status",
   "user" : "alice22",
   "timestamp" : 257,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
-    "repeat" : "No Repeat",
+    "name" : "Night Pulse",
+    "remainedTime" : 3,
+    "repeat" : "Repeat Once",
     "shuffle" : false,
-    "paused" : true
+    "paused" : false
   }
 }, {
   "command" : "repeat",
   "user" : "alice22",
   "timestamp" : 258,
-  "message" : "Please load a source before setting the repeat status."
+  "message" : "Repeat mode changed to repeat infinite."
 }, {
   "command" : "repeat",
   "user" : "alice22",
   "timestamp" : 258,
-  "message" : "Please load a source before setting the repeat status."
+  "message" : "Repeat mode changed to no repeat."
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -93,7 +103,7 @@
   "command" : "load",
   "user" : "bob35",
   "timestamp" : 1000,
-  "message" : "Please select a source before attempting to load."
+  "message" : "Playback loaded successfully."
 }, {
   "command" : "createPlaylist",
   "user" : "alice22",
@@ -140,7 +150,7 @@
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
   "timestamp" : 1012,
-  "message" : "Please load a source before adding to or removing from the playlist."
+  "message" : "Successfully added to playlist."
 }, {
   "command" : "addRemoveInPlaylist",
   "user" : "alice22",
@@ -269,11 +279,21 @@
     "paused" : false
   }
 }, {
+  "user" : "alice22",
+  "command" : "printCurrentPage",
+  "timestamp" : 1038,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
+}, {
   "command" : "search",
   "user" : "carol19",
   "timestamp" : 1039,
   "message" : "Search returned 0 results",
   "results" : [ ]
+}, {
+  "user" : "carol19",
+  "command" : "printCurrentPage",
+  "timestamp" : 1040,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[My favourite songs]\n"
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -338,6 +358,11 @@
     "shuffle" : false,
     "paused" : false
   }
+}, {
+  "user" : "carol19",
+  "command" : "printCurrentPage",
+  "timestamp" : 2338,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[My favourite songs]\n"
 }, {
   "command" : "status",
   "user" : "alice22",

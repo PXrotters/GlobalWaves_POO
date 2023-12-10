@@ -10,6 +10,16 @@
   "message" : "Search returned 1 results",
   "results" : [ "Nothing Else Matters" ]
 }, {
+  "command" : "addUser",
+  "user" : "melodymaster",
+  "timestamp" : 171,
+  "message" : "The username melodymaster has been added successfully."
+}, {
+  "command" : "addAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 172,
+  "message" : "melodymaster has added new album successfully."
+}, {
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 190,
@@ -28,8 +38,8 @@
   "command" : "search",
   "user" : "carol19",
   "timestamp" : 270,
-  "message" : "Search returned 2 results",
-  "results" : [ "Don't", "Delicate" ]
+  "message" : "Search returned 3 results",
+  "results" : [ "Don't", "Delicate", "Digital Dreams" ]
 }, {
   "command" : "search",
   "user" : "david27",
@@ -60,28 +70,28 @@
   "command" : "search",
   "user" : "bob35",
   "timestamp" : 340,
-  "message" : "Search returned 1 results",
-  "results" : [ "Radio Ga Ga" ]
+  "message" : "Search returned 2 results",
+  "results" : [ "Radio Ga Ga", "Retro Rhythms" ]
 }, {
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 340,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected Retro Rhythms."
 }, {
   "command" : "load",
   "user" : "bob35",
   "timestamp" : 340,
-  "message" : "Please select a source before attempting to load."
+  "message" : "Playback loaded successfully."
 }, {
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 340,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected Digital Dreams."
 }, {
   "command" : "addRemoveInPlaylist",
   "user" : "bob35",
   "timestamp" : 340,
-  "message" : "Please load a source before adding to or removing from the playlist."
+  "message" : "Successfully added to playlist."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -104,6 +114,11 @@
   "timestamp" : 430,
   "message" : "Successfully added to playlist."
 }, {
+  "user" : "david27",
+  "command" : "printCurrentPage",
+  "timestamp" : 430,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
+}, {
   "command" : "search",
   "user" : "bob35",
   "timestamp" : 431,
@@ -123,7 +138,7 @@
   "command" : "load",
   "user" : "carol19",
   "timestamp" : 434,
-  "message" : "Please select a source before attempting to load."
+  "message" : "Playback loaded successfully."
 }, {
   "command" : "status",
   "user" : "bob35",
@@ -155,12 +170,12 @@
   "command" : "repeat",
   "user" : "carol19",
   "timestamp" : 690,
-  "message" : "Please load a source before setting the repeat status."
+  "message" : "Repeat mode changed to repeat once."
 }, {
   "command" : "repeat",
   "user" : "carol19",
   "timestamp" : 950,
-  "message" : "Please load a source before setting the repeat status."
+  "message" : "Repeat mode changed to repeat once."
 }, {
   "command" : "status",
   "user" : "bob35",
@@ -176,7 +191,7 @@
   "command" : "like",
   "user" : "carol19",
   "timestamp" : 1115,
-  "message" : "Please load a source before liking or unliking."
+  "message" : "Like registered successfully."
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -210,6 +225,11 @@
   "user" : "bob35",
   "timestamp" : 2450,
   "message" : "Successfully selected I Don't Wanna Live Forever."
+}, {
+  "user" : "carol19",
+  "command" : "printCurrentPage",
+  "timestamp" : 2455,
+  "message" : "Liked songs:\n\t[Digital Dreams]\n\nFollowed playlists:\n\t[]"
 }, {
   "command" : "load",
   "user" : "bob35",
@@ -288,8 +308,8 @@
   "user" : "bob35",
   "timestamp" : 2800,
   "stats" : {
-    "name" : "Elevate",
-    "remainedTime" : 165,
+    "name" : "Retro Rhythms",
+    "remainedTime" : 160,
     "repeat" : "No Repeat",
     "shuffle" : false,
     "paused" : false
@@ -304,8 +324,8 @@
   "user" : "bob35",
   "timestamp" : 2900,
   "stats" : {
-    "name" : "Elevate",
-    "remainedTime" : 65,
+    "name" : "Retro Rhythms",
+    "remainedTime" : 60,
     "repeat" : "No Repeat",
     "shuffle" : true,
     "paused" : false
@@ -315,11 +335,11 @@
   "user" : "bob35",
   "timestamp" : 3250,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
+    "name" : "Hustle Hard",
+    "remainedTime" : 167,
     "repeat" : "No Repeat",
-    "shuffle" : false,
-    "paused" : true
+    "shuffle" : true,
+    "paused" : false
   }
 }, {
   "command" : "status",
@@ -348,6 +368,11 @@
     "shuffle" : false,
     "paused" : true
   }
+}, {
+  "user" : "david27",
+  "command" : "printCurrentPage",
+  "timestamp" : 3900,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
 }, {
   "command" : "status",
   "user" : "bob35",
@@ -392,12 +417,17 @@
   "timestamp" : 4360,
   "message" : "Shuffle function activated successfully."
 }, {
+  "user" : "david27",
+  "command" : "printCurrentPage",
+  "timestamp" : 4400,
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
+}, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 4410,
   "stats" : {
-    "name" : "Elevate",
-    "remainedTime" : 168,
+    "name" : "Retro Rhythms",
+    "remainedTime" : 163,
     "repeat" : "No Repeat",
     "shuffle" : true,
     "paused" : false
@@ -407,12 +437,17 @@
   "user" : "bob35",
   "timestamp" : 4750,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
+    "name" : "Hustle Hard",
+    "remainedTime" : 55,
     "repeat" : "No Repeat",
-    "shuffle" : false,
-    "paused" : true
+    "shuffle" : true,
+    "paused" : false
   }
+}, {
+  "user" : "carol19",
+  "command" : "printCurrentPage",
+  "timestamp" : 5000,
+  "message" : "Liked songs:\n\t[Digital Dreams]\n\nFollowed playlists:\n\t[My playlist]\n"
 }, {
   "command" : "status",
   "user" : "bob35",
@@ -430,7 +465,7 @@
   "timestamp" : 6000,
   "result" : [ {
     "name" : "My playlist",
-    "songs" : [ "Elevate", "I Don't Wanna Live Forever", "Hustle Hard", "Begin Again" ],
+    "songs" : [ "Retro Rhythms", "Elevate", "I Don't Wanna Live Forever", "Hustle Hard", "Begin Again" ],
     "visibility" : "public",
     "followers" : 1
   } ]
