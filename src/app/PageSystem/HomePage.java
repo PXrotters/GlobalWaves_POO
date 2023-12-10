@@ -27,7 +27,6 @@ public class HomePage {
         ArrayList<Song> likedSongs = homePage.getSongs();
         ArrayList<Playlist> followedPlaylists = homePage.getFollowedPlaylists();
 
-        // Creează mesajul într-un format specific
         StringBuilder messageBuilder = new StringBuilder();
         messageBuilder.append("Liked songs:\n");
         if (!likedSongs.isEmpty()) {

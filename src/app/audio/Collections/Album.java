@@ -41,4 +41,9 @@ public class Album extends AudioCollection {
         return songs1.get(index);
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
 }

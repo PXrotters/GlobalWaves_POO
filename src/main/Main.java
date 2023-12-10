@@ -109,6 +109,8 @@ public final class Main {
                 case "addAlbum" -> outputs.add(CommandRunner.AddAlbum(command));
                 case "showAlbums" -> outputs.add(CommandRunner.ShowAlbum(command));
                 case "printCurrentPage" -> outputs.add(CommandRunner.PrintCurrentPage(command));
+                case "addEvent" -> outputs.add(CommandRunner.AddEvent(command));
+                case "addMerch" -> outputs.add(CommandRunner.AddMerch(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

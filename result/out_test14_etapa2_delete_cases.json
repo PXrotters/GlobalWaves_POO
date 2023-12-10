@@ -168,8 +168,8 @@
   "command" : "search",
   "user" : "david27",
   "timestamp" : 760,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
+  "message" : "Search returned 1 results",
+  "results" : [ "sonicpainter" ]
 }, {
   "command" : "repeat",
   "user" : "carol19",
@@ -179,7 +179,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 1225,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected sonicpainter's page."
 }, {
   "command" : "repeat",
   "user" : "carol19",

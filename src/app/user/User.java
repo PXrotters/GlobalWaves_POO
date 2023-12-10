@@ -1,5 +1,6 @@
 package app.user;
 
+import app.Admin;
 import app.PageSystem.HomePage;
 import app.audio.Collections.AudioCollection;
 import app.audio.Collections.Playlist;
@@ -18,6 +19,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Adler32;
 
 public class User {
     @Getter @Setter
@@ -34,6 +36,8 @@ public class User {
     private ArrayList<Playlist> followedPlaylists;
     private final Player player;
     private final SearchBar searchBar;
+    private boolean searchedArtist = false;
+    private ArrayList<String> searchedartists = new ArrayList<>();
     private boolean lastSearched;
     @Getter
     private boolean online;  //vedem daca userul este sau nu online
@@ -41,6 +45,8 @@ public class User {
     private int typeofuser = 0;  //1-normal 2-artist 3-host;
     @Getter @Setter
     private int currentPage = 0; //1-Home 2-LikedContent 3-Artist 4-Host
+    @Getter @Setter
+    private String artistPage; //numele artistului selectat
 
     public User(String username, int age, String city) {
         this.username = username;
@@ -55,6 +61,7 @@ public class User {
         lastSearched = false;
         typeofuser = 1;
         currentPage = 1;
+        artistPage = null;
     }
 
     public User(String username, int age, String city, int typeofuser) {
@@ -78,26 +85,51 @@ public class User {
 
         lastSearched = true;
         ArrayList<String> results = new ArrayList<>();
-        List<LibraryEntry> libraryEntries = searchBar.search(filters, type);
+        if (type.equals("artist")) {
+            String part = filters.getName();
+            searchedartists = Admin.getArtist(part);
+            searchedArtist = true;
+            return searchedartists;
+        } else {
+            List<LibraryEntry> libraryEntries = searchBar.search(filters, type);
 
-        for (LibraryEntry libraryEntry : libraryEntries) {
-            results.add(libraryEntry.getName());
+            for (LibraryEntry libraryEntry : libraryEntries) {
+                results.add(libraryEntry.getName());
+            }
+            return results;
         }
-        return results;
     }
 
     public String select(int itemNumber) {
+        String name = null;
         if (!lastSearched)
             return "Please conduct a search before making a selection.";
 
+        LibraryEntry selected;
         lastSearched = false;
 
-        LibraryEntry selected = searchBar.select(itemNumber);
+        if (!searchedArtist) {
+            selected = searchBar.select(itemNumber);
+        } else {
+            this.currentPage = 3;
+            if (searchedartists != null && itemNumber > 0 && itemNumber <= searchedartists.size()) {
+                name = searchedartists.get(itemNumber - 1);
+                this.artistPage = name;
+                selected = null;
+                searchedartists = new ArrayList<>();
+            } else {
+                return "Invalid item number.";
+            }
+        }
 
-        if (selected == null)
+        if (selected == null && name == null) {
             return "The selected ID is too high.";
-
-        return "Successfully selected %s.".formatted(selected.getName());
+        } else if (selected != null && name == null) {
+            return "Successfully selected %s.".formatted(selected.getName());
+        } else if (name != null && selected == null) {
+            return "Successfully selected " + name + "'s page.";
+        }
+        return "Unexpected situation occurred.";
     }
 
     public String load() {

@@ -496,7 +496,6 @@ public class CommandRunner {
             objectNode.put("user", commandInput.getUsername());
             objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", message);
-            objectNode.put("X", type);
             return objectNode;
         } else if (type == 2) {
             message = Admin.AddAlbum(commandInput.getUsername(), commandInput.getName(), commandInput.getSongs(), commandInput.getReleaseYear(), commandInput.getDescription());
@@ -523,8 +522,14 @@ public class CommandRunner {
         ObjectNode objectNode = objectMapper.createObjectNode();
         User user = Admin.getUser(commandInput.getUsername());
         if (user != null) {
+            if (!user.isOnline()) {
+                objectNode.put("user", commandInput.getUsername());
+                objectNode.put("command", commandInput.getCommand());
+                objectNode.put("timestamp", commandInput.getTimestamp());
+                objectNode.put("message", commandInput.getUsername() + " is offline.");
+                return objectNode;
+            }
             int type = user.getTypeofuser();
-            int Page = user.getCurrentPage();
             if (type == 1) {
                 ObjectNode result = Admin.CurrentPage(commandInput.getUsername(), commandInput.getTimestamp());
                 return result;
@@ -535,6 +540,50 @@ public class CommandRunner {
         } else {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
             return objectNode;
+        }
+    }
+
+    public static ObjectNode AddEvent (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        } else {
+            int type = user.getTypeofuser();
+            if (type == 1 || type == 3) {
+                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
+                return objectNode;
+            } else {
+                String message = Admin.AddEvent(commandInput.getUsername(), commandInput.getName(), commandInput.getDescription(), commandInput.getDate());
+                objectNode.put("message", message);
+                return objectNode;
+            }
+        }
+    }
+
+    public static ObjectNode AddMerch (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        } else {
+            int type = user.getTypeofuser();
+            if (type == 1 || type == 3) {
+                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
+                return objectNode;
+            } else {
+                String message = Admin.AddMerch(commandInput.getUsername(),commandInput.getName(),commandInput.getDescription(),commandInput.getPrice());
+                objectNode.put("message", message);
+                return objectNode;
+            }
         }
     }
 

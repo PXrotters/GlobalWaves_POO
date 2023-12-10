@@ -1,5 +1,7 @@
 package app.user;
 
+import app.Artist.Event;
+import app.Artist.Merch;
 import app.audio.Collections.Album;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,9 +12,29 @@ import java.util.ArrayList;
 
 public class Artist extends User {
     public ArrayList<Album> albums;
-    public Artist(String username, int age, String city, ArrayList<Album> albums) {
+    public ArrayList<Event> events;
+    public ArrayList<Merch> merches;
+    public Artist(String username, int age, String city, ArrayList<Album> albums, ArrayList<Event> events, ArrayList<Merch> merches) {
         super(username, age, city, 2);
         this.albums = albums;
+        this.events = events;
+        this.merches = merches;
+    }
+
+    public ArrayList<Merch> getMerches() {
+        return merches;
+    }
+
+    public void addMerch(Merch merch) {
+        merches.add(merch);
+    }
+
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
+    public void addEvents(Event event) {
+        events.add(event);
     }
 
     public void addAlbum(Album album) {
@@ -22,6 +44,7 @@ public class Artist extends User {
     public ArrayList<Album> getAlbums() {
         return albums;
     }
+
 
     public final ObjectMapper objectMapper = new ObjectMapper();
 

@@ -1,5 +1,8 @@
 package app;
 
+import app.Artist.Event;
+import app.Artist.Merch;
+import app.PageSystem.ArtistPage;
 import app.PageSystem.HomePage;
 import app.audio.Collections.Album;
 import app.audio.Collections.Playlist;
@@ -18,6 +21,23 @@ public class Admin {
     private static List<Song> songs = new ArrayList<>();
     private static List<Podcast> podcasts = new ArrayList<>();
     private static int timestamp = 0;
+
+    public static ArrayList<String> getArtist(String part) {
+        ArrayList<String> matchingArtists = new ArrayList<>();
+        int count = 0;
+
+        for (User user : users) {
+            if (user instanceof Artist && user.getUsername().startsWith(part)) {
+                matchingArtists.add(user.getUsername());
+                count++;
+
+                if (count == 5) {
+                    break;
+                }
+            }
+        }
+        return matchingArtists;
+    }
 
     public static void setUsers(List<UserInput> userInputList) {
         users = new ArrayList<>();
@@ -38,11 +58,82 @@ public class Admin {
             if (user1.getCurrentPage() == 1) {
                 HomePage home = new HomePage(user1.getLikedSongs(), user1.getFollowedPlaylists());
                 return home.showPage(home, username, timestamp);
+            } else if (user1.getCurrentPage() == 3) {   //TODO
+                String artistUsername = user1.getArtistPage();
+                Artist artist = null;
+                for (User user : users) {
+                    if (user.getUsername().equals(artistUsername)) {
+                        artist = (Artist) user;
+                        break;
+                    }
+                }
+                if (artist != null) {
+                    ArtistPage artistPage = new ArtistPage(artist.getAlbums(), artist.getEvents(), artist.getMerches());
+                    return artistPage.showPage(artistPage, username, timestamp);
+                } else {
+                    return null;
+                }
             }
         } else {
             return null;
         }
         return null;
+    }
+
+    public static String AddEvent(String username, String name, String description, String date) {
+        Artist artist = null;
+        boolean found_event = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                artist = (Artist) user;
+                break;
+            }
+        }
+        ArrayList<Event> events = artist.getEvents();
+        for (Event event : events) {
+            if (event.getName().equals(name)) {
+                found_event = true;
+                break;
+            }
+        }
+        if (!found_event) {
+            Event event = new Event(name, description, date);
+            artist.addEvents(event);
+            return username + " has added new event successfully.";
+        } else {
+            return username + " has has another event with the same name.";
+        }
+    }
+
+    public static String AddMerch(String username, String name, String description, int price) {
+        Artist artist = null;
+        boolean found_merch = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                artist = (Artist) user;
+                break;
+            }
+        }
+        ArrayList<Merch> merches = artist.getMerches();
+        for (Merch merch : merches) {
+            if (merch.getName().equals(name)) {
+                found_merch = true;
+                break;
+            }
+        }
+        if (!found_merch) {
+            if (price > 0) {
+                Merch merch = new Merch(name, description, price);
+                artist.addMerch(merch);
+                return username + " has added new merchandise successfully.";
+            } else {
+                return "Price for merchandise can not be negative.";
+            }
+        } else {
+            return username + " has merchandise with the same name.";
+        }
     }
 
     public static String AddAlbum(String username, String name, List<SongInput> album_songs, int releaseYear, String description) {
@@ -123,7 +214,9 @@ public class Admin {
                 return "The username " + username + " has been added successfully.";
             } else if (type == 2) {
                 ArrayList<Album> albums = new ArrayList<>();
-                Artist artist = new Artist(username, age, city, albums);
+                ArrayList<Event> events = new ArrayList<>();
+                ArrayList<Merch> merches = new ArrayList<>();
+                Artist artist = new Artist(username, age, city, albums, events, merches);
                 users.add(artist);
                 return "The username " + username + " has been added successfully.";
             } else {
