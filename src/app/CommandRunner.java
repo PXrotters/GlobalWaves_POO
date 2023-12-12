@@ -463,6 +463,15 @@ public class CommandRunner {
         return objectNode;
     }
 
+    public static ObjectNode getAllUsers (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        List<String> results = Admin.getAllUsers();
+        objectNode.put("result", objectMapper.valueToTree(results));
+        return objectNode;
+    }
+
     public static ObjectNode AddUser(CommandInput commandInput) {
         ObjectNode objectNode = objectMapper.createObjectNode();
         String typeOfUser = commandInput.getType();
@@ -490,7 +499,7 @@ public class CommandRunner {
         if (user != null) {
             type = user.getTypeofuser();
         }
-        if (type == 1) {
+        if (type == 1 || type == 3) {
             message = "The username " + commandInput.getUsername() + " is not an artist.";
             objectNode.put("command", commandInput.getCommand());
             objectNode.put("user", commandInput.getUsername());
@@ -503,9 +512,6 @@ public class CommandRunner {
             objectNode.put("user", commandInput.getUsername());
             objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", message);
-            return objectNode;
-        } else if (type == 3) {
-            objectNode.put("message", "TODO");
             return objectNode;
         } else {
             objectNode.put("message", "False");
@@ -587,12 +593,18 @@ public class CommandRunner {
         }
     }
 
-    public static ObjectNode getAllUsers (CommandInput commandInput) {
+    public static ObjectNode DeleteUser (CommandInput commandInput) {
         ObjectNode objectNode = objectMapper.createObjectNode();
         objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
         objectNode.put("timestamp", commandInput.getTimestamp());
-        List<String> results = Admin.getAllUsers();
-        objectNode.put("result", objectMapper.valueToTree(results));
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+        } else {
+            String message = Admin.DeleteUser(commandInput.getUsername());
+            objectNode.put("message", message);
+        }
         return objectNode;
     }
 

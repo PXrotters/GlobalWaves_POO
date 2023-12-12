@@ -5069,6 +5069,11 @@
   "timestamp" : 6041,
   "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29" ]
 }, {
+  "command" : "deleteUser",
+  "user" : "cbutler",
+  "timestamp" : 6046,
+  "message" : "cbutler can't be deleted."
+}, {
   "command" : "shuffle",
   "user" : "carol19",
   "timestamp" : 6051,

@@ -9,6 +9,7 @@ import app.audio.Collections.Playlist;
 import app.audio.Collections.Podcast;
 import app.audio.Files.Episode;
 import app.audio.Files.Song;
+import app.player.PlayerStats;
 import app.user.Artist;
 import app.user.User;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -231,6 +232,105 @@ public class Admin {
             }
         } else {
             return "The username " + username + " is already taken.";
+        }
+    }
+
+    public static String DeleteUser(String username) {
+        int indexToRemove = -1;
+        int type = 0;
+
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            if (user.getUsername().equals(username)) {
+                type = user.getTypeofuser();
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        if (type == 1) {   //eliminam un user normal
+            if (indexToRemove != -1) {
+                users.remove(indexToRemove);
+                return username + " was successfully deleted.";
+            } else {
+                return "Greseala Delete User Normal";
+            }
+        } else if (type == 2) {   //eliminare artist + legaturi
+            boolean interactions = false;
+
+            if (indexToRemove == -1) {
+                return "Greseala Delete User Artist";
+            } else {
+                for (User user : users) {  //cautam sa vedem daca playerul tuturor userilor contine vreo melodie
+                    PlayerStats player = user.getPlayerStats();
+                    if (player.getRemainedTime() != 0) {  //daca gasim o melodie care ruleaza in playerul unui user
+                        for (Song song : songs) {
+                            if (song.getName().equals(player.getName())) {
+                                Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
+                                if (newsong.getArtist().equals(username)) {
+                                    interactions = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (interactions == true) {
+                    return username + " can't be deleted.";
+                } else {
+                    Iterator<Album> iterator = albumslibrary.iterator();
+                    while (iterator.hasNext()) {  //stergem toate albumele din librarie
+                        Album album = iterator.next();
+                        if (album.getOwner().equals(username)) {
+                            iterator.remove();
+                        }
+                    }
+
+                    Artist artist = null;  //gasim artistul in users
+                    for (User user : users) {
+                        if (user.getUsername().equals(username)) {
+                            artist = (Artist) user;
+                            break;
+                        }
+                    }
+                    List<Album> currentalbums = artist.getAlbums(); //toate albumele artistului
+                    List<Song> allartistsongs = new ArrayList<>(); //toate melodiile din albumele artistului
+                    for (Album currentalbum : currentalbums) {
+                        List<Song> allsongs = currentalbum.getSongs1();
+                        for (Song song : allsongs) {
+                            allartistsongs.add(song);
+                        }
+                    }
+                    Iterator<Song> songIterator = songs.iterator();  //stergem toate melodiile din biblioteca si din likedsongs
+                    while (songIterator.hasNext()) {
+                        Song song = songIterator.next();
+                        ArrayList<Song> newlikedsongs = new ArrayList<>();
+                        for (User user : users) {
+                            for (Song currentlikedsong : user.getLikedSongs()) {
+                                boolean found = false;
+                                for (Song artistsong : allartistsongs) {
+                                    if (artistsong.getName().equals(currentlikedsong.getName())) {
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                                if (!found) {
+                                    newlikedsongs.add(currentlikedsong);
+                                }
+                            }
+                            user.setLikedSongs(newlikedsongs);
+                            newlikedsongs.clear();
+                        }
+                        if (song.getArtist().equals(artist.getUsername())) {
+                            songIterator.remove();
+                        }
+                    }
+
+                    users.remove(indexToRemove);
+                    return username + " was successfully deleted.";
+                }
+            }
+        } else {
+            return "TODO for hosts";
         }
     }
 

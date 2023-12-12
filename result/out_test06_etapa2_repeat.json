@@ -113,13 +113,13 @@
   "command" : "search",
   "user" : "alice22",
   "timestamp" : 1006,
-  "message" : "Search returned 5 results",
-  "results" : [ "Harmonic Horizons", "Harmonic Horizons", "Harmonic Horizons 2", "Harmonic Horizons", "Harmonic Horizons" ]
+  "message" : "Search returned 3 results",
+  "results" : [ "Harmonic Horizons 2", "Harmonic Horizons", "Harmonic Horizons" ]
 }, {
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 1007,
-  "message" : "Successfully selected Harmonic Horizons."
+  "message" : "Successfully selected Harmonic Horizons 2."
 }, {
   "command" : "load",
   "user" : "alice22",
@@ -256,7 +256,7 @@
   "user" : "alice22",
   "timestamp" : 1035,
   "stats" : {
-    "name" : "Vibrant Echoes",
+    "name" : "Vibrant Echoes 2",
     "remainedTime" : 243,
     "repeat" : "No Repeat",
     "shuffle" : false,
@@ -272,7 +272,7 @@
   "user" : "alice22",
   "timestamp" : 1037,
   "stats" : {
-    "name" : "Vibrant Echoes",
+    "name" : "Vibrant Echoes 2",
     "remainedTime" : 241,
     "repeat" : "Repeat All",
     "shuffle" : false,

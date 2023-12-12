@@ -32,7 +32,7 @@ public class User {
     private String city;
     @Getter
     private ArrayList<Playlist> playlists;
-    @Getter
+    @Getter @Setter
     private ArrayList<Song> likedSongs;
     @Getter
     private ArrayList<Playlist> followedPlaylists;

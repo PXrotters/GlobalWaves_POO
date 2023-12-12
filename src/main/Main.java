@@ -112,6 +112,7 @@ public final class Main {
                 case "addEvent" -> outputs.add(CommandRunner.AddEvent(command));
                 case "addMerch" -> outputs.add(CommandRunner.AddMerch(command));
                 case "getAllUsers" -> outputs.add(CommandRunner.getAllUsers(command));
+                case "deleteUser" -> outputs.add(CommandRunner.DeleteUser(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }
