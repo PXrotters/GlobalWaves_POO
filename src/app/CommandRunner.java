@@ -587,4 +587,13 @@ public class CommandRunner {
         }
     }
 
+    public static ObjectNode getAllUsers (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        List<String> results = Admin.getAllUsers();
+        objectNode.put("result", objectMapper.valueToTree(results));
+        return objectNode;
+    }
+
 }

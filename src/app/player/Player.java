@@ -5,16 +5,21 @@ import app.audio.Files.AudioFile;
 import app.audio.LibraryEntry;
 import app.utils.Enums;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    @Getter @Setter
     private Enums.RepeatMode repeatMode;
+    @Getter @Setter
     private boolean shuffle;
+    @Getter @Setter
     private boolean paused;
+    @Getter @Setter
     private PlayerSource source;
-    @Getter
+    @Getter @Setter
     private String type;
 
     private ArrayList<PodcastBookmark> bookmarks = new ArrayList<>();
@@ -55,6 +60,7 @@ public class Player {
 
         return null;
     }
+
 
     private static PlayerSource createPodcastSource(AudioCollection collection, List<PodcastBookmark> bookmarks) {
         for (PodcastBookmark bookmark : bookmarks) {

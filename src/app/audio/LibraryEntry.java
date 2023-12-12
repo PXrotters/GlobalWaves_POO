@@ -1,5 +1,6 @@
 package app.audio;
 
+import app.audio.Collections.Album;
 import lombok.Getter;
 
 import java.util.ArrayList;

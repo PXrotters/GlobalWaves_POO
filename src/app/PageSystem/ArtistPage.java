@@ -68,7 +68,6 @@ public class ArtistPage {
         messageBuilder.append("\nEvents:\n\t");
         appendListToStringBuilder(messageBuilder, events);
 
-        // Elimină \n de la sfârșitul șirului
         String message = messageBuilder.toString().replaceAll("\\n$", "");
         resultNode.put("message", message);
 

@@ -15,12 +15,12 @@ public class Album extends AudioCollection {
     private final int releaseYear;
     private final String description;
 
-    public Album(String name, String owner, List<SongInput> songs, int releaseYear, String description) {
+    public Album(String name, String owner, List<SongInput> songs, int releaseYear, String description, List<Song> sngs) {
         super(name, owner);
         this.songs = songs;
         this.releaseYear = releaseYear;
         this.description = description;
-        this.songs1 = new ArrayList<>();
+        this.songs1 = sngs;
     }
 
     public Album(String username) {
@@ -33,12 +33,15 @@ public class Album extends AudioCollection {
 
     @Override
     public int getNumberOfTracks() {
-        return songs.size();
+        return songs1.size();
     }
 
     @Override
     public AudioFile getTrackByIndex(int index) {
-        return songs1.get(index);
+        if (index >= 0 && index < songs1.size()) {
+            return songs1.get(index);
+        }
+        return null;
     }
 
     @Override

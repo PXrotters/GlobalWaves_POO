@@ -39,6 +39,10 @@
   "timestamp" : 80,
   "message" : "TODO FOR HOST"
 }, {
+  "command" : "getAllUsers",
+  "timestamp" : 85,
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "soundseeker21", "melodicwanderer", "sonicpainter", "echoexplorer", "rhythmweaver" ]
+}, {
   "command" : "createPlaylist",
   "user" : "melodicwanderer",
   "timestamp" : 305,

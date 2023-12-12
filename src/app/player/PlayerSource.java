@@ -4,6 +4,7 @@ import app.audio.Collections.AudioCollection;
 import app.audio.Files.AudioFile;
 import app.utils.Enums;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,15 +12,17 @@ import java.util.List;
 import java.util.Random;
 
 public class PlayerSource {
-    @Getter
+    @Getter @Setter
     private Enums.PlayerSourceType type;
-    @Getter
+    @Getter @Setter
     private AudioCollection audioCollection;
-    @Getter
+    @Getter @Setter
     private AudioFile audioFile;
-    @Getter
+    @Getter @Setter
     private int index;
+    @Getter @Setter
     private int indexShuffled;
+    @Getter @Setter
     private int remainedDuration;
     private final List<Integer> indices = new ArrayList<>();
 
@@ -35,7 +38,9 @@ public class PlayerSource {
         this.audioFile = audioCollection.getTrackByIndex(0);
         this.index = 0;
         this.indexShuffled = 0;
-        this.remainedDuration = audioFile.getDuration();
+        if (audioFile != null) {
+            this.remainedDuration = audioFile.getDuration();
+        }
     }
 
     public PlayerSource(Enums.PlayerSourceType type, AudioCollection audioCollection, PodcastBookmark bookmark) {
@@ -45,6 +50,11 @@ public class PlayerSource {
         this.remainedDuration = bookmark.getTimestamp();
         this.audioFile = audioCollection.getTrackByIndex(index);
     }
+
+    public PlayerSource(Enums.PlayerSourceType type) {
+        this.type = type;
+    }
+
 
     public int getDuration() {
         return remainedDuration;
@@ -82,6 +92,7 @@ public class PlayerSource {
                     } else {
                         index++;
                         updateAudioFile();
+                        if (audioFile != null)
                         remainedDuration = audioFile.getDuration();
                     }
                 }
@@ -145,12 +156,14 @@ public class PlayerSource {
 
     public void skip(int duration) {
         remainedDuration += duration;
-        if (remainedDuration > audioFile.getDuration()) {
-            remainedDuration = 0;
-            index++;
-            updateAudioFile();
-        } else if (remainedDuration < 0) {
-            remainedDuration = 0;
+        if (audioFile != null) {
+            if (remainedDuration > audioFile.getDuration()) {
+                remainedDuration = 0;
+                index++;
+                updateAudioFile();
+            } else if (remainedDuration < 0) {
+                remainedDuration = 0;
+            }
         }
     }
 

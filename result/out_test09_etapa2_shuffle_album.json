@@ -132,18 +132,18 @@
   "command" : "search",
   "user" : "bob35",
   "timestamp" : 431,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
+  "message" : "Search returned 4 results",
+  "results" : [ "Harmonic Horizons", "Harmonic Horizons", "Harmonic Horizons 2", "Harmonic Horizons" ]
 }, {
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 432,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected Harmonic Horizons."
 }, {
   "command" : "load",
   "user" : "bob35",
   "timestamp" : 433,
-  "message" : "Please select a source before attempting to load."
+  "message" : "Playback loaded successfully."
 }, {
   "command" : "addMerch",
   "user" : "melodymaster",
@@ -159,27 +159,27 @@
   "user" : "bob35",
   "timestamp" : 434,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
+    "name" : "Vibrant Echoes",
+    "remainedTime" : 249,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : true
+    "paused" : false
   }
 }, {
   "command" : "shuffle",
   "user" : "bob35",
   "timestamp" : 440,
-  "message" : "Please load a source before using the shuffle function."
+  "message" : "The loaded source is not a playlist."
 }, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 446,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
+    "name" : "Vibrant Echoes",
+    "remainedTime" : 237,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : true
+    "paused" : false
   }
 }, {
   "command" : "repeat",
@@ -201,11 +201,11 @@
   "user" : "bob35",
   "timestamp" : 1000,
   "stats" : {
-    "name" : "",
-    "remainedTime" : 0,
+    "name" : "Retro Rhythms",
+    "remainedTime" : 203,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : true
+    "paused" : false
   }
 }, {
   "command" : "like",

@@ -111,6 +111,7 @@ public final class Main {
                 case "printCurrentPage" -> outputs.add(CommandRunner.PrintCurrentPage(command));
                 case "addEvent" -> outputs.add(CommandRunner.AddEvent(command));
                 case "addMerch" -> outputs.add(CommandRunner.AddMerch(command));
+                case "getAllUsers" -> outputs.add(CommandRunner.getAllUsers(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

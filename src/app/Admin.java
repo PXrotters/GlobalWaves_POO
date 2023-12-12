@@ -20,6 +20,7 @@ public class Admin {
     private static List<User> users = new ArrayList<>();
     private static List<Song> songs = new ArrayList<>();
     private static List<Podcast> podcasts = new ArrayList<>();
+    private static List<Album> albumslibrary = new ArrayList<>();
     private static int timestamp = 0;
 
     public static ArrayList<String> getArtist(String part) {
@@ -159,7 +160,12 @@ public class Admin {
                 }
             }
             if (!found_album) {
-                Album album = new Album(name, username, album_songs, releaseYear, description);
+                List<Song> sngs = new ArrayList<>();
+                Album album = new Album(name, username, album_songs, releaseYear, description, sngs);
+                for (SongInput songInput : album_songs) {
+                    Song song = new Song(songInput.getName(),songInput.getDuration(),songInput.getAlbum(),songInput.getTags(),songInput.getLyrics(),songInput.getGenre(),songInput.getReleaseYear(), songInput.getArtist());
+                    sngs.add(song);
+                }
                 Set<String> songNamesSet = new HashSet<>();
                 boolean duplicateFound = false;
                 for (SongInput song : album_songs) {
@@ -174,6 +180,7 @@ public class Admin {
                     return username + " has the same song at least twice in this album.";
                 } else {
                     artist.addAlbum(album);
+                    albumslibrary.add(album);
                     for (SongInput song : album_songs) {
                         Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
                         songs.add(newsong);
@@ -323,6 +330,32 @@ public class Admin {
             }
         }
         return onlineUsers;
+    }
+
+    public static List<String> getAllUsers() {
+        Set<String> allUsersSet = new LinkedHashSet<>();
+
+        for (User user : users) {
+            if (user.getTypeofuser() == 1) {
+                allUsersSet.add(user.getUsername());
+            }
+        }
+        for (User user : users) {
+            if (user.getTypeofuser() == 2) {
+                allUsersSet.add(user.getUsername());
+            }
+        }
+        for (User user : users) {
+            if (user.getTypeofuser() == 3) {
+                allUsersSet.add(user.getUsername());
+            }
+        }
+
+        return new ArrayList<>(allUsersSet);
+    }
+
+    public static List<Album> getAlbumslibrary() {
+        return albumslibrary;
     }
 
     public static void reset() {

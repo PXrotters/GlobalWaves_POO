@@ -9,6 +9,7 @@ import app.audio.Files.AudioFile;
 import app.audio.Files.Song;
 import app.audio.LibraryEntry;
 import app.player.Player;
+import app.player.PlayerSource;
 import app.player.PlayerStats;
 import app.searchBar.Filters;
 import app.searchBar.SearchBar;
@@ -18,6 +19,7 @@ import fileio.input.CommandInput;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.zip.Adler32;
 
@@ -47,6 +49,7 @@ public class User {
     private int currentPage = 0; //1-Home 2-LikedContent 3-Artist 4-Host
     @Getter @Setter
     private String artistPage; //numele artistului selectat
+    private String typeofsong = null;
 
     public User(String username, int age, String city) {
         this.username = username;
@@ -89,8 +92,14 @@ public class User {
             String part = filters.getName();
             searchedartists = Admin.getArtist(part);
             searchedArtist = true;
+            typeofsong = null;
             return searchedartists;
         } else {
+            if (type.equals("album")) {
+                typeofsong = "album";
+            } else {
+                typeofsong = null;
+            }
             List<LibraryEntry> libraryEntries = searchBar.search(filters, type);
 
             for (LibraryEntry libraryEntry : libraryEntries) {
@@ -140,12 +149,33 @@ public class User {
             return "You can't load an empty audio collection!";
         }
 
-        player.setSource(searchBar.getLastSelected(), searchBar.getLastSearchType());
-        searchBar.clearSelection();
+        if (typeofsong == null) {
+            player.setSource(searchBar.getLastSelected(), searchBar.getLastSearchType());
+            searchBar.clearSelection();
 
-        player.pause();
+            player.pause();
 
-        return "Playback loaded successfully.";
+            return "Playback loaded successfully.";
+        } else {
+            player.setRepeatMode(Enums.RepeatMode.NO_REPEAT);
+            player.setShuffle(false);
+            player.setPaused(true);
+            player.setType(searchBar.getLastSearchType());
+            PlayerSource source = new PlayerSource(Enums.PlayerSourceType.ALBUM, (AudioCollection) searchBar.getLastSelected());
+            player.setSource(source);
+            searchBar.clearSelection();
+
+            player.pause();
+
+            if (player != null) {
+                if (player.getSource() != null) {
+                    if (player.getSource().getAudioFile() != null)
+                    System.out.println(searchBar.getLastSelected());
+                }
+            }
+
+            return "Playback loaded successfully.";
+        }
     }
 
     public String playPause() {
