@@ -31,7 +31,7 @@ public class User {
     private int age;
     @Getter @Setter
     private String city;
-    @Getter
+    @Getter @Setter
     private ArrayList<Playlist> playlists;
     @Getter @Setter
     private ArrayList<Song> likedSongs;
@@ -90,9 +90,9 @@ public class User {
     public ArrayList<String> search(Filters filters, String type) {
         searchBar.clearSelection();
         player.stop();
-
         lastSearched = true;
         ArrayList<String> results = new ArrayList<>();
+
         if (type.equals("artist")) {
             String part = filters.getName();
             searchedartists = Admin.getArtist(part);

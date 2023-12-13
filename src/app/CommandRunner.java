@@ -582,6 +582,16 @@ public class CommandRunner {
         }
     }
 
+    public static ObjectNode ChangePage(CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        String message = Admin.ChangePage(commandInput.getUsername(), commandInput.getNextPage());
+        objectNode.put("message", message);
+        return objectNode;
+    }
+
     public static ObjectNode AddEvent (CommandInput commandInput) {
         ObjectNode objectNode = objectMapper.createObjectNode();
         objectNode.put("command", commandInput.getCommand());
@@ -669,6 +679,29 @@ public class CommandRunner {
             }
         }
     }
+
+    public static ObjectNode RemoveAlbum (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        } else {
+            int type = user.getTypeofuser();
+            if (type == 1 || type == 3) {
+                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
+                return objectNode;
+            } else {
+                String message = Admin.RemoveAlbum(commandInput.getUsername(), commandInput.getName());
+                objectNode.put("message", message);
+                return objectNode;
+            }
+        }
+    }
+
 
     public static ObjectNode DeleteUser (CommandInput commandInput) {
         ObjectNode objectNode = objectMapper.createObjectNode();

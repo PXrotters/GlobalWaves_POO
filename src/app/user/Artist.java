@@ -7,10 +7,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import fileio.input.SongInput;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
 public class Artist extends User {
+    @Setter
     public ArrayList<Album> albums;
     public ArrayList<Event> events;
     public ArrayList<Merch> merches;

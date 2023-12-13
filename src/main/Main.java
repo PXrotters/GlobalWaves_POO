@@ -1,7 +1,9 @@
 package main;
 
 import app.Admin;
+import app.AdminSingleton;
 import app.CommandRunner;
+import app.audio.Collections.Album;
 import checker.Checker;
 import checker.CheckerConstants;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,6 +17,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -74,12 +78,16 @@ public final class Main {
         CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH + filePath1), CommandInput[].class);
         ArrayNode outputs = objectMapper.createArrayNode();
 
-        Admin.setUsers(library.getUsers());
-        Admin.setSongs(library.getSongs());
-        Admin.setPodcasts(library.getPodcasts());
+        Admin admin = AdminSingleton.getInstance();
+
+        admin.setUsers(library.getUsers());
+        admin.setSongs(library.getSongs());
+        admin.setPodcasts(library.getPodcasts());
+        List<Album> albums = new ArrayList<>();
+        admin.setAlbumslibrary(albums);
 
         for (CommandInput command : commands) {
-            Admin.updateTimestamp(command.getTimestamp());
+            admin.updateTimestamp(command.getTimestamp());
             String commandName = command.getCommand();
             switch (commandName) {
                 case "search" -> outputs.add(CommandRunner.search(command));
@@ -116,7 +124,9 @@ public final class Main {
                 case "addMerch" -> outputs.add(CommandRunner.AddMerch(command));
                 case "addAnnouncement" -> outputs.add(CommandRunner.AddAnnouncement(command));
                 case "removeAnnouncement" -> outputs.add(CommandRunner.RemoveAnnouncement(command));
+                case "removeAlbum" -> outputs.add(CommandRunner.RemoveAlbum(command));
                 case "getAllUsers" -> outputs.add(CommandRunner.getAllUsers(command));
+                case "changePage" -> outputs.add(CommandRunner.ChangePage(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

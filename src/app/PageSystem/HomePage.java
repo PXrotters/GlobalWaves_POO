@@ -45,7 +45,7 @@ public class HomePage {
             for (int i = 1; i < followedPlaylists.size(); i++) {
                 messageBuilder.append(", ").append(followedPlaylists.get(i).getName());
             }
-            messageBuilder.append("]\n");
+            messageBuilder.append("]");
         } else {
             messageBuilder.append("\t[]");
         }

@@ -6,11 +6,13 @@ import app.Host.Announcement;
 import app.PageSystem.ArtistPage;
 import app.PageSystem.HomePage;
 import app.PageSystem.HostPage;
+import app.PageSystem.LikedContentPage;
 import app.audio.Collections.Album;
 import app.audio.Collections.Playlist;
 import app.audio.Collections.Podcast;
 import app.audio.Files.Episode;
 import app.audio.Files.Song;
+import app.player.Player;
 import app.player.PlayerStats;
 import app.user.Artist;
 import app.user.Host;
@@ -18,6 +20,7 @@ import app.user.User;
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.*;
+import lombok.Setter;
 
 import java.util.*;
 
@@ -25,6 +28,7 @@ public class Admin {
     private static List<User> users = new ArrayList<>();
     private static List<Song> songs = new ArrayList<>();
     private static List<Podcast> podcasts = new ArrayList<>();
+    @Setter
     private static List<Album> albumslibrary = new ArrayList<>();
     private static int timestamp = 0;
 
@@ -111,11 +115,31 @@ public class Admin {
                 } else {
                     return null;
                 }
+            } else if (user1.getCurrentPage() == 2) {
+                LikedContentPage likedContentPage = new LikedContentPage(user1.getLikedSongs(), user1.getFollowedPlaylists());
+                return likedContentPage.showPage(likedContentPage, username, timestamp);
             }
         } else {
             return null;
         }
         return null;
+    }
+
+    public static String ChangePage(String username, String nextPage) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                if (nextPage.equals("Home")) {
+                    user.setCurrentPage(1);
+                    return username + " accessed " + nextPage + " successfully.";
+                } else if (nextPage.equals("LikedContent")) {
+                    user.setCurrentPage(2);
+                    return username + " accessed " + nextPage + " successfully.";
+                } else {
+                    return username + " is trying to access a non-existent page.";
+                }
+            }
+        }
+        return "Error";
     }
 
     public static String AddEvent(String username, String name, String description, String date) {
@@ -397,20 +421,58 @@ public class Admin {
     public static String DeleteUser(String username) {
         int indexToRemove = -1;
         int type = 0;
+        User ourUser = null;
 
         for (int i = 0; i < users.size(); i++) {
             User user = users.get(i);
             if (user.getUsername().equals(username)) {
+                ourUser = user;
                 type = user.getTypeofuser();
                 indexToRemove = i;
                 break;
             }
         }
 
-        if (type == 1) {   //eliminam un user normal
+        if (type == 1) {   //TODO eliminare playlisturi create de el + followed playlist la ceilalti useri
             if (indexToRemove != -1) {
-                users.remove(indexToRemove);
-                return username + " was successfully deleted.";
+                ArrayList<Playlist> playlists = ourUser.getPlaylists(); //playlisturile userului pe care vrem sa le stergem
+                List<Song> playlistsSongs = new ArrayList<>();  //toate melodiile din playlisturile userului
+                for (Playlist playlist : playlists) {
+                    for (Song song : playlist.getSongs()) {
+                        playlistsSongs.add(song);
+                    }
+                }
+
+                boolean interactions = false;
+                for (User user : users) {  //cautam sa vedem daca playerul tuturor userilor contine vreo melodie din playlisturile sale
+                    PlayerStats player = user.getPlayerStats();
+                    if (player.getRemainedTime() != 0) {
+                        for (Song song : playlistsSongs) {
+                            if (song.getName().equals(player.getName())) {
+                                interactions = true;
+                            }
+                        }
+                    }
+                }
+                if (interactions == true) {
+                    return username + " can't be deleted.";
+                } else {
+                    for (User user : users) {  //eliminam toate playlisturile userului nostru din urmaririle celorlalti
+                        Iterator<Playlist> playlistIterator = user.getFollowedPlaylists().iterator();
+                        while (playlistIterator.hasNext()) {
+                            Playlist playlist1 = playlistIterator.next();
+                            for (Playlist playlist : playlists) {
+                                Playlist newPlaylist = new Playlist(playlist.getName(), playlist.getOwner());
+                                if (playlist1.getName().equals(newPlaylist.getName())) {
+                                    playlistIterator.remove();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    users.remove(indexToRemove);
+                    return username + " was successfully deleted.";
+                }
             } else {
                 return "Greseala Delete User Normal";
             }
@@ -490,6 +552,98 @@ public class Admin {
             }
         } else {
             return "TODO for hosts";
+        }
+    }
+
+    public static String RemoveAlbum(String username, String name) {
+        Artist artist = null;
+        boolean found_album = false;
+        boolean interactions = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                artist = (Artist) user;
+                break;
+            }
+        }
+        ArrayList<Album> albums = artist.getAlbums();  //toate albumele artistului
+        Album searchedalbum = new Album();  //albumul pe care vrem sa il stergem
+        List<Song> allartistsongs = new ArrayList<>();  //toate melodiile din albumul artistului
+
+        for (Album album : albums) {
+            if (album.getName().equals(name)) {
+                searchedalbum = album;
+                allartistsongs = searchedalbum.getSongs1();
+                found_album = true;
+                break;
+            }
+        }
+
+        if (found_album) {
+            for (User user : users) {
+                PlayerStats player = user.getPlayerStats();
+                if (player.getRemainedTime() != 0) {  //daca gasim o melide care ruleza in playerul unui user o verificam
+                    for (Song song : songs) {
+                        if (song.getName().equals(player.getName())) {
+                            Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
+                            if (newsong.getAlbum().equals(name)) {
+                                interactions = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (interactions == true) {
+                return username + " can't delete this album.";
+            } else {
+                Iterator<Album> iterator = albumslibrary.iterator();
+                while (iterator.hasNext()) {  //stergem albumul din librarie
+                    Album album = iterator.next();
+                    if (album.getName().equals(name)) {
+                        iterator.remove();
+                        break;
+                    }
+                }
+
+                Iterator<Song> songIterator = songs.iterator();  //stergem toate melodiile din biblioteca si din likedsongs
+                while (songIterator.hasNext()) {
+                    Song song = songIterator.next();
+                    ArrayList<Song> newlikedsongs = new ArrayList<>();
+                    for (User user : users) {
+                        for (Song currentlikedsong : user.getLikedSongs()) {
+                            boolean found = false;
+                            for (Song artistsong : allartistsongs) {
+                                if (artistsong.getName().equals(currentlikedsong.getName())) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found) {
+                                newlikedsongs.add(currentlikedsong);
+                            }
+                        }
+                        user.setLikedSongs(newlikedsongs);
+                        newlikedsongs.clear();
+                    }
+                    if (song.getArtist().equals(artist.getUsername())) {
+                        songIterator.remove();
+                    }
+                }
+
+                iterator = albums.iterator();
+                while (iterator.hasNext()) {  //stergem albumul din lista de albume a artistului
+                    Album album = iterator.next();
+                    if (album.getName().equals(name)) {
+                        iterator.remove();
+                    }
+                }
+                artist.setAlbums(albums);
+
+                return username + " deleted the album successfully.";
+            }
+        } else {
+            return username + " doesn't have an album with the given name.";
         }
     }
 

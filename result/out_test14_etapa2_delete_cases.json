@@ -160,7 +160,7 @@
   "user" : "bob35",
   "command" : "printCurrentPage",
   "timestamp" : 525,
-  "message" : "Liked songs:\n\t[Aurora Harmony]\n\nFollowed playlists:\n\t[Playlist bengos]\n"
+  "message" : "Liked songs:\n\t[Aurora Harmony]\n\nFollowed playlists:\n\t[Playlist bengos]"
 }, {
   "command" : "deleteUser",
   "user" : "sonicpainter",
@@ -215,10 +215,15 @@
   "timestamp" : 930,
   "message" : "TODO for hosts"
 }, {
+  "command" : "changePage",
+  "user" : "soundseeker21",
+  "timestamp" : 955,
+  "message" : "soundseeker21 accessed Home successfully."
+}, {
   "command" : "deleteUser",
   "user" : "melodicwanderer",
   "timestamp" : 960,
-  "message" : "melodicwanderer was successfully deleted."
+  "message" : "melodicwanderer can't be deleted."
 }, {
   "command" : "repeat",
   "user" : "carol19",
@@ -243,7 +248,7 @@
   "command" : "deleteUser",
   "user" : "melodicwanderer",
   "timestamp" : 1500,
-  "message" : "The username melodicwanderer doesn't exist."
+  "message" : "melodicwanderer can't be deleted."
 }, {
   "command" : "deleteUser",
   "user" : "musicmaven",
@@ -268,12 +273,17 @@
   "command" : "deleteUser",
   "user" : "melodicwanderer",
   "timestamp" : 7855,
-  "message" : "The username melodicwanderer doesn't exist."
+  "message" : "melodicwanderer was successfully deleted."
 }, {
   "command" : "deleteUser",
   "user" : "sonicpainter",
   "timestamp" : 7860,
   "message" : "sonicpainter was successfully deleted."
+}, {
+  "command" : "changePage",
+  "user" : "david27",
+  "timestamp" : 7885,
+  "message" : "david27 accessed Home successfully."
 }, {
   "command" : "deleteUser",
   "user" : "sonicpainter",
@@ -283,5 +293,5 @@
   "user" : "bob35",
   "command" : "printCurrentPage",
   "timestamp" : 7900,
-  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[Playlist bengos]\n"
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[]"
 } ]

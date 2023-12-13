@@ -113,13 +113,13 @@
   "command" : "search",
   "user" : "alice22",
   "timestamp" : 1006,
-  "message" : "Search returned 3 results",
-  "results" : [ "Harmonic Horizons 2", "Harmonic Horizons", "Harmonic Horizons" ]
+  "message" : "Search returned 1 results",
+  "results" : [ "Harmonic Horizons" ]
 }, {
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 1007,
-  "message" : "Successfully selected Harmonic Horizons 2."
+  "message" : "Successfully selected Harmonic Horizons."
 }, {
   "command" : "load",
   "user" : "alice22",
@@ -130,6 +130,11 @@
   "user" : "alice22",
   "timestamp" : 1009,
   "message" : "Successfully added to playlist."
+}, {
+  "command" : "removeAlbum",
+  "user" : "melodymaster",
+  "timestamp" : 1010,
+  "message" : "melodymaster can't delete this album."
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -256,7 +261,7 @@
   "user" : "alice22",
   "timestamp" : 1035,
   "stats" : {
-    "name" : "Vibrant Echoes 2",
+    "name" : "Vibrant Echoes",
     "remainedTime" : 243,
     "repeat" : "No Repeat",
     "shuffle" : false,
@@ -272,7 +277,7 @@
   "user" : "alice22",
   "timestamp" : 1037,
   "stats" : {
-    "name" : "Vibrant Echoes 2",
+    "name" : "Vibrant Echoes",
     "remainedTime" : 241,
     "repeat" : "Repeat All",
     "shuffle" : false,
@@ -293,7 +298,7 @@
   "user" : "carol19",
   "command" : "printCurrentPage",
   "timestamp" : 1040,
-  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[My favourite songs]\n"
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[My favourite songs]"
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -326,6 +331,11 @@
     "shuffle" : false,
     "paused" : false
   }
+}, {
+  "command" : "changePage",
+  "user" : "carol19",
+  "timestamp" : 2102,
+  "message" : "carol19 accessed LikedContent successfully."
 }, {
   "command" : "status",
   "user" : "alice22",
@@ -362,7 +372,7 @@
   "user" : "carol19",
   "command" : "printCurrentPage",
   "timestamp" : 2338,
-  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[My favourite songs]\n"
+  "message" : "Liked songs:\n\t[]\n\nFollowed playlists:\n\t[My favourite songs - alice22]"
 }, {
   "command" : "status",
   "user" : "alice22",

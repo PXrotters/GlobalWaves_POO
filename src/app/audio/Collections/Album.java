@@ -31,6 +31,14 @@ public class Album extends AudioCollection {
         this.description = "";
     }
 
+    public Album() {
+        super("", "");
+        this.songs = new ArrayList<>();
+        this.songs1 = new ArrayList<>();
+        this.releaseYear = 0;
+        this.description = "";
+    }
+
     @Override
     public int getNumberOfTracks() {
         return songs1.size();
