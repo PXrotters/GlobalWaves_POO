@@ -3,6 +3,7 @@ package app;
 import app.audio.Collections.Album;
 import app.audio.Collections.Playlist;
 import app.audio.Collections.PlaylistOutput;
+import app.audio.Collections.Podcast;
 import app.player.PlayerStats;
 import app.searchBar.Filters;
 import app.user.Artist;
@@ -696,6 +697,28 @@ public class CommandRunner {
                 return objectNode;
             } else {
                 String message = Admin.RemoveAlbum(commandInput.getUsername(), commandInput.getName());
+                objectNode.put("message", message);
+                return objectNode;
+            }
+        }
+    }
+
+    public static ObjectNode RemovePodcast (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        } else {
+            int type = user.getTypeofuser();
+            if (type == 1 || type == 2) {
+                objectNode.put("message",commandInput.getUsername() + " is not a host.");
+                return objectNode;
+            } else {
+                String message = Admin.RemovePodcast(commandInput.getUsername(), commandInput.getName());
                 objectNode.put("message", message);
                 return objectNode;
             }

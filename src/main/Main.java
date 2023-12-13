@@ -124,6 +124,7 @@ public final class Main {
                 case "addMerch" -> outputs.add(CommandRunner.AddMerch(command));
                 case "addAnnouncement" -> outputs.add(CommandRunner.AddAnnouncement(command));
                 case "removeAnnouncement" -> outputs.add(CommandRunner.RemoveAnnouncement(command));
+                case "removePodcast" -> outputs.add(CommandRunner.RemovePodcast(command));
                 case "removeAlbum" -> outputs.add(CommandRunner.RemoveAlbum(command));
                 case "getAllUsers" -> outputs.add(CommandRunner.getAllUsers(command));
                 case "changePage" -> outputs.add(CommandRunner.ChangePage(command));

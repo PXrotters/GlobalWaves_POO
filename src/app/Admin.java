@@ -9,10 +9,12 @@ import app.PageSystem.HostPage;
 import app.PageSystem.LikedContentPage;
 import app.audio.Collections.Album;
 import app.audio.Collections.Playlist;
+import app.audio.Collections.PlaylistOutput;
 import app.audio.Collections.Podcast;
 import app.audio.Files.Episode;
 import app.audio.Files.Song;
 import app.player.Player;
+import app.player.PlayerSource;
 import app.player.PlayerStats;
 import app.user.Artist;
 import app.user.Host;
@@ -433,9 +435,10 @@ public class Admin {
             }
         }
 
-        if (type == 1) {   //TODO eliminare playlisturi create de el + followed playlist la ceilalti useri
+        if (type == 1) {
             if (indexToRemove != -1) {
                 ArrayList<Playlist> playlists = ourUser.getPlaylists(); //playlisturile userului pe care vrem sa le stergem
+                ArrayList<Playlist> followedplaylist = ourUser.getFollowedPlaylists();  //playlisturile urmarite de user
                 List<Song> playlistsSongs = new ArrayList<>();  //toate melodiile din playlisturile userului
                 for (Playlist playlist : playlists) {
                     for (Song song : playlist.getSongs()) {
@@ -470,6 +473,17 @@ public class Admin {
                             }
                         }
                     }
+
+                    for (User user : users) {  //miscsoram nr de followers la playlisturile urmarite de userul nostru la ceilalti useri
+                        for (Playlist playlist : followedplaylist) {
+                            if (playlist.getOwner().equals(user.getUsername())) {
+                                int followers = playlist.getFollowers();
+                                followers--;
+                                playlist.setFollowers(followers);
+                            }
+                        }
+                    }
+
                     users.remove(indexToRemove);
                     return username + " was successfully deleted.";
                 }
@@ -647,6 +661,66 @@ public class Admin {
         }
     }
 
+    public static String RemovePodcast(String username, String name) {
+        Host host = null;
+        boolean found_podcast = false;
+        boolean interactions = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                host = (Host) user;
+                break;
+            }
+        }
+        ArrayList<Podcast> podcasts1 = host.getPodcasts();  //toate podcasturile hostului
+        Podcast searchedpodcast = null;  //podcastul pe care vrem sa il stergem
+
+        for (Podcast podcast : podcasts1) {
+            if (podcast.getName().equals(name)) {
+                searchedpodcast = podcast;
+                found_podcast = true;
+                break;
+            }
+        }
+
+        if (found_podcast) {  //verificare ruleaza podcast in playerul userilor
+            for (User user : users) {
+                PlayerStats player = user.getPlayerStats();
+                if (player.getRemainedTime() != 0) {
+                    if (searchedpodcast.getName().equals(player.getName())) {
+                        interactions = true;
+                    }
+                }
+            }
+
+            if (interactions == true) {
+                return username + " can't delete this album.";
+            } else {  //stergem podcastul din library
+                Iterator<Podcast> podcastIterator = podcasts.iterator();  //stergem podcastul din biblioteca
+                while (podcastIterator.hasNext()) {
+                    Podcast podcast = podcastIterator.next();
+                    if (podcast.getName().equals(name)) {
+                        podcastIterator.remove();
+                    }
+                }
+
+                podcastIterator = podcasts1.iterator();
+                while (podcastIterator.hasNext()) {  //stergem podcastul din lista de podcasturi a hostului
+                    Podcast podcast = podcastIterator.next();
+                    if (podcast.getName().equals(name)) {
+                        podcastIterator.remove();
+                    }
+                }
+                host.setPodcasts(podcasts1);
+
+                return username + " deleted the podcast successfully.";
+
+            }
+        } else {
+            return username + " doesn't have a podcast with the given name.";
+        }
+
+    }
 
     public static void setSongs(List<SongInput> songInputList) {
         songs = new ArrayList<>();

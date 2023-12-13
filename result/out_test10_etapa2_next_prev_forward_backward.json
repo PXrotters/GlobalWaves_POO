@@ -231,6 +231,11 @@
   "timestamp" : 1050,
   "message" : "Skipped forward successfully."
 }, {
+  "command" : "removePodcast",
+  "user" : "soundseeker",
+  "timestamp" : 1050,
+  "message" : "soundseeker deleted the podcast successfully."
+}, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 1051,
@@ -245,43 +250,43 @@
   "command" : "search",
   "user" : "bob35",
   "timestamp" : 1198,
-  "message" : "Search returned 1 results",
-  "results" : [ "Auditory Adventures" ]
+  "message" : "Search returned 0 results",
+  "results" : [ ]
 }, {
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 1199,
-  "message" : "Successfully selected Auditory Adventures."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "load",
   "user" : "bob35",
   "timestamp" : 1200,
-  "message" : "Playback loaded successfully."
+  "message" : "Please select a source before attempting to load."
 }, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 1389,
   "stats" : {
-    "name" : "Exploring Sonic Landscapes",
-    "remainedTime" : 2123,
+    "name" : "",
+    "remainedTime" : 0,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : false
+    "paused" : true
   }
 }, {
   "command" : "backward",
   "user" : "bob35",
   "timestamp" : 1390,
-  "message" : "Rewound successfully."
+  "message" : "Please select a source before rewinding."
 }, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 1391,
   "stats" : {
-    "name" : "Exploring Sonic Landscapes",
-    "remainedTime" : 2211,
+    "name" : "",
+    "remainedTime" : 0,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : false
+    "paused" : true
   }
 } ]

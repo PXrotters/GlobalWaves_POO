@@ -7,10 +7,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.EpisodeInput;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
 public class Host extends User{
+    @Setter
     public ArrayList<Podcast> podcasts;
     public ArrayList<Announcement> announcements;
     public Host (String username, int age, String city, ArrayList<Podcast> podcasts, ArrayList<Announcement> announcements) {
