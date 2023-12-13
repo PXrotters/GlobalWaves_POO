@@ -519,8 +519,41 @@ public class CommandRunner {
         }
     }
 
+    public static ObjectNode AddPodcast(CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        String message;
+        int type = 0;
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user != null) {
+            type = user.getTypeofuser();
+        }
+        if (type == 1 || type == 2) {
+            message =commandInput.getUsername() + " is not a host.";
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", message);
+            return objectNode;
+        } else if (type == 3) {
+            message = Admin.AddPodcast(commandInput.getUsername(), commandInput.getName(), commandInput.getEpisodes());
+            objectNode.put("command", commandInput.getCommand());
+            objectNode.put("user", commandInput.getUsername());
+            objectNode.put("timestamp", commandInput.getTimestamp());
+            objectNode.put("message", message);
+            return objectNode;
+        } else {
+            objectNode.put("message", "False");
+            return objectNode;
+        }
+    }
+
     public static ObjectNode ShowAlbum(CommandInput commandInput) {
         ObjectNode result = Admin.ShowAlbum(commandInput.getUsername(), commandInput.getTimestamp());
+        return result;
+    }
+
+    public static ObjectNode ShowPodcasts(CommandInput commandInput) {
+        ObjectNode result = Admin.showPodcasts(commandInput.getUsername(), commandInput.getTimestamp());
         return result;
     }
 
@@ -587,6 +620,50 @@ public class CommandRunner {
                 return objectNode;
             } else {
                 String message = Admin.AddMerch(commandInput.getUsername(),commandInput.getName(),commandInput.getDescription(),commandInput.getPrice());
+                objectNode.put("message", message);
+                return objectNode;
+            }
+        }
+    }
+
+    public static ObjectNode AddAnnouncement (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        } else {
+            int type = user.getTypeofuser();
+            if (type == 1 || type == 2) {
+                objectNode.put("message",commandInput.getUsername() + " is not a host.");
+                return objectNode;
+            } else {
+                String message = Admin.AddAnnouncement(commandInput.getUsername(), commandInput.getName(), commandInput.getDescription());
+                objectNode.put("message", message);
+                return objectNode;
+            }
+        }
+    }
+
+    public static ObjectNode RemoveAnnouncement (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        } else {
+            int type = user.getTypeofuser();
+            if (type == 1 || type == 2) {
+                objectNode.put("message",commandInput.getUsername() + " is not a host.");
+                return objectNode;
+            } else {
+                String message = Admin.RemoveAnnouncement(commandInput.getUsername(), commandInput.getName());
                 objectNode.put("message", message);
                 return objectNode;
             }

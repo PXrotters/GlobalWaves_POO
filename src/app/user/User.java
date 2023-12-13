@@ -14,6 +14,7 @@ import app.player.PlayerStats;
 import app.searchBar.Filters;
 import app.searchBar.SearchBar;
 import app.utils.Enums;
+import com.sun.nio.sctp.PeerAddressChangeNotification;
 import lombok.Getter;
 import fileio.input.CommandInput;
 import lombok.Setter;
@@ -39,7 +40,9 @@ public class User {
     private final Player player;
     private final SearchBar searchBar;
     private boolean searchedArtist = false;
+    private boolean searchedHost = false;
     private ArrayList<String> searchedartists = new ArrayList<>();
+    private ArrayList<String> searchedhosts = new ArrayList<>();
     private boolean lastSearched;
     @Getter
     private boolean online;  //vedem daca userul este sau nu online
@@ -49,6 +52,8 @@ public class User {
     private int currentPage = 0; //1-Home 2-LikedContent 3-Artist 4-Host
     @Getter @Setter
     private String artistPage; //numele artistului selectat
+    @Getter @Setter
+    private String hostPage; //numele hostului selectat
     private String typeofsong = null;
 
     public User(String username, int age, String city) {
@@ -92,9 +97,19 @@ public class User {
             String part = filters.getName();
             searchedartists = Admin.getArtist(part);
             searchedArtist = true;
+            searchedHost = false;
             typeofsong = null;
             return searchedartists;
+        } else if (type.equals("host")) {
+            String part = filters.getName();
+            searchedhosts = Admin.getHost(part);
+            searchedHost = true;
+            searchedArtist = false;
+            typeofsong = null;
+            return searchedhosts;
         } else {
+            searchedHost = false;
+            searchedArtist = false;
             if (type.equals("album")) {
                 typeofsong = "album";
             } else {
@@ -117,9 +132,9 @@ public class User {
         LibraryEntry selected;
         lastSearched = false;
 
-        if (!searchedArtist) {
+        if (searchedArtist == false && searchedHost == false) {
             selected = searchBar.select(itemNumber);
-        } else {
+        } else if (searchedArtist) {
             this.currentPage = 3;
             if (searchedartists != null && itemNumber > 0 && itemNumber <= searchedartists.size()) {
                 name = searchedartists.get(itemNumber - 1);
@@ -128,6 +143,16 @@ public class User {
                 searchedartists = new ArrayList<>();
             } else {
                 return "Invalid item number.";
+            }
+        } else {
+            this.currentPage = 4;
+            if (searchedhosts != null && itemNumber > 0 && itemNumber <= searchedhosts.size()) {
+                name = searchedhosts.get(itemNumber - 1);
+                this.hostPage = name;
+                selected = null;
+                searchedhosts = new ArrayList<>();
+            } else {
+                return "Invalid item number";
             }
         }
 

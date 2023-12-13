@@ -2,8 +2,10 @@ package app;
 
 import app.Artist.Event;
 import app.Artist.Merch;
+import app.Host.Announcement;
 import app.PageSystem.ArtistPage;
 import app.PageSystem.HomePage;
+import app.PageSystem.HostPage;
 import app.audio.Collections.Album;
 import app.audio.Collections.Playlist;
 import app.audio.Collections.Podcast;
@@ -11,7 +13,9 @@ import app.audio.Files.Episode;
 import app.audio.Files.Song;
 import app.player.PlayerStats;
 import app.user.Artist;
+import app.user.Host;
 import app.user.User;
+import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.*;
 
@@ -41,6 +45,23 @@ public class Admin {
         return matchingArtists;
     }
 
+    public static ArrayList<String> getHost(String part) {
+        ArrayList<String> matchingHosts = new ArrayList<>();
+        int count = 0;
+
+        for (User user : users) {
+            if (user instanceof Host && user.getUsername().startsWith(part)) {
+                matchingHosts.add(user.getUsername());
+                count++;
+
+                if (count == 5) {
+                    break;
+                }
+            }
+        }
+        return matchingHosts;
+    }
+
     public static void setUsers(List<UserInput> userInputList) {
         users = new ArrayList<>();
         for (UserInput userInput : userInputList) {
@@ -60,7 +81,7 @@ public class Admin {
             if (user1.getCurrentPage() == 1) {
                 HomePage home = new HomePage(user1.getLikedSongs(), user1.getFollowedPlaylists());
                 return home.showPage(home, username, timestamp);
-            } else if (user1.getCurrentPage() == 3) {   //TODO
+            } else if (user1.getCurrentPage() == 3) {
                 String artistUsername = user1.getArtistPage();
                 Artist artist = null;
                 for (User user : users) {
@@ -72,6 +93,21 @@ public class Admin {
                 if (artist != null) {
                     ArtistPage artistPage = new ArtistPage(artist.getAlbums(), artist.getEvents(), artist.getMerches());
                     return artistPage.showPage(artistPage, username, timestamp);
+                } else {
+                    return null;
+                }
+            } else if (user1.getCurrentPage() == 4) {
+                String hostUsername = user1.getHostPage();
+                Host host = null;
+                for (User user : users) {
+                    if (user.getUsername().equals(hostUsername)) {
+                        host = (Host) user;
+                        break;
+                    }
+                }
+                if (host != null) {
+                    HostPage hostPage = new HostPage(host.getPodcasts(), host.getAnnouncements());
+                    return hostPage.showPage(hostPage, username, timestamp);
                 } else {
                     return null;
                 }
@@ -138,6 +174,59 @@ public class Admin {
         }
     }
 
+    public static String AddAnnouncement(String username, String name, String description) {
+        Host host = null;
+        boolean found_announcement = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                host = (Host) user;
+                break;
+            }
+        }
+        ArrayList<Announcement> announcements = host.getAnnouncements();
+        for (Announcement announcement : announcements) {
+            if (announcement.getName().equals(name)) {
+                found_announcement = true;
+                break;
+            }
+        }
+        if (!found_announcement) {
+            Announcement announcement = new Announcement(name, description);
+            host.addAnnouncement(announcement);
+            return username + " has successfully added new announcement.";
+        } else {
+            return username + " has already added an announcement with this name.";
+        }
+    }
+
+    public static String RemoveAnnouncement(String username, String name) {
+        Host host = null;
+        boolean found_announcement = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                host = (Host) user;
+                break;
+            }
+        }
+        ArrayList<Announcement> announcements = host.getAnnouncements();
+        Iterator<Announcement> iterator = announcements.iterator();
+        while (iterator.hasNext()) {
+            Announcement announcement = iterator.next();
+            if (announcement.getName().equals(name)) {
+                iterator.remove();
+                found_announcement = true;
+                break;
+            }
+        }
+        if (!found_announcement){
+            return username + " has no announcement with the given name.";
+        } else {
+            return username + " has successfully deleted the announcement.";
+        }
+    }
+
     public static String AddAlbum(String username, String name, List<SongInput> album_songs, int releaseYear, String description) {
         boolean found = false;
         Artist artist = null;
@@ -167,6 +256,7 @@ public class Admin {
                     Song song = new Song(songInput.getName(),songInput.getDuration(),songInput.getAlbum(),songInput.getTags(),songInput.getLyrics(),songInput.getGenre(),songInput.getReleaseYear(), songInput.getArtist());
                     sngs.add(song);
                 }
+
                 Set<String> songNamesSet = new HashSet<>();
                 boolean duplicateFound = false;
                 for (SongInput song : album_songs) {
@@ -194,6 +284,60 @@ public class Admin {
         }
     }
 
+    public static String AddPodcast(String username, String name, List<EpisodeInput> podcastEpisodes) {
+        boolean found = false;
+        Host host = null;
+        boolean found_podcast = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                found = true;
+                host = (Host) user;
+                break;
+            }
+        }
+
+        if (!found) {
+            return "The username " + username + " doesn't exist.";
+        } else {
+            ArrayList<Podcast> HostPodcast = host.getPodcasts();
+            for (Podcast podcast_search : HostPodcast) {
+                if (podcast_search.getName().equals(name)) {
+                    found_podcast = true;
+                    break;
+                }
+            }
+            if (!found_podcast) {
+                List<Episode> episodes = new ArrayList<>();
+                for (EpisodeInput episode : podcastEpisodes) {
+                    Episode newepisode = new Episode(episode.getName(), episode.getDuration(), episode.getDescription());
+                    episodes.add(newepisode);
+                }
+                Podcast newpodcast = new Podcast(name, username, episodes);
+
+                Set<String> episodeNamesSet = new HashSet<>();
+                boolean duplicateFound = false;
+                for (EpisodeInput episode : podcastEpisodes) {
+                    if (episodeNamesSet.contains(episode.getName())) {
+                        duplicateFound = true;
+                        break;
+                    } else {
+                        episodeNamesSet.add(episode.getName());
+                    }
+                }
+                if (duplicateFound) {
+                    return username + " has the same episode in this podcast.";
+                } else {
+                    host.addPodcast(newpodcast);
+                    podcasts.add(newpodcast);
+                    return username + " has added new podcast successfully.";
+                }
+            } else {
+                return username + " has another podcast with the same name.";
+            }
+        }
+    }
+
     public static ObjectNode ShowAlbum (String username, int timestamp) {
         Artist artist = null;
         for (User user : users) {
@@ -203,6 +347,17 @@ public class Admin {
             }
         }
         return artist.showAlbums(username, timestamp);
+    }
+
+    public static ObjectNode showPodcasts (String username, int timestamp) {
+        Host host = null;
+        for (User user: users) {
+            if (user.getUsername().equals(username)) {
+                host = (Host) user;
+                break;
+            }
+        }
+        return host.showPodcasts(username, timestamp);
     }
 
     public static String AddUser(String username, int age, String city, int type) {
@@ -228,7 +383,11 @@ public class Admin {
                 users.add(artist);
                 return "The username " + username + " has been added successfully.";
             } else {
-                return "TODO FOR HOST";
+                ArrayList<Podcast> hostPodcasts = new ArrayList<>();
+                ArrayList<Announcement> announcements = new ArrayList<>();
+                Host host = new Host(username, age, city, hostPodcasts, announcements);
+                users.add(host);
+                return "The username " + username + " has been added successfully.";
             }
         } else {
             return "The username " + username + " is already taken.";

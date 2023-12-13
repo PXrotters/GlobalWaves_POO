@@ -106,13 +106,17 @@ public final class Main {
                 case "switchConnectionStatus" -> outputs.add(CommandRunner.switchConnectionStatus(command));
                 case "getOnlineUsers" -> outputs.add(CommandRunner.getOnlineUsers(command));
                 case "addUser" -> outputs.add(CommandRunner.AddUser(command));
+                case "deleteUser" -> outputs.add(CommandRunner.DeleteUser(command));
                 case "addAlbum" -> outputs.add(CommandRunner.AddAlbum(command));
+                case "addPodcast" -> outputs.add(CommandRunner.AddPodcast(command));
                 case "showAlbums" -> outputs.add(CommandRunner.ShowAlbum(command));
+                case "showPodcasts" -> outputs.add(CommandRunner.ShowPodcasts(command));
                 case "printCurrentPage" -> outputs.add(CommandRunner.PrintCurrentPage(command));
                 case "addEvent" -> outputs.add(CommandRunner.AddEvent(command));
                 case "addMerch" -> outputs.add(CommandRunner.AddMerch(command));
+                case "addAnnouncement" -> outputs.add(CommandRunner.AddAnnouncement(command));
+                case "removeAnnouncement" -> outputs.add(CommandRunner.RemoveAnnouncement(command));
                 case "getAllUsers" -> outputs.add(CommandRunner.getAllUsers(command));
-                case "deleteUser" -> outputs.add(CommandRunner.DeleteUser(command));
                 default -> System.out.println("Invalid command " + commandName);
             }
         }

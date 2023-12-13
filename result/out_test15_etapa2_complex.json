@@ -12,12 +12,12 @@
   "command" : "addUser",
   "user" : "nancymontgomery",
   "timestamp" : 102,
-  "message" : "TODO FOR HOST"
+  "message" : "The username nancymontgomery has been added successfully."
 }, {
   "command" : "addUser",
   "user" : "nancymontgomery",
   "timestamp" : 103,
-  "message" : "The username nancymontgomery has been added successfully."
+  "message" : "The username nancymontgomery is already taken."
 }, {
   "command" : "addUser",
   "user" : "amanda16",
@@ -27,7 +27,7 @@
   "command" : "addUser",
   "user" : "conniealvarez",
   "timestamp" : 105,
-  "message" : "TODO FOR HOST"
+  "message" : "The username conniealvarez has been added successfully."
 }, {
   "command" : "addUser",
   "user" : "barmstrong",
@@ -52,17 +52,17 @@
   "command" : "addUser",
   "user" : "jenningsbeth",
   "timestamp" : 110,
-  "message" : "TODO FOR HOST"
+  "message" : "The username jenningsbeth has been added successfully."
 }, {
   "command" : "addUser",
   "user" : "conniealvarez",
   "timestamp" : 111,
-  "message" : "TODO FOR HOST"
+  "message" : "The username conniealvarez is already taken."
 }, {
   "command" : "addUser",
   "user" : "conniealvarez",
   "timestamp" : 112,
-  "message" : "TODO FOR HOST"
+  "message" : "The username conniealvarez is already taken."
 }, {
   "command" : "addUser",
   "user" : "nancymontgomery",
@@ -72,12 +72,12 @@
   "command" : "addUser",
   "user" : "charlesgarcia",
   "timestamp" : 114,
-  "message" : "TODO FOR HOST"
+  "message" : "The username charlesgarcia has been added successfully."
 }, {
   "command" : "addUser",
   "user" : "jenningsbeth",
   "timestamp" : 115,
-  "message" : "The username jenningsbeth has been added successfully."
+  "message" : "The username jenningsbeth is already taken."
 }, {
   "command" : "addUser",
   "user" : "matthewfernandez",
@@ -102,7 +102,7 @@
   "command" : "addUser",
   "user" : "conniealvarez",
   "timestamp" : 120,
-  "message" : "TODO FOR HOST"
+  "message" : "The username conniealvarez is already taken."
 }, {
   "command" : "addUser",
   "user" : "leslie27",
@@ -129,7 +129,10 @@
   "timestamp" : 125,
   "message" : "jacobdean has the same song at least twice in this album."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "charlesgarcia",
+  "timestamp" : 126,
+  "message" : "The username charlesgarcia is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "cbutler",
@@ -149,16 +152,22 @@
   "command" : "addAlbum",
   "user" : "jenningsbeth",
   "timestamp" : 130,
-  "message" : "jenningsbeth has the same song at least twice in this album."
+  "message" : "The username jenningsbeth is not an artist."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 131,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "leslie27",
   "timestamp" : 132,
   "message" : "leslie27 has added new album successfully."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 133,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "matthewfernandez",
@@ -168,14 +177,17 @@
   "command" : "addAlbum",
   "user" : "jenningsbeth",
   "timestamp" : 135,
-  "message" : "jenningsbeth has added new album successfully."
+  "message" : "The username jenningsbeth is not an artist."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 136,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "nancymontgomery",
   "timestamp" : 137,
-  "message" : "nancymontgomery has the same song at least twice in this album."
+  "message" : "The username nancymontgomery is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "matthewfernandez",
@@ -197,7 +209,10 @@
   "timestamp" : 141,
   "message" : "leslie27 has added new album successfully."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 142,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "barmstrong",
@@ -219,23 +234,35 @@
   "timestamp" : 146,
   "message" : "amanda16 has added new album successfully."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 147,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "cbutler",
   "timestamp" : 148,
   "message" : "cbutler has the same song at least twice in this album."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 149,
+  "message" : "The username conniealvarez is not an artist."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 150,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "barmstrong",
   "timestamp" : 151,
   "message" : "barmstrong has the same song at least twice in this album."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 152,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "matthewfernandez",
@@ -262,7 +289,10 @@
   "timestamp" : 157,
   "message" : "amanda16 has added new album successfully."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 158,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "cbutler",
@@ -277,7 +307,7 @@
   "command" : "addAlbum",
   "user" : "jenningsbeth",
   "timestamp" : 161,
-  "message" : "jenningsbeth has the same song at least twice in this album."
+  "message" : "The username jenningsbeth is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "leslie27",
@@ -289,21 +319,30 @@
   "timestamp" : 163,
   "message" : "barmstrong has added new album successfully."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 164,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "leslie27",
   "timestamp" : 165,
   "message" : "leslie27 has added new album successfully."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 166,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "jenningsbeth",
   "timestamp" : 167,
-  "message" : "jenningsbeth has the same song at least twice in this album."
+  "message" : "The username jenningsbeth is not an artist."
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 168,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "jacobdean",
@@ -318,7 +357,7 @@
   "command" : "addAlbum",
   "user" : "jenningsbeth",
   "timestamp" : 171,
-  "message" : "jenningsbeth has the same song at least twice in this album."
+  "message" : "The username jenningsbeth is not an artist."
 }, {
   "command" : "addAlbum",
   "user" : "cbutler",
@@ -10335,8 +10374,8 @@
   "command" : "search",
   "user" : "alice22",
   "timestamp" : 10579,
-  "message" : "Search returned 1 results",
-  "results" : [ "Chill View" ]
+  "message" : "Search returned 0 results",
+  "results" : [ ]
 }, {
   "command" : "load",
   "user" : "alice22",
@@ -10346,27 +10385,27 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 10579,
-  "message" : "Successfully selected Chill View."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "load",
   "user" : "alice22",
   "timestamp" : 10579,
-  "message" : "Playback loaded successfully."
+  "message" : "Please select a source before attempting to load."
 }, {
   "command" : "like",
   "user" : "alice22",
   "timestamp" : 10579,
-  "message" : "Loaded source is not a song."
+  "message" : "Please load a source before liking or unliking."
 }, {
   "command" : "next",
   "user" : "alice22",
   "timestamp" : 10579,
-  "message" : "Skipped to next track successfully. The current track is Tranquility Tranquility."
+  "message" : "Please load a source before skipping to the next track."
 }, {
   "command" : "like",
   "user" : "alice22",
   "timestamp" : 10579,
-  "message" : "Loaded source is not a song."
+  "message" : "Please load a source before liking or unliking."
 }, {
   "user" : "alice22",
   "command" : "printCurrentPage",
@@ -10947,8 +10986,8 @@
   "command" : "search",
   "user" : "carol19",
   "timestamp" : 10699,
-  "message" : "Search returned 1 results",
-  "results" : [ "Chill View" ]
+  "message" : "Search returned 0 results",
+  "results" : [ ]
 }, {
   "command" : "load",
   "user" : "carol19",
@@ -10958,27 +10997,27 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 10699,
-  "message" : "Successfully selected Chill View."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "load",
   "user" : "carol19",
   "timestamp" : 10699,
-  "message" : "Playback loaded successfully."
+  "message" : "Please select a source before attempting to load."
 }, {
   "command" : "like",
   "user" : "carol19",
   "timestamp" : 10699,
-  "message" : "Loaded source is not a song."
+  "message" : "Please load a source before liking or unliking."
 }, {
   "command" : "next",
   "user" : "carol19",
   "timestamp" : 10699,
-  "message" : "Skipped to next track successfully. The current track is Tranquility Tranquility."
+  "message" : "Please load a source before skipping to the next track."
 }, {
   "command" : "like",
   "user" : "carol19",
   "timestamp" : 10699,
-  "message" : "Loaded source is not a song."
+  "message" : "Please load a source before liking or unliking."
 }, {
   "user" : "carol19",
   "command" : "printCurrentPage",
@@ -16613,7 +16652,10 @@
   "timestamp" : 11819,
   "message" : "Invalid item number."
 }, null, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 11819,
+  "message" : "The username conniealvarez is not an artist."
 }, null, null, {
   "command" : "search",
   "user" : "grace25",
@@ -16755,7 +16797,10 @@
   "timestamp" : 11869,
   "message" : "Albums:\n\t[Chill Funeral , Bad Guide, Breezy Autumn, Groovy Technology, Teen Harmonies, Groovy Dirt, Dynamic Technology]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 11869,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "alice22",
   "command" : "printCurrentPage",
@@ -17000,7 +17045,10 @@
   "timestamp" : 11949,
   "message" : "Albums:\n\t[Teen Technology, Chill Hood, Blue Dirt, Groovy Revolution, Alone View, Heroic Dreams]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 11949,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "irene33",
   "command" : "printCurrentPage",
@@ -17276,7 +17324,10 @@
   "timestamp" : 12039,
   "message" : "Albums:\n\t[Bad Funeral , Bad Guide, Electric Dreams, Breezy Guide, Groovy Technology]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12039,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "henry26",
   "command" : "printCurrentPage",
@@ -17428,7 +17479,10 @@
   "timestamp" : 12089,
   "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12089,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "carol19",
   "command" : "printCurrentPage",
@@ -17518,7 +17572,10 @@
   "timestamp" : 12119,
   "message" : "Albums:\n\t[Electric Harmonies, Bad Hood, Groovy View, Teen Funeral , Heroic View, Teen Technology, Chill Dreams]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12119,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "frank21",
   "command" : "printCurrentPage",
@@ -17577,7 +17634,10 @@
   "timestamp" : 12139,
   "message" : "Albums:\n\t[Bad Funeral , Bad Guide, Electric Dreams, Breezy Guide, Groovy Technology]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12139,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "henry26",
   "command" : "printCurrentPage",
@@ -17636,7 +17696,10 @@
   "timestamp" : 12159,
   "message" : "Albums:\n\t[Electric Harmonies, Bad Hood, Groovy View, Teen Funeral , Heroic View, Teen Technology, Chill Dreams]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12159,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "jack29",
   "command" : "printCurrentPage",
@@ -17943,7 +18006,10 @@
   "timestamp" : 12259,
   "message" : "Albums:\n\t[Electric Harmonies, Bad Hood, Groovy View, Teen Funeral , Heroic View, Teen Technology, Chill Dreams, Heroic Technology]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12259,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "jack29",
   "command" : "printCurrentPage",
@@ -18033,7 +18099,10 @@
   "timestamp" : 12289,
   "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12289,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "carol19",
   "command" : "printCurrentPage",
@@ -18048,33 +18117,33 @@
   "command" : "search",
   "user" : "david27",
   "timestamp" : 12299,
-  "message" : "Search returned 1 results",
-  "results" : [ "jenningsbeth" ]
+  "message" : "Search returned 0 results",
+  "results" : [ ]
 }, {
   "command" : "select",
   "user" : "david27",
   "timestamp" : 12299,
-  "message" : "Successfully selected jenningsbeth's page."
+  "message" : "Invalid item number."
 }, {
   "user" : "david27",
   "command" : "printCurrentPage",
   "timestamp" : 12299,
-  "message" : "Albums:\n\t[Chill View]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
+  "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
   "command" : "addAlbum",
   "user" : "jenningsbeth",
   "timestamp" : 12299,
-  "message" : "jenningsbeth has added new album successfully."
+  "message" : "The username jenningsbeth is not an artist."
 }, {
   "user" : "david27",
   "command" : "printCurrentPage",
   "timestamp" : 12299,
-  "message" : "Albums:\n\t[Chill View, Electric Autumn]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
+  "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
   "user" : "david27",
   "command" : "printCurrentPage",
   "timestamp" : 12299,
-  "message" : "Albums:\n\t[Chill View, Electric Autumn]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
+  "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -18185,7 +18254,10 @@
   "timestamp" : 12339,
   "message" : "Albums:\n\t[Teen Technology, Chill Hood, Blue Dirt, Groovy Revolution, Alone View, Heroic Dreams, Heroic Autumn, Bad Dirt, Breezy Dreams, Alone Hood, Chill Technology, Alone Dirt, Dynamic Guide]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12339,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "henry26",
   "command" : "printCurrentPage",
@@ -18306,7 +18378,10 @@
   "timestamp" : 12379,
   "message" : "Albums:\n\t[Electric Harmonies, Bad Hood, Groovy View, Teen Funeral , Heroic View, Teen Technology, Chill Dreams, Heroic Technology, Blue Technology]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12379,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "bob35",
   "command" : "printCurrentPage",
@@ -18582,7 +18657,10 @@
   "timestamp" : 12469,
   "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution, Alone Funeral ]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12469,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "alice22",
   "command" : "printCurrentPage",
@@ -18672,7 +18750,10 @@
   "timestamp" : 12499,
   "message" : "Albums:\n\t[Bad Funeral , Bad Guide, Electric Dreams, Breezy Guide, Groovy Technology, Groovy Funeral , Chill Dirt, Groovy Hood, Bad Technology, Blue Dirt, Heroic Hood]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12499,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "david27",
   "command" : "printCurrentPage",
@@ -18700,7 +18781,10 @@
   "timestamp" : 12509,
   "message" : "Albums:\n\t[Chill Funeral , Bad Guide, Breezy Autumn, Groovy Technology, Teen Harmonies, Groovy Dirt, Dynamic Technology, Bad Autumn, Dynamic Funeral , Breezy View, Electric Technology, Electric View, Dynamic Dreams, Blue Autumn, Blue Harmonies]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12509,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "emily30",
   "command" : "printCurrentPage",
@@ -18790,7 +18874,10 @@
   "timestamp" : 12539,
   "message" : "Albums:\n\t[Chill Funeral , Bad Guide, Breezy Autumn, Groovy Technology, Teen Harmonies, Groovy Dirt, Dynamic Technology, Bad Autumn, Dynamic Funeral , Breezy View, Electric Technology, Electric View, Dynamic Dreams, Blue Autumn, Blue Harmonies]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12539,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "henry26",
   "command" : "printCurrentPage",
@@ -18818,7 +18905,10 @@
   "timestamp" : 12549,
   "message" : "Albums:\n\t[Heroic Harmonies, Chill Guide, Bad View, Teen Hood, Alone Autumn, Electric Harmonies]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12549,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "irene33",
   "command" : "printCurrentPage",
@@ -19094,7 +19184,10 @@
   "timestamp" : 12639,
   "message" : "Albums:\n\t[Chill Funeral , Bad Guide, Breezy Autumn, Groovy Technology, Teen Harmonies, Groovy Dirt, Dynamic Technology, Bad Autumn, Dynamic Funeral , Breezy View, Electric Technology, Electric View, Dynamic Dreams, Blue Autumn, Blue Harmonies]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12639,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "henry26",
   "command" : "printCurrentPage",
@@ -19370,7 +19463,10 @@
   "timestamp" : 12729,
   "message" : "Albums:\n\t[Bad Funeral , Bad Guide, Electric Dreams, Breezy Guide, Groovy Technology, Groovy Funeral , Chill Dirt, Groovy Hood, Bad Technology, Blue Dirt, Heroic Hood, Groovy View, Electric Funeral ]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12729,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "grace25",
   "command" : "printCurrentPage",
@@ -19801,7 +19897,10 @@
   "timestamp" : 12869,
   "message" : "Albums:\n\t[Heroic Harmonies, Chill Guide, Bad View, Teen Hood, Alone Autumn, Electric Harmonies, Bad Dirt, Heroic Revolution, Dynamic Autumn]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12869,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "alice22",
   "command" : "printCurrentPage",
@@ -20108,7 +20207,10 @@
   "timestamp" : 12969,
   "message" : "Albums:\n\t[Heroic Harmonies, Chill Guide, Bad View, Teen Hood, Alone Autumn, Electric Harmonies, Bad Dirt, Heroic Revolution, Dynamic Autumn]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12969,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "alice22",
   "command" : "printCurrentPage",
@@ -20198,7 +20300,10 @@
   "timestamp" : 12999,
   "message" : "Albums:\n\t[Chill Funeral , Bad Guide, Breezy Autumn, Groovy Technology, Teen Harmonies, Groovy Dirt, Dynamic Technology, Bad Autumn, Dynamic Funeral , Breezy View, Electric Technology, Electric View, Dynamic Dreams, Blue Autumn, Blue Harmonies, Breezy Harmonies, Electric Dirt, Bad Revolution, Blue Dreams, Chill Revolution, Groovy Dreams]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 12999,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "david27",
   "command" : "printCurrentPage",
@@ -20567,7 +20672,10 @@
   "timestamp" : 13119,
   "message" : "Albums:\n\t[Teen Technology, Chill Hood, Blue Dirt, Groovy Revolution, Alone View, Heroic Dreams, Heroic Autumn, Bad Dirt, Breezy Dreams, Alone Hood, Chill Technology, Alone Dirt, Dynamic Guide, Groovy View, Groovy Funeral , Teen Hood, Bad Revolution, Dynamic Harmonies, Groovy Guide, Dynamic Autumn, Chill Dreams, Teen Dirt, Chill Guide, Bad Harmonies, Breezy Dirt, Teen Funeral , Electric Guide]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
-  "message" : "False"
+  "command" : "addAlbum",
+  "user" : "conniealvarez",
+  "timestamp" : 13119,
+  "message" : "The username conniealvarez is not an artist."
 }, {
   "user" : "frank21",
   "command" : "printCurrentPage",
@@ -20582,33 +20690,33 @@
   "command" : "search",
   "user" : "grace25",
   "timestamp" : 13129,
-  "message" : "Search returned 1 results",
-  "results" : [ "jenningsbeth" ]
+  "message" : "Search returned 0 results",
+  "results" : [ ]
 }, {
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13129,
-  "message" : "Successfully selected jenningsbeth's page."
+  "message" : "Invalid item number."
 }, {
   "user" : "grace25",
   "command" : "printCurrentPage",
   "timestamp" : 13129,
-  "message" : "Albums:\n\t[Chill View, Electric Autumn]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
+  "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution, Alone Funeral , Electric Revolution, Groovy Harmonies, Electric View, Blue Revolution, Electric Harmonies, Alone Dirt, Chill Hood]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
   "command" : "addAlbum",
   "user" : "jenningsbeth",
   "timestamp" : 13129,
-  "message" : "jenningsbeth has added new album successfully."
+  "message" : "The username jenningsbeth is not an artist."
 }, {
   "user" : "grace25",
   "command" : "printCurrentPage",
   "timestamp" : 13129,
-  "message" : "Albums:\n\t[Chill View, Electric Autumn, Electric Funeral ]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
+  "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution, Alone Funeral , Electric Revolution, Groovy Harmonies, Electric View, Blue Revolution, Electric Harmonies, Alone Dirt, Chill Hood]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
   "user" : "grace25",
   "command" : "printCurrentPage",
   "timestamp" : 13129,
-  "message" : "Albums:\n\t[Chill View, Electric Autumn, Electric Funeral ]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
+  "message" : "Albums:\n\t[Heroic Hood, Bad Harmonies, Teen Dreams, Groovy Funeral , Blue Technology, Heroic Guide, Teen Dirt, Chill Guide, Chill Revolution, Teen Hood, Blue Dreams, Electric Dreams, Dynamic Hood, Heroic Revolution, Alone Funeral , Electric Revolution, Groovy Harmonies, Electric View, Blue Revolution, Electric Harmonies, Alone Dirt, Chill Hood]\n\nMerch:\n\t[]\n\nEvents:\n\t[]"
 }, {
   "command" : "search",
   "user" : "henry26",
@@ -21022,7 +21130,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13259,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -21038,7 +21146,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13269,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -21054,12 +21162,12 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13279,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Tracks Expedition #1."
 }, {
   "command" : "follow",
   "user" : "carol19",
   "timestamp" : 13279,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "david27",
@@ -21070,7 +21178,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13289,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -21086,7 +21194,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13299,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -21102,12 +21210,12 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 13309,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Tracks Expedition #1."
 }, {
   "command" : "follow",
   "user" : "frank21",
   "timestamp" : 13309,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "grace25",
@@ -21118,7 +21226,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13319,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -21134,12 +21242,12 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 13329,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Vibey Harmonies Odyssey #1."
 }, {
   "command" : "follow",
   "user" : "henry26",
   "timestamp" : 13329,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "irene33",
@@ -21150,7 +21258,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 13339,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -21166,7 +21274,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 13349,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -21182,12 +21290,12 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13359,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Tracks Expedition #1."
 }, {
   "command" : "follow",
   "user" : "alice22",
   "timestamp" : 13359,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -21198,7 +21306,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13369,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -21214,7 +21322,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13379,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -21230,12 +21338,12 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13389,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Grooves Quest #2."
 }, {
   "command" : "follow",
   "user" : "david27",
   "timestamp" : 13389,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -21246,7 +21354,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13399,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -21262,7 +21370,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 13409,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -21278,12 +21386,12 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13419,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Dynamic Rhythms Escape #2."
 }, {
   "command" : "follow",
   "user" : "grace25",
   "timestamp" : 13419,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "henry26",
@@ -21294,7 +21402,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 13429,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -21310,7 +21418,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 13439,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -21326,12 +21434,12 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 13449,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Breezy Bangers Expedition #2."
 }, {
   "command" : "follow",
   "user" : "jack29",
   "timestamp" : 13449,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -21342,7 +21450,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13459,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -21358,12 +21466,12 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13469,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Breezy Harmonies Odyssey #1."
 }, {
   "command" : "follow",
   "user" : "bob35",
   "timestamp" : 13469,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -21374,7 +21482,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13479,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -21390,12 +21498,12 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13489,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Grooves Quest #2."
 }, {
   "command" : "follow",
   "user" : "david27",
   "timestamp" : 13489,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist unfollowed successfully."
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -21406,12 +21514,12 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13499,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Tracks Expedition #1."
 }, {
   "command" : "follow",
   "user" : "emily30",
   "timestamp" : 13499,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "frank21",
@@ -21422,7 +21530,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 13509,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -21438,7 +21546,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13519,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -21454,7 +21562,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 13529,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -21470,12 +21578,12 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 13539,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Dynamic Rhythms Escape #2."
 }, {
   "command" : "follow",
   "user" : "irene33",
   "timestamp" : 13539,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "jack29",
@@ -21486,7 +21594,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 13549,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -21502,7 +21610,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13559,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -21518,7 +21626,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13569,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -21534,7 +21642,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13579,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -21550,7 +21658,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13589,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -21566,12 +21674,12 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13599,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Epic Vibes Voyage #2."
 }, {
   "command" : "follow",
   "user" : "emily30",
   "timestamp" : 13599,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "frank21",
@@ -21582,7 +21690,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 13609,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -21598,7 +21706,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13619,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -21614,7 +21722,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 13629,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -21630,7 +21738,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 13639,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -21646,7 +21754,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 13649,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -21662,7 +21770,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13659,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -21678,7 +21786,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13669,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -21694,7 +21802,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13679,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -21710,12 +21818,12 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13689,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Epic Vibes Voyage #2."
 }, {
   "command" : "follow",
   "user" : "david27",
   "timestamp" : 13689,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "emily30",
@@ -21726,7 +21834,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13699,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -21742,7 +21850,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 13709,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -21758,7 +21866,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13719,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -21774,7 +21882,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 13729,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -21790,12 +21898,12 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 13739,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Grooves Quest #2."
 }, {
   "command" : "follow",
   "user" : "irene33",
   "timestamp" : 13739,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "jack29",
@@ -21806,7 +21914,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 13749,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -21822,7 +21930,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13759,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -21838,7 +21946,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13769,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -21854,7 +21962,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13779,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -21870,7 +21978,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13789,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -21886,12 +21994,12 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13799,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Grooves Quest #2."
 }, {
   "command" : "follow",
   "user" : "emily30",
   "timestamp" : 13799,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "frank21",
@@ -21902,7 +22010,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 13809,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -21918,7 +22026,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13819,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -21934,12 +22042,12 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 13829,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Sounds Journey #1."
 }, {
   "command" : "follow",
   "user" : "henry26",
   "timestamp" : 13829,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "irene33",
@@ -21950,7 +22058,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 13839,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -21966,7 +22074,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 13849,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -21982,12 +22090,12 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13859,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Classic Vibes Odyssey #1."
 }, {
   "command" : "follow",
   "user" : "alice22",
   "timestamp" : 13859,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -21998,7 +22106,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13869,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -22014,7 +22122,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13879,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -22030,7 +22138,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13889,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -22046,7 +22154,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13899,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -22062,7 +22170,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 13909,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -22078,7 +22186,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 13919,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -22094,7 +22202,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 13929,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -22110,7 +22218,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 13939,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -22126,12 +22234,12 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 13949,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Breezy Bangers Expedition #2."
 }, {
   "command" : "follow",
   "user" : "jack29",
   "timestamp" : 13949,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -22142,7 +22250,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 13959,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -22158,7 +22266,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 13969,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -22174,7 +22282,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 13979,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -22190,7 +22298,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 13989,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -22206,7 +22314,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 13999,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -22222,7 +22330,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14009,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -22238,7 +22346,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14019,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -22254,7 +22362,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14029,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -22270,7 +22378,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14039,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -22286,7 +22394,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14049,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -22302,7 +22410,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 14059,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -22318,12 +22426,12 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 14069,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Sounds Journey #1."
 }, {
   "command" : "follow",
   "user" : "bob35",
   "timestamp" : 14069,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -22334,12 +22442,12 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 14079,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Tracks Dream #2."
 }, {
   "command" : "follow",
   "user" : "carol19",
   "timestamp" : 14079,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "david27",
@@ -22350,7 +22458,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 14089,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -22366,7 +22474,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 14099,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -22382,7 +22490,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14109,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -22398,7 +22506,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14119,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -22414,7 +22522,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14129,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -22430,12 +22538,12 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14139,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Electric Grooves Journey #1."
 }, {
   "command" : "follow",
   "user" : "irene33",
   "timestamp" : 14139,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "jack29",
@@ -22446,7 +22554,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14149,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -22462,12 +22570,12 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 14159,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Tunes Safari #2."
 }, {
   "command" : "follow",
   "user" : "alice22",
   "timestamp" : 14159,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -22478,7 +22586,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 14169,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -22494,12 +22602,12 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 14179,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Tunes Safari #2."
 }, {
   "command" : "follow",
   "user" : "carol19",
   "timestamp" : 14179,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "david27",
@@ -22510,7 +22618,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 14189,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -22526,12 +22634,12 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 14199,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Grooves Quest #2."
 }, {
   "command" : "follow",
   "user" : "emily30",
   "timestamp" : 14199,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist unfollowed successfully."
 }, {
   "command" : "search",
   "user" : "frank21",
@@ -22542,7 +22650,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14209,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -22558,7 +22666,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14219,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -22574,7 +22682,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14229,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -22590,7 +22698,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14239,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -22606,12 +22714,12 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14249,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Sounds Journey #1."
 }, {
   "command" : "follow",
   "user" : "jack29",
   "timestamp" : 14249,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -22622,7 +22730,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 14259,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -22638,7 +22746,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 14269,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -22654,7 +22762,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 14279,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -22670,7 +22778,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 14289,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -22686,7 +22794,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 14299,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -22702,7 +22810,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14309,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -22718,12 +22826,12 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14319,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Grooves Quest #2."
 }, {
   "command" : "follow",
   "user" : "grace25",
   "timestamp" : 14319,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "henry26",
@@ -22734,7 +22842,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14329,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -22750,7 +22858,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14339,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -22766,7 +22874,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14349,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -22782,12 +22890,12 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 14359,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Tunes Safari #2."
 }, {
   "command" : "follow",
   "user" : "alice22",
   "timestamp" : 14359,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist unfollowed successfully."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -22798,7 +22906,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 14369,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -22814,12 +22922,12 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 14379,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Chill Tracks Dream #2."
 }, {
   "command" : "follow",
   "user" : "carol19",
   "timestamp" : 14379,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "david27",
@@ -22830,7 +22938,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 14389,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -22846,7 +22954,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 14399,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -22862,7 +22970,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14409,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -22878,7 +22986,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14419,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -22894,12 +23002,12 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14429,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Dynamic Rhythms Escape #2."
 }, {
   "command" : "follow",
   "user" : "henry26",
   "timestamp" : 14429,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "irene33",
@@ -22910,7 +23018,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14439,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -22926,7 +23034,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14449,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -22942,12 +23050,12 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 14459,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Tracks Expedition #1."
 }, {
   "command" : "follow",
   "user" : "alice22",
   "timestamp" : 14459,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist unfollowed successfully."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -22958,7 +23066,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 14469,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -22974,7 +23082,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 14479,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -22990,7 +23098,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 14489,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -23006,7 +23114,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 14499,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -23022,7 +23130,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14509,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -23038,12 +23146,12 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14519,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Vibey Harmonies Odyssey #1."
 }, {
   "command" : "follow",
   "user" : "grace25",
   "timestamp" : 14519,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "henry26",
@@ -23054,7 +23162,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14529,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -23070,7 +23178,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14539,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -23086,7 +23194,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14549,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -23102,7 +23210,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 14559,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -23118,12 +23226,12 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 14569,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Dynamic Rhythms Escape #2."
 }, {
   "command" : "follow",
   "user" : "bob35",
   "timestamp" : 14569,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -23134,7 +23242,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 14579,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -23150,7 +23258,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 14589,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -23166,12 +23274,12 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 14599,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Tracks Expedition #1."
 }, {
   "command" : "follow",
   "user" : "emily30",
   "timestamp" : 14599,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist unfollowed successfully."
 }, {
   "command" : "search",
   "user" : "frank21",
@@ -23182,7 +23290,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14609,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -23198,7 +23306,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14619,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -23214,7 +23322,7 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14629,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "henry26",
@@ -23230,7 +23338,7 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14639,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "irene33",
@@ -23246,12 +23354,12 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14649,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Dynamic Rhythms Escape #2."
 }, {
   "command" : "follow",
   "user" : "jack29",
   "timestamp" : 14649,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "alice22",
@@ -23262,7 +23370,7 @@
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 14659,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "alice22",
@@ -23278,7 +23386,7 @@
   "command" : "select",
   "user" : "bob35",
   "timestamp" : 14669,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "bob35",
@@ -23294,7 +23402,7 @@
   "command" : "select",
   "user" : "carol19",
   "timestamp" : 14679,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "carol19",
@@ -23310,7 +23418,7 @@
   "command" : "select",
   "user" : "david27",
   "timestamp" : 14689,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "david27",
@@ -23326,7 +23434,7 @@
   "command" : "select",
   "user" : "emily30",
   "timestamp" : 14699,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "emily30",
@@ -23342,7 +23450,7 @@
   "command" : "select",
   "user" : "frank21",
   "timestamp" : 14709,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "frank21",
@@ -23358,7 +23466,7 @@
   "command" : "select",
   "user" : "grace25",
   "timestamp" : 14719,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "grace25",
@@ -23374,12 +23482,12 @@
   "command" : "select",
   "user" : "henry26",
   "timestamp" : 14729,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Dynamic Rhythms Escape #2."
 }, {
   "command" : "follow",
   "user" : "henry26",
   "timestamp" : 14729,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "You cannot follow or unfollow your own playlist."
 }, {
   "command" : "search",
   "user" : "irene33",
@@ -23390,12 +23498,12 @@
   "command" : "select",
   "user" : "irene33",
   "timestamp" : 14739,
-  "message" : "Invalid item number."
+  "message" : "Successfully selected Groovy Sounds Journey #1."
 }, {
   "command" : "follow",
   "user" : "irene33",
   "timestamp" : 14739,
-  "message" : "Please select a source before following or unfollowing."
+  "message" : "Playlist followed successfully."
 }, {
   "command" : "search",
   "user" : "jack29",
@@ -23406,7 +23514,7 @@
   "command" : "select",
   "user" : "jack29",
   "timestamp" : 14749,
-  "message" : "Invalid item number."
+  "message" : "The selected ID is too high."
 }, {
   "command" : "follow",
   "user" : "jack29",
@@ -23445,7 +23553,7 @@
     "name" : "Epic Vibes Voyage #2",
     "songs" : [ "Sad But True", "Black Dog", "Love Story", "Blank Space", "Start Me Up", "Under Pressure", "Stairway to Heaven", "Big Pimpin'", "Gimme Shelter" ],
     "visibility" : "public",
-    "followers" : 0
+    "followers" : 2
   } ]
 }, {
   "command" : "showPreferredSongs",
@@ -23460,7 +23568,7 @@
     "name" : "Vibey Harmonies Odyssey #1",
     "songs" : [ "Delicate", "Under Pressure" ],
     "visibility" : "public",
-    "followers" : 0
+    "followers" : 2
   }, {
     "name" : "Chill Tracks Dream #2",
     "songs" : [ "Angie", "Thinking Out Loud", "Shape of You", "Don't", "Stairway to Heaven", "Delicate", "Black Dog" ],
@@ -23505,7 +23613,7 @@
     "name" : "Chill Tunes Safari #2",
     "songs" : [ "Begin Again", "Gimme Shelter", "Delicate", "Happier", "Don't" ],
     "visibility" : "public",
-    "followers" : 0
+    "followers" : 1
   } ]
 }, {
   "command" : "showPreferredSongs",
@@ -23520,12 +23628,12 @@
     "name" : "Groovy Sounds Journey #1",
     "songs" : [ "Don't", "Begin Again", "Maps", "Dream On" ],
     "visibility" : "public",
-    "followers" : 0
+    "followers" : 4
   }, {
     "name" : "Chill Grooves Quest #2",
     "songs" : [ "Whatever You Need", "Stairway to Heaven" ],
     "visibility" : "public",
-    "followers" : 0
+    "followers" : 2
   } ]
 }, {
   "command" : "showPreferredSongs",
@@ -23540,7 +23648,7 @@
     "name" : "Groovy Tracks Expedition #1",
     "songs" : [ "Thinking Out Loud", "Black Dog", "Under Pressure", "Blank Space", "Whatever You Need" ],
     "visibility" : "public",
-    "followers" : 0
+    "followers" : 2
   }, {
     "name" : "Epic Melodies Safari #2",
     "songs" : [ "Dream On", "Under Pressure", "Black Dog", "Begin Again", "The Unforgiven", "The Man" ],
@@ -23565,7 +23673,7 @@
     "name" : "Dynamic Rhythms Escape #2",
     "songs" : [ "Angie", "Stairway to Heaven", "Delicate", "Paint It Black", "Begin Again" ],
     "visibility" : "public",
-    "followers" : 0
+    "followers" : 4
   } ]
 }, {
   "command" : "showPreferredSongs",
@@ -23615,11 +23723,11 @@
 }, {
   "command" : "getAllUsers",
   "timestamp" : 14849,
-  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "barmstrong", "matthewporter", "nancymontgomery", "amanda16", "cbutler", "jacobdean", "jenningsbeth", "matthewfernandez", "leslie27" ]
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "barmstrong", "matthewporter", "amanda16", "cbutler", "jacobdean", "matthewfernandez", "leslie27", "nancymontgomery", "conniealvarez", "jenningsbeth", "charlesgarcia" ]
 }, {
   "command" : "getTop5Playlists",
   "timestamp" : 14849,
-  "result" : [ "Classic Vibes Odyssey #1", "Breezy Harmonies Odyssey #1", "Vibey Harmonies Odyssey #1", "Mellow Rhythms Odyssey #1", "Breezy Melodies Expedition #1" ]
+  "result" : [ "Groovy Sounds Journey #1", "Dynamic Rhythms Escape #2", "Vibey Harmonies Odyssey #1", "Groovy Tracks Expedition #1", "Epic Vibes Voyage #2" ]
 }, {
   "command" : "getTop5Songs",
   "timestamp" : 14849,

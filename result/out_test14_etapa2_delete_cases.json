@@ -27,21 +27,46 @@
   "command" : "addUser",
   "user" : "audiosage",
   "timestamp" : 70,
-  "message" : "TODO FOR HOST"
+  "message" : "The username audiosage has been added successfully."
 }, {
   "command" : "addUser",
   "user" : "soundcurator",
   "timestamp" : 75,
-  "message" : "TODO FOR HOST"
+  "message" : "The username soundcurator has been added successfully."
 }, {
   "command" : "addUser",
   "user" : "musicmaven",
   "timestamp" : 80,
-  "message" : "TODO FOR HOST"
+  "message" : "The username musicmaven has been added successfully."
 }, {
   "command" : "getAllUsers",
   "timestamp" : 85,
-  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "soundseeker21", "melodicwanderer", "sonicpainter", "echoexplorer", "rhythmweaver" ]
+  "result" : [ "alice22", "bob35", "carol19", "david27", "emily30", "frank21", "grace25", "henry26", "irene33", "jack29", "soundseeker21", "melodicwanderer", "sonicpainter", "echoexplorer", "rhythmweaver", "audiosage", "soundcurator", "musicmaven" ]
+}, {
+  "command" : "addPodcast",
+  "user" : "audiosage",
+  "timestamp" : 280,
+  "message" : "audiosage has added new podcast successfully."
+}, {
+  "command" : "addPodcast",
+  "user" : "audiosage",
+  "timestamp" : 285,
+  "message" : "audiosage has added new podcast successfully."
+}, {
+  "command" : "addPodcast",
+  "user" : "musicmaven",
+  "timestamp" : 290,
+  "message" : "musicmaven has added new podcast successfully."
+}, {
+  "command" : "addPodcast",
+  "user" : "musicmaven",
+  "timestamp" : 295,
+  "message" : "musicmaven has added new podcast successfully."
+}, {
+  "command" : "addPodcast",
+  "user" : "musicmaven",
+  "timestamp" : 300,
+  "message" : "musicmaven has added new podcast successfully."
 }, {
   "command" : "createPlaylist",
   "user" : "melodicwanderer",
@@ -77,18 +102,18 @@
   "command" : "search",
   "user" : "alice22",
   "timestamp" : 335,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
+  "message" : "Search returned 1 results",
+  "results" : [ "Rhythmic Dialogues" ]
 }, {
   "command" : "select",
   "user" : "alice22",
   "timestamp" : 340,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected Rhythmic Dialogues."
 }, {
   "command" : "load",
   "user" : "alice22",
   "timestamp" : 345,
-  "message" : "Please select a source before attempting to load."
+  "message" : "Playback loaded successfully."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -145,13 +170,13 @@
   "command" : "search",
   "user" : "soundseeker21",
   "timestamp" : 625,
-  "message" : "Search returned 0 results",
-  "results" : [ ]
+  "message" : "Search returned 1 results",
+  "results" : [ "audiosage" ]
 }, {
   "command" : "select",
   "user" : "soundseeker21",
   "timestamp" : 630,
-  "message" : "The selected ID is too high."
+  "message" : "Successfully selected audiosage's page."
 }, {
   "command" : "search",
   "user" : "carol19",
@@ -188,7 +213,7 @@
   "command" : "deleteUser",
   "user" : "audiosage",
   "timestamp" : 930,
-  "message" : "The username audiosage doesn't exist."
+  "message" : "TODO for hosts"
 }, {
   "command" : "deleteUser",
   "user" : "melodicwanderer",
@@ -208,7 +233,7 @@
   "command" : "deleteUser",
   "user" : "audiosage",
   "timestamp" : 1100,
-  "message" : "The username audiosage doesn't exist."
+  "message" : "TODO for hosts"
 }, {
   "command" : "select",
   "user" : "david27",
@@ -223,7 +248,7 @@
   "command" : "deleteUser",
   "user" : "musicmaven",
   "timestamp" : 6900,
-  "message" : "The username musicmaven doesn't exist."
+  "message" : "TODO for hosts"
 }, {
   "command" : "repeat",
   "user" : "carol19",
