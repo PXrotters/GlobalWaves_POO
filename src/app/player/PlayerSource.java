@@ -93,7 +93,7 @@ public class PlayerSource {
                         index++;
                         updateAudioFile();
                         if (audioFile != null)
-                        remainedDuration = audioFile.getDuration();
+                            remainedDuration = audioFile.getDuration();
                     }
                 }
             } else if (repeatMode == Enums.RepeatMode.REPEAT_ALL) {
@@ -169,10 +169,6 @@ public class PlayerSource {
 
     private void updateAudioFile() {
         setAudioFile(audioCollection.getTrackByIndex(index));
-    }
-
-    public void setAudioFile(AudioFile audioFile) {
-        this.audioFile = audioFile;
     }
 
 }

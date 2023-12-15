@@ -25853,4 +25853,8 @@
   "command" : "getTop5Songs",
   "timestamp" : 14850,
   "result" : [ "Don't", "Whatever You Need", "Start Me Up", "The Man", "Delicate" ]
+}, {
+  "command" : "getTop5Albums",
+  "timestamp" : 14850,
+  "result" : [ "Alone Autumn", "Alone Dirt", "Alone Guide", "Alone Hood", "Alone Hood" ]
 } ]

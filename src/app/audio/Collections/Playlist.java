@@ -15,7 +15,7 @@ public final class Playlist extends AudioCollection {
     private Enums.Visibility visibility;
     @Setter
     private Integer followers;
-    private int timestamp;
+    private final int timestamp;
 
     public Playlist(String name, String owner) {
         this(name, owner, 0);
@@ -39,9 +39,6 @@ public final class Playlist extends AudioCollection {
 
     public void removeSong(Song song) {
         songs.remove(song);
-    }
-    public void removeSong(int index) {
-        songs.remove(index);
     }
 
     public void switchVisibility() {

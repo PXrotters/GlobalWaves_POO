@@ -2,9 +2,7 @@ package app.searchBar;
 
 
 import app.Admin;
-import app.audio.Collections.Album;
 import app.audio.LibraryEntry;
-import fileio.input.LibraryInput;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -99,7 +97,7 @@ public class SearchBar {
 
                 break;
             case "album":
-                entries = new ArrayList<>(Admin.getAlbumslibrary());
+                entries = new ArrayList<>(Admin.getAlbumsLibrary());
 
                 if (filters.getName() != null) {
                     entries = filterByName(entries, filters.getName());
@@ -108,7 +106,6 @@ public class SearchBar {
                 if (filters.getOwner() != null) {
                     entries = filterByOwner(entries, filters.getOwner());
                 }
-                //TODO DESCRIPTION
 
                 break;
             default:

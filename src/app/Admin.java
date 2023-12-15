@@ -9,19 +9,17 @@ import app.PageSystem.HostPage;
 import app.PageSystem.LikedContentPage;
 import app.audio.Collections.Album;
 import app.audio.Collections.Playlist;
-import app.audio.Collections.PlaylistOutput;
 import app.audio.Collections.Podcast;
 import app.audio.Files.Episode;
 import app.audio.Files.Song;
-import app.player.Player;
-import app.player.PlayerSource;
 import app.player.PlayerStats;
 import app.user.Artist;
 import app.user.Host;
 import app.user.User;
-import com.fasterxml.jackson.databind.AnnotationIntrospector;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.*;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -34,10 +32,17 @@ public class Admin {
     private static List<User> users = new ArrayList<>();
     private static List<Song> songs = new ArrayList<>();
     private static List<Podcast> podcasts = new ArrayList<>();
-    @Setter
-    private static List<Album> albumslibrary = new ArrayList<>();
+    @Getter @Setter
+    private static List<Album> albumsLibrary = new ArrayList<>();
     private static int timestamp = 0;
 
+    /**
+     * Returneaza o lista de cel mult 5 artisti ale caror nume de utilizator incepe cu o anumita parte specificata.
+     * Se cauta in randul utilizatorilor pentru obiecte de tip Artist care indeplinesc conditia.
+     *
+     * @param part Partea specificata a numelui de utilizator cu care sa inceapa cautarea.
+     * @return O lista de cel mult 5 nume de utilizator ale artistilor care indeplinesc conditia.
+     */
     public static ArrayList<String> getArtist(String part) {
         ArrayList<String> matchingArtists = new ArrayList<>();
         int count = 0;
@@ -55,6 +60,13 @@ public class Admin {
         return matchingArtists;
     }
 
+    /**
+     * Returneaza o lista de cel mult 5 gazde ale caror nume de utilizator incepe cu o anumita parte specificata.
+     * Se cauta in randul utilizatorilor pentru obiecte de tip Host care indeplinesc conditia.
+     *
+     * @param part Partea specificata a numelui de utilizator cu care sa inceapa cautarea.
+     * @return O lista de cel mult 5 nume de utilizator ale gazdelor care indeplinesc conditia.
+     */
     public static ArrayList<String> getHost(String part) {
         ArrayList<String> matchingHosts = new ArrayList<>();
         int count = 0;
@@ -79,6 +91,14 @@ public class Admin {
         }
     }
 
+    /**
+     * Returneaza un obiect JSON care reprezinta pagina curenta a unui utilizator in functie de starea curenta a acestuia.
+     *
+     * @param username  Numele utilizatorului pentru care se afiseaza pagina curenta.
+     * @param timestamp Timestamp-ul momentului afisarii paginii.
+     * @return Un obiect JSON care contine informatii despre pagina curenta a utilizatorului.
+     *         În cazul in care nu se gaseste utilizatorul sau tipul paginii curente nu este recunoscut, se returneaza null.
+     */
     public static ObjectNode CurrentPage(String username, int timestamp) {
         User user1 = null;
         for (User user : users) {
@@ -131,14 +151,26 @@ public class Admin {
         return null;
     }
 
+    /**
+     * Schimba pagina curenta a unui utilizator in functie de pagina specificata.
+     *
+     * @param username  Numele utilizatorului pentru care se schimba pagina.
+     * @param nextPage  Pagina catre se doreste a fi accesata ("Home" sau "LikedContent").
+     * @return Un mesaj care indica daca schimbarea paginii a fost realizata cu succes sau daca s-a incercat accesarea
+     *         unei pagini inexistente.
+     */
     public static String ChangePage(String username, String nextPage) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 if (nextPage.equals("Home")) {
                     user.setCurrentPage(1);
+                    user.setSelectArtistPage(null);
+                    user.setSelectHostPage(null);
                     return username + " accessed " + nextPage + " successfully.";
                 } else if (nextPage.equals("LikedContent")) {
                     user.setCurrentPage(2);
+                    user.setSelectArtistPage(null);
+                    user.setSelectHostPage(null);
                     return username + " accessed " + nextPage + " successfully.";
                 } else {
                     return username + " is trying to access a non-existent page.";
@@ -148,6 +180,19 @@ public class Admin {
         return "Error";
     }
 
+    /**
+     * Adauga un nou eveniment pentru un artist dat, cu anumite informatii precum nume, descriere si data.
+     *
+     * @param username     Numele utilizatorului artist pentru care se adauga evenimentul.
+     * @param name         Numele evenimentului de adaugat.
+     * @param description  Descrierea evenimentului de adaugat.
+     * @param date         Data evenimentului de adaugat, in formatul "dd-MM-yyyy".
+     * @return Un mesaj care indica rezultatul adaugarii evenimentului:
+     *         - Daca adaugarea s-a realizat cu succes, se returneaza un mesaj de succes.
+     *         - Daca exista deja un eveniment cu acelasi nume pentru artistul respectiv, se returneaza un mesaj de eroare.
+     *         - Daca data furnizata nu este valida, se returneaza un mesaj de eroare specific datei.
+     *         - Daca formatul datei nu este corect, se returneaza un mesaj de eroare legat de formatul datei.
+     */
     public static String AddEvent(String username, String name, String description, String date) {
         Artist artist = null;
         boolean found_event = false;
@@ -158,7 +203,10 @@ public class Admin {
                 break;
             }
         }
-        ArrayList<Event> events = artist.getEvents();
+        ArrayList<Event> events = new ArrayList<>();
+        if (artist != null) {
+            events = artist.getEvents();
+        }
         for (Event event : events) {
             if (event.getName().equals(name)) {
                 found_event = true;
@@ -177,10 +225,7 @@ public class Admin {
                 int month = date1.getMonthValue();
                 int year = date1.getYear();
 
-                if (month == 2 && (day > 28 || day < 1)) {
-                    dateError = true;
-                }
-                if (month > 12 || month < 1 || day > 31 || day < 1) {
+                if (month == 2 && day > 28) {
                     dateError = true;
                 }
                 if (year < 1900 || year > 2023) {
@@ -194,7 +239,9 @@ public class Admin {
                 return "Event for " + username + " does not have a valid date.";
             } else {
                 Event event = new Event(name, description, date);
-                artist.addEvents(event);
+                if (artist != null) {
+                    artist.addEvents(event);
+                }
                 return username + " has added new event successfully.";
             }
         } else {
@@ -202,6 +249,18 @@ public class Admin {
         }
     }
 
+    /**
+     * Adauga un nou produs de merchandising pentru un artist dat, cu anumite informatii precum nume, descriere si pret.
+     *
+     * @param username     Numele utilizatorului artist pentru care se adauga produsul de merchandising.
+     * @param name         Numele produsului de merchandising de adaugat.
+     * @param description  Descrierea produsului de merchandising de adaugat.
+     * @param price        Pretul produsului de merchandising de adaugat.
+     * @return Un mesaj care indica rezultatul adaugarii produsului de merchandising:
+     *         - Daca adaugarea s-a realizat cu succes, se returneaza un mesaj de succes.
+     *         - Daca exista deja un produs de merchandising cu acelasi nume pentru artistul respectiv, se returneaza un mesaj de eroare.
+     *         - Daca pretul furnizat este negativ, se returneaza un mesaj de eroare legat de pretul negativ.
+     */
     public static String AddMerch(String username, String name, String description, int price) {
         Artist artist = null;
         boolean found_merch = false;
@@ -212,7 +271,10 @@ public class Admin {
                 break;
             }
         }
-        ArrayList<Merch> merches = artist.getMerches();
+        ArrayList<Merch> merches = new ArrayList<>();
+        if (artist != null) {
+            merches = artist.getMerches();
+        }
         for (Merch merch : merches) {
             if (merch.getName().equals(name)) {
                 found_merch = true;
@@ -222,7 +284,9 @@ public class Admin {
         if (!found_merch) {
             if (price > 0) {
                 Merch merch = new Merch(name, description, price);
-                artist.addMerch(merch);
+                if (artist != null) {
+                    artist.addMerch(merch);
+                }
                 return username + " has added new merchandise successfully.";
             } else {
                 return "Price for merchandise can not be negative.";
@@ -232,6 +296,16 @@ public class Admin {
         }
     }
 
+    /**
+     * Adauga o noua anuntare pentru un host data, cu anumite informatii precum nume si descriere.
+     *
+     * @param username     Numele hostului pentru care se adauga anuntarea.
+     * @param name         Numele anuntarii de adaugat.
+     * @param description  Descrierea anuntarii de adaugat.
+     * @return Un mesaj care indica rezultatul adaugarii anuntarii:
+     *         - Daca adaugarea s-a realizat cu succes, se returneaza un mesaj de succes.
+     *         - Daca exista deja o anuntare cu acelasi nume pentru hostul respectiv, se returneaza un mesaj de eroare.
+     */
     public static String AddAnnouncement(String username, String name, String description) {
         Host host = null;
         boolean found_announcement = false;
@@ -242,7 +316,10 @@ public class Admin {
                 break;
             }
         }
-        ArrayList<Announcement> announcements = host.getAnnouncements();
+        ArrayList<Announcement> announcements = new ArrayList<>();
+        if (host != null) {
+            announcements = host.getAnnouncements();
+        }
         for (Announcement announcement : announcements) {
             if (announcement.getName().equals(name)) {
                 found_announcement = true;
@@ -251,13 +328,24 @@ public class Admin {
         }
         if (!found_announcement) {
             Announcement announcement = new Announcement(name, description);
-            host.addAnnouncement(announcement);
+            if (host != null) {
+                host.addAnnouncement(announcement);
+            }
             return username + " has successfully added new announcement.";
         } else {
             return username + " has already added an announcement with this name.";
         }
     }
 
+    /**
+     * Sterge o anuntare existenta pentru un host dat, pe baza numelui acestuia.
+     *
+     * @param username Numele hostului pentru care se sterge anuntarea.
+     * @param name     Numele anuntarii de sters.
+     * @return Un mesaj care indica rezultatul stergerii anuntarii:
+     *         - Daca stergerea s-a realizat cu succes, se returneaza un mesaj de succes.
+     *         - Daca nu exista nicio anuntare cu acelasi nume pentru hostul respectiv, se returneaza un mesaj de eroare.
+     */
     public static String RemoveAnnouncement(String username, String name) {
         Host host = null;
         boolean found_announcement = false;
@@ -268,7 +356,10 @@ public class Admin {
                 break;
             }
         }
-        ArrayList<Announcement> announcements = host.getAnnouncements();
+        ArrayList<Announcement> announcements = new ArrayList<>();
+        if (host != null) {
+            announcements = host.getAnnouncements();
+        }
         Iterator<Announcement> iterator = announcements.iterator();
         while (iterator.hasNext()) {
             Announcement announcement = iterator.next();
@@ -285,6 +376,15 @@ public class Admin {
         }
     }
 
+    /**
+     * Sterge un eveniment existent pentru un artist dat, pe baza numelui acestuia.
+     *
+     * @param username Numele utilizatorului artist pentru care se sterge evenimentul.
+     * @param name     Numele evenimentului de sters.
+     * @return Un mesaj care indica rezultatul stergerii evenimentului:
+     *         - Daca stergerea s-a realizat cu succes, se returneaza un mesaj de succes.
+     *         - Daca nu exista niciun eveniment cu acelasi nume pentru artistul respectiv, se returneaza un mesaj de eroare.
+     */
     public static String RemoveEvent(String username, String name) {
         Artist artist = null;
         boolean found_event = false;
@@ -295,7 +395,10 @@ public class Admin {
                 break;
             }
         }
-        ArrayList<Event> events = artist.getEvents();
+        ArrayList<Event> events = new ArrayList<>();
+        if (artist != null) {
+            events = artist.getEvents();
+        }
         Iterator<Event> iterator = events.iterator();
         while (iterator.hasNext()) {
             Event event = iterator.next();
@@ -312,6 +415,20 @@ public class Admin {
         }
     }
 
+    /**
+     * Adauga un nou album pentru un artist dat, cu anumite informatii precum nume, piese, an de lansare si descriere.
+     *
+     * @param username      Numele utilizatorului artist pentru care se adauga albumul.
+     * @param name          Numele albumului de adaugat.
+     * @param album_songs   Lista de piese care vor face parte din album.
+     * @param releaseYear   Anul de lansare al albumului.
+     * @param description   Descrierea albumului de adaugat.
+     * @return Un mesaj care indica rezultatul adaugarii albumului:
+     *         - Daca adaugarea s-a realizat cu succes, se returneaza un mesaj de succes.
+     *         - Daca exista deja un album cu acelasi nume pentru artistul respectiv, se returneaza un mesaj de eroare.
+     *         - Daca exista cel putin o piesa duplicata in cadrul albumului, se returneaza un mesaj de eroare.
+     *         - Daca numele de utilizator specificat nu exista, se returneaza un mesaj de eroare.
+     */
     public static String AddAlbum(String username, String name, List<SongInput> album_songs, int releaseYear, String description) {
         boolean found = false;
         Artist artist = null;
@@ -335,11 +452,20 @@ public class Admin {
                 }
             }
             if (!found_album) {
-                List<Song> sngs = new ArrayList<>();
-                Album album = new Album(name, username, album_songs, releaseYear, description, sngs);
+                List<Song> currentSongs = new ArrayList<>();
+                Album album = new Album(name, username, album_songs, releaseYear, description, currentSongs);
                 for (SongInput songInput : album_songs) {
-                    Song song = new Song(songInput.getName(),songInput.getDuration(),songInput.getAlbum(),songInput.getTags(),songInput.getLyrics(),songInput.getGenre(),songInput.getReleaseYear(), songInput.getArtist());
-                    sngs.add(song);
+                    Song song = new Song(
+                            songInput.getName(),
+                            songInput.getDuration(),
+                            songInput.getAlbum(),
+                            songInput.getTags(),
+                            songInput.getLyrics(),
+                            songInput.getGenre(),
+                            songInput.getReleaseYear(),
+                            songInput.getArtist()
+                    );
+                    currentSongs.add(song);
                 }
 
                 Set<String> songNamesSet = new HashSet<>();
@@ -356,7 +482,7 @@ public class Admin {
                     return username + " has the same song at least twice in this album.";
                 } else {
                     artist.addAlbum(album);
-                    albumslibrary.add(album);
+                    albumsLibrary.add(album);
                     for (SongInput song : album_songs) {
                         Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
                         songs.add(newsong);
@@ -369,6 +495,18 @@ public class Admin {
         }
     }
 
+    /**
+     * Adauga un nou podcast pentru un hostul dat, cu anumite informatii precum nume si episoade.
+     *
+     * @param username          Numele hostului pentru care se adauga podcastul.
+     * @param name              Numele podcastului de adaugat.
+     * @param podcastEpisodes   Lista de episoade care vor face parte din podcast.
+     * @return Un mesaj care indica rezultatul adaugarii podcastului:
+     *         - Daca adaugarea s-a realizat cu succes, se returneaza un mesaj de succes.
+     *         - Daca exista deja un podcast cu acelasi nume pentru hostul respectiv, se returneaza un mesaj de eroare.
+     *         - Daca exista cel putin un episod duplicat in cadrul podcastului, se returneaza un mesaj de eroare.
+     *         - Daca numele de utilizator specificat nu exista, se returneaza un mesaj de eroare.
+     */
     public static String AddPodcast(String username, String name, List<EpisodeInput> podcastEpisodes) {
         boolean found = false;
         Host host = null;
@@ -423,6 +561,15 @@ public class Admin {
         }
     }
 
+    /**
+     * Genereaza un obiect JSON ce contine informatii despre albumele unui artist si trimite un mesaj de eroare in cazul unei situatii neasteptate.
+     *
+     * @param username   Numele de utilizator al artistului ale carui albume vor fi afisate.
+     * @param timestamp  Marca de timp pentru solicitarea afisarii albumelelor.
+     * @return Un obiect JSON care contine informatii despre albumele artistului:
+     *         - Daca artistul este gasit, se returneaza un obiect JSON cu informatii despre albume si un mesaj de succes.
+     *         - Daca artistul nu este gasit, se returneaza un obiect JSON cu un mesaj de eroare.
+     */
     public static ObjectNode ShowAlbum (String username, int timestamp) {
         Artist artist = null;
         for (User user : users) {
@@ -431,9 +578,25 @@ public class Admin {
                 break;
             }
         }
-        return artist.showAlbums(username, timestamp);
+        if (artist != null) {
+            return artist.showAlbums(username, timestamp);
+        } else {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ObjectNode objectNode = objectMapper.createObjectNode();
+            objectNode.put("message", "Error");
+            return objectNode;
+        }
     }
 
+    /**
+     * Genereaza un obiect JSON ce contine informatii despre podcasturile unei gazde si trimite un mesaj de eroare in cazul unei situatii neasteptate.
+     *
+     * @param username   Numele de utilizator al gazdei ale carui podcasturi vor fi afisate.
+     * @param timestamp  Marca de timp pentru solicitarea afisarii podcasturilor.
+     * @return Un obiect JSON care contine informatii despre podcasturile gazdei:
+     *         - Daca hostul este gasita, se returneaza un obiect JSON cu informatii despre podcasturi si un mesaj de succes.
+     *         - Daca hostul nu este gasita, se returneaza un obiect JSON cu un mesaj de eroare.
+     */
     public static ObjectNode showPodcasts (String username, int timestamp) {
         Host host = null;
         for (User user: users) {
@@ -442,9 +605,30 @@ public class Admin {
                 break;
             }
         }
-        return host.showPodcasts(username, timestamp);
+        if (host != null) {
+            return host.showPodcasts(username, timestamp);
+        } else {
+            ObjectMapper objectMapper = new ObjectMapper();
+            ObjectNode objectNode = objectMapper.createObjectNode();
+            objectNode.put("message", "Error");
+            return objectNode;
+        }
     }
 
+    /**
+     * Adauga un nou utilizator in sistem in functie de tipul specificat.
+     *
+     * @param username Numele de utilizator al noului utilizator.
+     * @param age      Varsta noului utilizator.
+     * @param city     Orasul de provenienta al noului utilizator.
+     * @param type     Tipul de utilizator:
+     *                 - 1 pentru utilizator obisnuit,
+     *                 - 2 pentru artist,
+     *                 - 3 pentru host.
+     * @return Un mesaj care indica rezultatul operatiei:
+     *         - Daca utilizatorul a fost adaugat cu succes, se returneaza un mesaj de succes.
+     *         - Daca numele de utilizator este deja luat, se returneaza un mesaj de eroare.
+     */
     public static String AddUser(String username, int age, String city, int type) {
         boolean found = false;
 
@@ -479,51 +663,53 @@ public class Admin {
         }
     }
 
+    /**
+     * Sterge un utilizator din sistem in functie de numele de utilizator si tipul de utilizator.
+     *
+     * @param username Numele de utilizator al utilizatorului de sters.
+     * @return Un mesaj care indica rezultatul operatiei:
+     *         - Daca utilizatorul a fost sters cu succes, se returneaza un mesaj de succes.
+     *         - Daca utilizatorul nu a putut fi sters din cauza interactiunilor existente, se returneaza un mesaj de eroare.
+     */
     public static String DeleteUser(String username) {
         int indexToRemove = -1;
         int type = 0;
         User ourUser = null;
-        List<Episode> allEpisodes = podcasts.stream()  //retinem o lista cu toate episoadele din podcasturi
-                .flatMap(podcast -> podcast.getEpisodes().stream())
-                .collect(Collectors.toList());
-
+        boolean interactions = false;
 
         for (int i = 0; i < users.size(); i++) {
             User user = users.get(i);
             if (user.getUsername().equals(username)) {
                 ourUser = user;
-                type = user.getTypeofuser();
+                type = user.getTypeOfUser();
                 indexToRemove = i;
                 break;
             }
         }
 
         if (type == 1) {
-            if (indexToRemove != -1) {
-                ArrayList<Playlist> playlists = ourUser.getPlaylists(); //playlisturile userului pe care vrem sa le stergem
-                ArrayList<Playlist> followedplaylist = ourUser.getFollowedPlaylists();  //playlisturile urmarite de user
-                List<Song> playlistsSongs = new ArrayList<>();  //toate melodiile din playlisturile userului
+                ArrayList<Playlist> playlists = ourUser.getPlaylists();
+                ArrayList<Playlist> followedPlaylists = ourUser.getFollowedPlaylists();
+                List<Song> playlistsSongs = new ArrayList<>();
                 for (Playlist playlist : playlists) {
-                    for (Song song : playlist.getSongs()) {
-                        playlistsSongs.add(song);
-                    }
+                    playlistsSongs.addAll(playlist.getSongs());
                 }
 
-                boolean interactions = false;
-                for (User user : users) {  //cautam sa vedem daca playerul tuturor userilor contine vreo melodie din playlisturile sale
+                for (User user : users) {
                     PlayerStats player = user.getPlayerStats();
                     if (player.getRemainedTime() != 0) {
                         for (Song song : playlistsSongs) {
                             if (song.getName().equals(player.getName())) {
                                 interactions = true;
+                                break;
                             }
                         }
                     }
                 }
-                if (interactions == true) {
+                if (interactions) {
                     return username + " can't be deleted.";
                 } else {
-                    for (User user : users) {  //eliminam toate playlisturile userului nostru din urmaririle celorlalti
+                    for (User user : users) {
                         Iterator<Playlist> playlistIterator = user.getFollowedPlaylists().iterator();
                         while (playlistIterator.hasNext()) {
                             Playlist playlist1 = playlistIterator.next();
@@ -537,8 +723,8 @@ public class Admin {
                         }
                     }
 
-                    for (User user : users) {  //miscsoram nr de followers la playlisturile urmarite de userul nostru la ceilalti useri
-                        for (Playlist playlist : followedplaylist) {
+                    for (User user : users) {
+                        for (Playlist playlist : followedPlaylists) {
                             if (playlist.getOwner().equals(user.getUsername())) {
                                 int followers = playlist.getFollowers();
                                 followers--;
@@ -550,138 +736,128 @@ public class Admin {
                     users.remove(indexToRemove);
                     return username + " was successfully deleted.";
                 }
-            } else {
-                return "Greseala Delete User Normal";
-            }
-        } else if (type == 2) {   //eliminare artist + legaturi
-            boolean interactions = false;
+        } else if (type == 2) {
 
-            if (indexToRemove == -1) {
-                return "Greseala Delete User Artist";
-            } else {
-                for (User user : users) {  //cautam sa vedem daca playerul userilor contine vreo melodie de-a artistului
+                for (User user : users) {
                     PlayerStats player = user.getPlayerStats();
-                    if (player.getRemainedTime() != 0) {  //daca gasim o melodie care ruleaza in playerul unui user avem interactiuni
+                    if (player.getRemainedTime() != 0) {
                         for (Song song : songs) {
                             if (song.getName().equals(player.getName())) {
-                                Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
-                                if (newsong.getArtist().equals(username)) {
+                                if (song.getArtist().equals(username)) {
                                     interactions = true;
                                 }
                             }
                         }
                     }
-                    if (user.getSelectArtistPage() != null) {  //cautam sa vedem daca userii se afla pe pagina artistului
+                    if (user.getSelectArtistPage() != null) {
                         if (user.getSelectArtistPage().equals(username)) {
                             interactions = true;
                         }
                     }
                 }
-                if (interactions == true) {
+                if (interactions) {
                     return username + " can't be deleted.";
                 } else {
-                    Iterator<Album> iterator = albumslibrary.iterator();
-                    while (iterator.hasNext()) {  //stergem toate albumele din librarie
-                        Album album = iterator.next();
-                        if (album.getOwner().equals(username)) {
-                            iterator.remove();
-                        }
-                    }
-
-                    Artist artist = null;  //gasim artistul in users
+                    albumsLibrary.removeIf(album -> album.getOwner().equals(username));
+                    Artist artist = null;
                     for (User user : users) {
                         if (user.getUsername().equals(username)) {
                             artist = (Artist) user;
                             break;
                         }
                     }
-                    List<Album> currentalbums = artist.getAlbums(); //toate albumele artistului
-                    List<Song> allartistsongs = new ArrayList<>(); //toate melodiile din albumele artistului
-                    for (Album currentalbum : currentalbums) {
-                        List<Song> allsongs = currentalbum.getSongs1();
-                        for (Song song : allsongs) {
-                            allartistsongs.add(song);
-                        }
+                    List<Album> CurrentAlbum = new ArrayList<>();
+                    if (artist != null) {
+                        CurrentAlbum = artist.getAlbums();
                     }
-                    Iterator<Song> songIterator = songs.iterator();  //stergem toate melodiile din biblioteca si din likedsongs
+                    List<Song> allArtistSongs = new ArrayList<>();
+                    for (Album currentalbum : CurrentAlbum) {
+                        List<Song> allSongs = currentalbum.getSongs1();
+                        allArtistSongs.addAll(allSongs);
+                    }
+
+                    Iterator<Song> songIterator = songs.iterator();
                     while (songIterator.hasNext()) {
                         Song song = songIterator.next();
-                        ArrayList<Song> newlikedsongs = new ArrayList<>();
+                        ArrayList<Song> newLikedSongs = new ArrayList<>();
                         for (User user : users) {
                             for (Song currentlikedsong : user.getLikedSongs()) {
                                 boolean found = false;
-                                for (Song artistsong : allartistsongs) {
+                                for (Song artistsong : allArtistSongs) {
                                     if (artistsong.getName().equals(currentlikedsong.getName())) {
                                         found = true;
                                         break;
                                     }
                                 }
                                 if (!found) {
-                                    newlikedsongs.add(currentlikedsong);
+                                    newLikedSongs.add(currentlikedsong);
                                 }
                             }
-                            user.setLikedSongs(newlikedsongs);
-                            newlikedsongs.clear();
+                            user.setLikedSongs(newLikedSongs);
+                            newLikedSongs.clear();
                         }
-                        if (song.getArtist().equals(artist.getUsername())) {
-                            songIterator.remove();
+                        if (artist != null) {
+                            if (song.getArtist().equals(artist.getUsername())) {
+                                songIterator.remove();
+                            }
                         }
                     }
 
                     users.remove(indexToRemove);
                     return username + " was successfully deleted.";
                 }
-            }
         } else {
-            boolean interactions = false;
             Host ourHost = null;
             for (User user : users) {
                 if (user.getUsername().equals(username)) {
                     ourHost = (Host) user;
                 }
             }
-            ArrayList<Podcast> allHostPodcasts = ourHost.getPodcasts();  //selectam toate podcasturile hostului
-            List<Episode> allHostEpisodes = allHostPodcasts.stream()  //selectam toate episoadele din podcasturile hostului
-                    .flatMap(podcast -> podcast.getEpisodes().stream())
-                    .collect(Collectors.toList());
 
+            List<Episode> allHostEpisodes = new ArrayList<>();
+            if (ourHost != null) {
+                ArrayList<Podcast> allHostPodcasts = ourHost.getPodcasts();
+                allHostEpisodes = allHostPodcasts.stream()
+                        .flatMap(podcast -> podcast.getEpisodes().stream())
+                        .toList();
+            }
 
-            if (indexToRemove == -1) {
-                return "Greseala Delete User Artist";
-            } else {
-                for (User user : users) {  //cautam sa vedem daca in playerul userilor ruleaza vreun podcast de-al hostului
+                for (User user : users) {
                     PlayerStats player = user.getPlayerStats();
-                    if (player.getRemainedTime() != 0) {  //daca gasim o melodie care ruleaza in playerul unui user avem interactiuni
-                        interactions = allEpisodes.stream()
-                                .filter(episode -> episode.getName().equals(player.getName()))
-                                .anyMatch(episode -> allHostEpisodes.stream()
-                                        .anyMatch(hostEpisode -> hostEpisode.getName().equals(episode.getName())));
-
+                    if (player.getRemainedTime() != 0) {
+                        for (Episode episode : allHostEpisodes) {
+                            if (episode.getName().equals(player.getName())) {
+                                interactions = true;
+                                break;
+                            }
+                        }
                     }
-                    if (user.getSelectHostPage() != null) {  //cautam sa vedem daca userii se afla pe pagina artistului
+                    if (user.getSelectHostPage() != null) {
                         if (user.getSelectHostPage().equals(username)) {
                             interactions = true;
                         }
                     }
                 }
 
-                if (interactions == true) {
+                if (interactions) {
                     return username + " can't be deleted.";
                 } else {
-                    Iterator<Podcast> iterator = podcasts.iterator();
-                    while (iterator.hasNext()) {  //stergem toate podcasturile din librarie
-                        Podcast podcast = iterator.next();
-                        if (podcast.getOwner().equals(username)) {
-                            iterator.remove();
-                        }
-                    }
+                    podcasts.removeIf(podcast -> podcast.getOwner().equals(username));
                     users.remove(indexToRemove);
                     return username + " was successfully deleted.";
                 }
-            }
         }
     }
 
+    /**
+     * Sterge un album de artist din sistem in functie de numele artistului si numele albumului.
+     *
+     * @param username Numele de utilizator al artistului.
+     * @param name     Numele albumului de sters.
+     * @return Un mesaj care indica rezultatul operatiei:
+     *         - Daca albumul a fost sters cu succes, se returneaza un mesaj de succes.
+     *         - Daca albumul nu a putut fi sters din cauza interactiunilor existente, se returneaza un mesaj de eroare.
+     */
     public static String RemoveAlbum(String username, String name) {
         Artist artist = null;
         boolean found_album = false;
@@ -693,14 +869,17 @@ public class Admin {
                 break;
             }
         }
-        ArrayList<Album> albums = artist.getAlbums();  //toate albumele artistului
-        Album searchedalbum = new Album();  //albumul pe care vrem sa il stergem
-        List<Song> allartistsongs = new ArrayList<>();  //toate melodiile din albumul artistului
+        ArrayList<Album> albums = new ArrayList<>();
+        if (artist != null) {
+            albums = artist.getAlbums();
+        }
+        Album searchedalbum;
+        List<Song> allArtistSongs = new ArrayList<>();
 
         for (Album album : albums) {
             if (album.getName().equals(name)) {
                 searchedalbum = album;
-                allartistsongs = searchedalbum.getSongs1();
+                allArtistSongs = searchedalbum.getSongs1();
                 found_album = true;
                 break;
             }
@@ -709,11 +888,10 @@ public class Admin {
         if (found_album) {
             for (User user : users) {
                 PlayerStats player = user.getPlayerStats();
-                if (player.getRemainedTime() != 0) {  //daca gasim o melide care ruleza in playerul unui user o verificam
+                if (player.getRemainedTime() != 0) {
                     for (Song song : songs) {
                         if (song.getName().equals(player.getName())) {
-                            Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
-                            if (newsong.getAlbum().equals(name)) {
+                            if (song.getAlbum().equals(name)) {
                                 interactions = true;
                             }
                         }
@@ -721,11 +899,11 @@ public class Admin {
                 }
             }
 
-            if (interactions == true) {
+            if (interactions) {
                 return username + " can't delete this album.";
             } else {
-                Iterator<Album> iterator = albumslibrary.iterator();
-                while (iterator.hasNext()) {  //stergem albumul din librarie
+                Iterator<Album> iterator = albumsLibrary.iterator();
+                while (iterator.hasNext()) {
                     Album album = iterator.next();
                     if (album.getName().equals(name)) {
                         iterator.remove();
@@ -734,14 +912,14 @@ public class Admin {
                 }
 
                 for (User user : users) {
-                    ArrayList<Playlist> userPlaylists = user.getPlaylists();  //stergem melodiile gaiste in album din playlisturile userilor
+                    ArrayList<Playlist> userPlaylists = user.getPlaylists();
                     ArrayList<Song> userSongsFromPlaylists = new ArrayList<>();
                     for (Playlist playlist : userPlaylists) {
                         userSongsFromPlaylists.addAll(playlist.getSongs());
                         Iterator<Song> iteratorSong = userSongsFromPlaylists.iterator();
                         while (iteratorSong.hasNext()) {
                             Song song = iteratorSong.next();
-                            for (Song artistSong : allartistsongs) {
+                            for (Song artistSong : allArtistSongs) {
                                 if (artistSong.getName().equals(song.getName())) {
                                     iteratorSong.remove();
                                     break;
@@ -753,25 +931,25 @@ public class Admin {
                     user.setPlaylists(userPlaylists);
                 }
 
-                Iterator<Song> songIterator = songs.iterator();  //stergem toate melodiile din biblioteca si din likedsongs
+                Iterator<Song> songIterator = songs.iterator();
                 while (songIterator.hasNext()) {
                     Song song = songIterator.next();
-                    ArrayList<Song> newlikedsongs = new ArrayList<>();
+                    ArrayList<Song> newLikedSongs = new ArrayList<>();
                     for (User user : users) {
                         for (Song currentlikedsong : user.getLikedSongs()) {
                             boolean found = false;
-                            for (Song artistsong : allartistsongs) {
+                            for (Song artistsong : allArtistSongs) {
                                 if (artistsong.getName().equals(currentlikedsong.getName())) {
                                     found = true;
                                     break;
                                 }
                             }
                             if (!found) {
-                                newlikedsongs.add(currentlikedsong);
+                                newLikedSongs.add(currentlikedsong);
                             }
                         }
-                        user.setLikedSongs(newlikedsongs);
-                        newlikedsongs.clear();
+                        user.setLikedSongs(newLikedSongs);
+                        newLikedSongs.clear();
                     }
                     if (song.getArtist().equals(artist.getUsername())) {
                         songIterator.remove();
@@ -779,7 +957,7 @@ public class Admin {
                 }
 
                 iterator = albums.iterator();
-                while (iterator.hasNext()) {  //stergem albumul din lista de albume a artistului
+                while (iterator.hasNext()) {
                     Album album = iterator.next();
                     if (album.getName().equals(name)) {
                         iterator.remove();
@@ -794,6 +972,16 @@ public class Admin {
         }
     }
 
+    /**
+     * Sterge un podcast de la un host din sistem in functie de numele host-ului si numele podcast-ului.
+     *
+     * @param username Numele de utilizator al host-ului.
+     * @param name     Numele podcast-ului de sters.
+     * @return Un mesaj care indica rezultatul operatiei:
+     *         - Daca podcast-ul a fost sters cu succes, se returneaza un mesaj de succes.
+     *         - Daca podcast-ul nu a putut fi sters din cauza interactiunilor existente, se returneaza un mesaj de eroare.
+     *         - Daca nu exista un podcast cu numele specificat, se returneaza un mesaj de eroare.
+     */
     public static String RemovePodcast(String username, String name) {
         Host host = null;
         boolean found_podcast = false;
@@ -805,35 +993,37 @@ public class Admin {
                 break;
             }
         }
-        ArrayList<Podcast> podcasts1 = host.getPodcasts();  //toate podcasturile hostului
-        Podcast searchedpodcast = null;  //podcastul pe care vrem sa il stergem
-        ArrayList<Episode> episodes = new ArrayList<>();  //toate episoadele din podcastul pe care vrem sa il stergem
+        ArrayList<Podcast> podcasts1 = new ArrayList<>();
+        if (host != null) {
+            podcasts1 = host.getPodcasts();
+        }
+        ArrayList<Episode> episodes = new ArrayList<>();
 
         for (Podcast podcast : podcasts1) {
             if (podcast.getName().equals(name)) {
                 episodes.addAll(podcast.getEpisodes());
-                searchedpodcast = podcast;
                 found_podcast = true;
                 break;
             }
         }
 
-        if (found_podcast) {  //verificare ruleaza podcast in playerul userilor
+        if (found_podcast) {
             for (User user : users) {
                 PlayerStats player = user.getPlayerStats();
                 if (player.getRemainedTime() != 0) {
                     for (Episode episode : episodes) {
                         if (episode.getName().equals(player.getName())) {
                             interactions = true;
+                            break;
                         }
                     }
                 }
             }
 
-            if (interactions == true) {
+            if (interactions) {
                 return username + " can't delete this podcast.";
-            } else {  //stergem podcastul din library
-                Iterator<Podcast> podcastIterator = podcasts.iterator();  //stergem podcastul din biblioteca
+            } else {
+                Iterator<Podcast> podcastIterator = podcasts.iterator();
                 while (podcastIterator.hasNext()) {
                     Podcast podcast = podcastIterator.next();
                     if (podcast.getName().equals(name)) {
@@ -842,7 +1032,7 @@ public class Admin {
                 }
 
                 podcastIterator = podcasts1.iterator();
-                while (podcastIterator.hasNext()) {  //stergem podcastul din lista de podcasturi a hostului
+                while (podcastIterator.hasNext()) {
                     Podcast podcast = podcastIterator.next();
                     if (podcast.getName().equals(name)) {
                         podcastIterator.remove();
@@ -931,6 +1121,21 @@ public class Admin {
         return topSongs;
     }
 
+    /**
+     * Returneaza o lista cu numele celor mai apreciate 5 albume din biblioteca generala, sortate dupa numarul total de aprecieri
+     * si, in caz de egalitate, dupa nume.
+     *
+     * @return Lista continand numele celor mai apreciate 5 albume.
+     */
+    public static List<String> getTop5Albums() {
+        return albumsLibrary.stream()
+                .sorted(Comparator.comparing(Album::getTotalLikes).reversed()
+                        .thenComparing(Album::getName))
+                .limit(5)
+                .map(Album::getName)
+                .collect(Collectors.toList());
+    }
+
     public static List<String> getTop5Playlists() {
         List<Playlist> sortedPlaylists = new ArrayList<>(getPlaylists());
         sortedPlaylists.sort(Comparator.comparingInt(Playlist::getFollowers)
@@ -946,40 +1151,46 @@ public class Admin {
         return topPlaylists;
     }
 
+    /**
+     * Returneaza o lista cu numele utilizatorilor online de tipul "Player" (tip 1).
+     *
+     * @return Lista continand numele utilizatorilor online de tip "Player".
+     */
     public static List<String> getOnlineUser() {
         List<String> onlineUsers = new ArrayList<>();
         for (User user : users) {
-            if (user.isOnline() && user.getTypeofuser() == 1) {
+            if (user.isOnline() && user.getTypeOfUser() == 1) {
                 onlineUsers.add(user.getUsername());
             }
         }
         return onlineUsers;
     }
 
+    /**
+     * Returneaza o lista cu numele tuturor utilizatorilor de toate tipurile (Player, Artist, Host).
+     *
+     * @return Lista continand numele tuturor utilizatorilor de toate tipurile.
+     */
     public static List<String> getAllUsers() {
         Set<String> allUsersSet = new LinkedHashSet<>();
 
         for (User user : users) {
-            if (user.getTypeofuser() == 1) {
+            if (user.getTypeOfUser() == 1) {
                 allUsersSet.add(user.getUsername());
             }
         }
         for (User user : users) {
-            if (user.getTypeofuser() == 2) {
+            if (user.getTypeOfUser() == 2) {
                 allUsersSet.add(user.getUsername());
             }
         }
         for (User user : users) {
-            if (user.getTypeofuser() == 3) {
+            if (user.getTypeOfUser() == 3) {
                 allUsersSet.add(user.getUsername());
             }
         }
 
         return new ArrayList<>(allUsersSet);
-    }
-
-    public static List<Album> getAlbumslibrary() {
-        return albumslibrary;
     }
 
     public static void reset() {

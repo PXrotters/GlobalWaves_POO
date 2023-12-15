@@ -5,29 +5,16 @@ import app.audio.Collections.Podcast;
 import app.audio.Files.Episode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter @Setter
 public class HostPage {
     ArrayList<Podcast> podcasts;
     ArrayList<Announcement> announcements;
-
-    public ArrayList<Podcast> getPodcasts() {
-        return podcasts;
-    }
-
-    public void setPodcasts(ArrayList<Podcast> podcasts) {
-        this.podcasts = podcasts;
-    }
-
-    public ArrayList<Announcement> getAnnouncements() {
-        return announcements;
-    }
-
-    public void setAnnouncements(ArrayList<Announcement> announcements) {
-        this.announcements = announcements;
-    }
 
     public HostPage(ArrayList<Podcast> podcasts, ArrayList<Announcement> announcements) {
         this.podcasts = podcasts;
@@ -36,6 +23,14 @@ public class HostPage {
 
     public final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Construieste un obiect JSON pentru a afisa informatiile despre o pagina de host.
+     *
+     * @param hostPage   Pagina hostului din care se extrag informatiile.
+     * @param username   Numele utilizatorului pentru care se afiseaza pagina.
+     * @param timestamp  Timestamp-ul momentului afisarii paginii.
+     * @return Un obiect JSON care contine informatii despre pagina hostului.
+     */
     public ObjectNode showPage(HostPage hostPage, String username, int timestamp) {
         ObjectNode resultNode = objectMapper.createObjectNode();
         resultNode.put("user", username);
@@ -57,6 +52,12 @@ public class HostPage {
         return resultNode;
     }
 
+    /**
+     * Adauga informatii despre obiectele dintr-o lista la un sir de caractere.
+     *
+     * @param builder  StringBuilder pentru construirea sirului de caractere.
+     * @param list     Lista de obiecte din care se extrag informatiile.
+     */
     private void appendListToStringBuilder(StringBuilder builder, List<?> list) {
         builder.append("[");
         for (int i = 0; i < list.size(); i++) {
@@ -100,10 +101,4 @@ public class HostPage {
         }
         builder.append("]\n");
     }
-
-
-
-
-
-
 }

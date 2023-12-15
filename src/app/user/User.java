@@ -1,7 +1,6 @@
 package app.user;
 
 import app.Admin;
-import app.PageSystem.HomePage;
 import app.audio.Collections.AudioCollection;
 import app.audio.Collections.Playlist;
 import app.audio.Collections.PlaylistOutput;
@@ -14,15 +13,11 @@ import app.player.PlayerStats;
 import app.searchBar.Filters;
 import app.searchBar.SearchBar;
 import app.utils.Enums;
-import com.sun.nio.sctp.PeerAddressChangeNotification;
 import lombok.Getter;
-import fileio.input.CommandInput;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.List;
-import java.util.zip.Adler32;
 
 public class User {
     @Getter @Setter
@@ -41,24 +36,24 @@ public class User {
     private final SearchBar searchBar;
     private boolean searchedArtist = false;
     private boolean searchedHost = false;
-    private ArrayList<String> searchedartists = new ArrayList<>();
-    private ArrayList<String> searchedhosts = new ArrayList<>();
+    private ArrayList<String> searchedArtists = new ArrayList<>();
+    private ArrayList<String> searchedHosts = new ArrayList<>();
     private boolean lastSearched;
     @Getter
     private boolean online;  //vedem daca userul este sau nu online
     @Getter @Setter
-    private int typeofuser = 0;  //1-normal 2-artist 3-host;
+    private int typeOfUser;  //1-normal 2-artist 3-host;
     @Getter @Setter
-    private int currentPage = 0; //1-Home 2-LikedContent 3-Artist 4-Host
+    private int currentPage;  //1-Home 2-LikedContent 3-Artist 4-Host
     @Getter @Setter
-    private String artistPage; //numele artistului selectat
+    private String artistPage;  //numele artistului selectat
     @Getter @Setter
-    private String hostPage; //numele hostului selectat
+    private String hostPage;  //numele hostului selectat
     @Getter @Setter
     private String selectArtistPage = null;  //vedem daca userul se afla pe pagina unui artist
     @Getter @Setter
     private String selectHostPage = null;  //vedem daca userul se afla pe pagina unui host
-    private String typeofsong = null;
+    private String typeOfSong = null;
 
     public User(String username, int age, String city) {
         this.username = username;
@@ -71,17 +66,17 @@ public class User {
         player = new Player();
         searchBar = new SearchBar(username);
         lastSearched = false;
-        typeofuser = 1;
+        typeOfUser = 1;
         currentPage = 1;
         artistPage = null;
     }
 
-    public User(String username, int age, String city, int typeofuser) {
+    public User(String username, int age, String city, int typeOfUser) {
         this.username = username;
         this.age = age;
         this.city = city;
         this.online = true;
-        this.typeofuser = typeofuser;
+        this.typeOfUser = typeOfUser;
         currentPage = 1;
         playlists = new ArrayList<>();
         likedSongs = new ArrayList<>();
@@ -101,25 +96,25 @@ public class User {
 
         if (type.equals("artist")) {
             String part = filters.getName();
-            searchedartists = Admin.getArtist(part);
+            searchedArtists = Admin.getArtist(part);
             searchedArtist = true;
             searchedHost = false;
-            typeofsong = null;
-            return searchedartists;
+            typeOfSong = null;
+            return searchedArtists;
         } else if (type.equals("host")) {
             String part = filters.getName();
-            searchedhosts = Admin.getHost(part);
+            searchedHosts = Admin.getHost(part);
             searchedHost = true;
             searchedArtist = false;
-            typeofsong = null;
-            return searchedhosts;
+            typeOfSong = null;
+            return searchedHosts;
         } else {
             searchedHost = false;
             searchedArtist = false;
             if (type.equals("album")) {
-                typeofsong = "album";
+                typeOfSong = "album";
             } else {
-                typeofsong = null;
+                typeOfSong = null;
             }
             List<LibraryEntry> libraryEntries = searchBar.search(filters, type);
 
@@ -138,19 +133,19 @@ public class User {
         LibraryEntry selected;
         lastSearched = false;
 
-        if (searchedArtist == false && searchedHost == false) {
+        if (!searchedArtist && !searchedHost) {
             selectHostPage = null;
             selectArtistPage = null;
             selected = searchBar.select(itemNumber);
         } else if (searchedArtist) {
             this.currentPage = 3;
-            if (searchedartists != null && itemNumber > 0 && itemNumber <= searchedartists.size()) {
-                name = searchedartists.get(itemNumber - 1);
+            if (searchedArtists != null && itemNumber > 0 && itemNumber <= searchedArtists.size()) {
+                name = searchedArtists.get(itemNumber - 1);
                 selectArtistPage = name;
                 selectHostPage = null;
                 this.artistPage = name;
                 selected = null;
-                searchedartists = new ArrayList<>();
+                searchedArtists = new ArrayList<>();
             } else {
                 selectHostPage = null;
                 selectArtistPage = null;
@@ -158,13 +153,13 @@ public class User {
             }
         } else {
             this.currentPage = 4;
-            if (searchedhosts != null && itemNumber > 0 && itemNumber <= searchedhosts.size()) {
-                name = searchedhosts.get(itemNumber - 1);
+            if (searchedHosts != null && itemNumber > 0 && itemNumber <= searchedHosts.size()) {
+                name = searchedHosts.get(itemNumber - 1);
                 selectArtistPage = null;
                 selectHostPage = name;
                 this.hostPage = name;
                 selected = null;
-                searchedhosts = new ArrayList<>();
+                searchedHosts = new ArrayList<>();
             } else {
                 selectHostPage = null;
                 selectArtistPage = null;
@@ -174,12 +169,11 @@ public class User {
 
         if (selected == null && name == null) {
             return "The selected ID is too high.";
-        } else if (selected != null && name == null) {
+        } else if (selected != null) {
             return "Successfully selected %s.".formatted(selected.getName());
-        } else if (name != null && selected == null) {
+        } else {
             return "Successfully selected " + name + "'s page.";
         }
-        return "Unexpected situation occurred.";
     }
 
     public String load() {
@@ -190,13 +184,8 @@ public class User {
             return "You can't load an empty audio collection!";
         }
 
-        if (typeofsong == null) {
+        if (typeOfSong == null) {
             player.setSource(searchBar.getLastSelected(), searchBar.getLastSearchType());
-            searchBar.clearSelection();
-
-            player.pause();
-
-            return "Playback loaded successfully.";
         } else {
             player.setRepeatMode(Enums.RepeatMode.NO_REPEAT);
             player.setShuffle(false);
@@ -204,19 +193,12 @@ public class User {
             player.setType(searchBar.getLastSearchType());
             PlayerSource source = new PlayerSource(Enums.PlayerSourceType.ALBUM, (AudioCollection) searchBar.getLastSelected());
             player.setSource(source);
-            searchBar.clearSelection();
-
-            player.pause();
-
-            if (player != null) {
-                if (player.getSource() != null) {
-                    if (player.getSource().getAudioFile() != null)
-                    System.out.println(searchBar.getLastSelected());
-                }
-            }
-
-            return "Playback loaded successfully.";
         }
+
+        searchBar.clearSelection();
+        player.pause();
+        return "Playback loaded successfully.";
+
     }
 
     public String playPause() {
@@ -448,11 +430,7 @@ public class User {
     }
 
     public String getConnectionStatus(User user) {
-        if (online) {
-            online = false;
-        } else {
-            online = true;
-        }
+        online = !online;
         return user.getUsername() + " has changed status successfully.";
     }
 

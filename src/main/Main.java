@@ -1,8 +1,8 @@
 package main;
 
 import app.Admin;
-import app.AdminSingleton;
 import app.CommandRunner;
+import app.SingletonLazy;
 import app.audio.Collections.Album;
 import checker.Checker;
 import checker.CheckerConstants;
@@ -78,13 +78,20 @@ public final class Main {
         CommandInput[] commands = objectMapper.readValue(new File(CheckerConstants.TESTS_PATH + filePath1), CommandInput[].class);
         ArrayNode outputs = objectMapper.createArrayNode();
 
-        Admin admin = AdminSingleton.getInstance();
+        /**
+         * Initializeaza instanta de Admin utilizand Singleton Lazy.
+         * Seteaza utilizatorii, cantecele și podcasturile din biblioteca in Admin.
+         * Initializeaza lista de albume in Admin cu o lista goala.
+         *
+         * @return Instanta de Admin conform Singleton Lazy.
+         */
+        Admin admin = SingletonLazy.getInstance();
 
         admin.setUsers(library.getUsers());
         admin.setSongs(library.getSongs());
         admin.setPodcasts(library.getPodcasts());
         List<Album> albums = new ArrayList<>();
-        admin.setAlbumslibrary(albums);
+        admin.setAlbumsLibrary(albums);
 
         for (CommandInput command : commands) {
             admin.updateTimestamp(command.getTimestamp());
@@ -111,6 +118,7 @@ public final class Main {
                 case "getPreferredGenre" -> outputs.add(CommandRunner.getPreferredGenre(command));
                 case "getTop5Songs" -> outputs.add(CommandRunner.getTop5Songs(command));
                 case "getTop5Playlists" -> outputs.add(CommandRunner.getTop5Playlists(command));
+                case "getTop5Albums" -> outputs.add(CommandRunner.getTop5Albums(command));
                 case "switchConnectionStatus" -> outputs.add(CommandRunner.switchConnectionStatus(command));
                 case "getOnlineUsers" -> outputs.add(CommandRunner.getOnlineUsers(command));
                 case "addUser" -> outputs.add(CommandRunner.AddUser(command));

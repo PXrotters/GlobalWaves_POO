@@ -4,9 +4,12 @@ import app.audio.Collections.Playlist;
 import app.audio.Files.Song;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter @Setter
 public class LikedContentPage {
     ArrayList<Song> likedSongs;
     ArrayList<Playlist> followedPlaylists;
@@ -16,28 +19,16 @@ public class LikedContentPage {
         this.followedPlaylists = followedPlaylists;
     }
 
-    public ArrayList<Song> getLikedSongs() {
-        return likedSongs;
-    }
-
-    public void setLikedSongs(ArrayList<Song> likedSongs) {
-        this.likedSongs = likedSongs;
-    }
-
-    public ArrayList<Playlist> getFollowedPlaylists() {
-        return followedPlaylists;
-    }
-
-    public void setFollowedPlaylists(ArrayList<Playlist> followedPlaylists) {
-        this.followedPlaylists = followedPlaylists;
-    }
-
-    public ObjectMapper getObjectMapper() {
-        return objectMapper;
-    }
-
     public final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Construieste un obiect JSON pentru a afisa informatiile despre pagina continutului apreciat a unui utilizator.
+     *
+     * @param likedContentPage  Pagina continutului apreciat din care se extrag informatiile.
+     * @param username         Numele utilizatorului pentru care se afiseaza pagina.
+     * @param timestamp        Timestamp-ul momentului afisarii paginii.
+     * @return Un obiect JSON care contine informatii despre pagina continutului apreciat.
+     */
     public ObjectNode showPage(LikedContentPage likedContentPage, String username, int timestamp) {
         ObjectNode resultNode = objectMapper.createObjectNode();
         resultNode.put("user", username);
@@ -75,10 +66,22 @@ public class LikedContentPage {
         return resultNode;
     }
 
+    /**
+     * Formateaza o instanta de {@code Song} intr-un sir de caractere cu format specific.
+     *
+     * @param song  Instanta de {@code Song} de formatat.
+     * @return Un sir de caractere care reprezinta formatul specific al cantecului.
+     */
     private String formatSong(Song song) {
         return song.getName() + " - " + song.getArtist();
     }
 
+    /**
+     * Formateaza o instanta de {@code Playlist} intr-un sir de caractere cu format specific.
+     *
+     * @param playlist  Instanta de {@code Playlist} de formatat.
+     * @return Un sir de caractere care reprezinta formatul specific al listei de redare.
+     */
     private String formatPlaylist(Playlist playlist) {
         return playlist.getName() + " - " + playlist.getOwner();
     }

@@ -1,16 +1,10 @@
 package app;
 
-import app.audio.Collections.Album;
-import app.audio.Collections.Playlist;
 import app.audio.Collections.PlaylistOutput;
-import app.audio.Collections.Podcast;
 import app.player.PlayerStats;
 import app.searchBar.Filters;
-import app.user.Artist;
 import app.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.CommandInput;
 
@@ -37,7 +31,7 @@ public class CommandRunner {
             objectNode.put("user", commandInput.getUsername());
             objectNode.put("timestamp", commandInput.getTimestamp());
             objectNode.put("message", message);
-            objectNode.put("results", objectMapper.valueToTree(results));
+            objectNode.set("results", objectMapper.valueToTree(results));
 
             return objectNode;
         } else {
@@ -192,7 +186,7 @@ public class CommandRunner {
     public static ObjectNode like(CommandInput commandInput) {
         User user = Admin.getUser(commandInput.getUsername());
         if (user != null) {
-            String message = null;
+            String message;
             if (!user.isOnline()) {
                 message = user.getUsername() + " is offline.";
             } else {
@@ -320,7 +314,7 @@ public class CommandRunner {
             objectNode.put("command", commandInput.getCommand());
             objectNode.put("user", commandInput.getUsername());
             objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("result", objectMapper.valueToTree(playlists));
+            objectNode.set("result", objectMapper.valueToTree(playlists));
 
             return objectNode;
         } else {
@@ -360,7 +354,7 @@ public class CommandRunner {
             objectNode.put("command", commandInput.getCommand());
             objectNode.put("user", commandInput.getUsername());
             objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("stats", objectMapper.valueToTree(stats));
+            objectNode.set("stats", objectMapper.valueToTree(stats));
 
             return objectNode;
         } else {
@@ -380,7 +374,7 @@ public class CommandRunner {
             objectNode.put("command", commandInput.getCommand());
             objectNode.put("user", commandInput.getUsername());
             objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("result", objectMapper.valueToTree(songs));
+            objectNode.set("result", objectMapper.valueToTree(songs));
 
             return objectNode;
         } else {
@@ -400,7 +394,7 @@ public class CommandRunner {
             objectNode.put("command", commandInput.getCommand());
             objectNode.put("user", commandInput.getUsername());
             objectNode.put("timestamp", commandInput.getTimestamp());
-            objectNode.put("result", objectMapper.valueToTree(preferredGenre));
+            objectNode.set("result", objectMapper.valueToTree(preferredGenre));
 
             return objectNode;
         } else {
@@ -417,7 +411,18 @@ public class CommandRunner {
         ObjectNode objectNode = objectMapper.createObjectNode();
         objectNode.put("command", commandInput.getCommand());
         objectNode.put("timestamp", commandInput.getTimestamp());
-        objectNode.put("result", objectMapper.valueToTree(songs));
+        objectNode.set("result", objectMapper.valueToTree(songs));
+
+        return objectNode;
+    }
+
+    public static ObjectNode getTop5Albums(CommandInput commandInput) {
+        List<String> albums = Admin.getTop5Albums();
+
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        objectNode.set("result", objectMapper.valueToTree(albums));
 
         return objectNode;
     }
@@ -428,7 +433,7 @@ public class CommandRunner {
         ObjectNode objectNode = objectMapper.createObjectNode();
         objectNode.put("command", commandInput.getCommand());
         objectNode.put("timestamp", commandInput.getTimestamp());
-        objectNode.put("result", objectMapper.valueToTree(playlists));
+        objectNode.set("result", objectMapper.valueToTree(playlists));
 
         return objectNode;
     }
@@ -460,7 +465,7 @@ public class CommandRunner {
         ObjectNode objectNode = objectMapper.createObjectNode();
         objectNode.put("command", commandInput.getCommand());
         objectNode.put("timestamp", commandInput.getTimestamp());
-        objectNode.put("result", objectMapper.valueToTree(results));
+        objectNode.set("result", objectMapper.valueToTree(results));
 
         return objectNode;
     }
@@ -470,14 +475,14 @@ public class CommandRunner {
         objectNode.put("command", commandInput.getCommand());
         objectNode.put("timestamp", commandInput.getTimestamp());
         List<String> results = Admin.getAllUsers();
-        objectNode.put("result", objectMapper.valueToTree(results));
+        objectNode.set("result", objectMapper.valueToTree(results));
         return objectNode;
     }
 
     public static ObjectNode AddUser(CommandInput commandInput) {
         ObjectNode objectNode = objectMapper.createObjectNode();
         String typeOfUser = commandInput.getType();
-        int type = 0;
+        int type;
         if (typeOfUser.equals("user")){
             type = 1;
         } else if (typeOfUser.equals("artist")){
@@ -499,7 +504,7 @@ public class CommandRunner {
         int type = 0;
         User user = Admin.getUser(commandInput.getUsername());
         if (user != null) {
-            type = user.getTypeofuser();
+            type = user.getTypeOfUser();
         }
         if (type == 1 || type == 3) {
             message = "The username " + commandInput.getUsername() + " is not an artist.";
@@ -527,7 +532,7 @@ public class CommandRunner {
         int type = 0;
         User user = Admin.getUser(commandInput.getUsername());
         if (user != null) {
-            type = user.getTypeofuser();
+            type = user.getTypeOfUser();
         }
         if (type == 1 || type == 2) {
             message =commandInput.getUsername() + " is not a host.";
@@ -550,13 +555,11 @@ public class CommandRunner {
     }
 
     public static ObjectNode ShowAlbum(CommandInput commandInput) {
-        ObjectNode result = Admin.ShowAlbum(commandInput.getUsername(), commandInput.getTimestamp());
-        return result;
+        return Admin.ShowAlbum(commandInput.getUsername(), commandInput.getTimestamp());
     }
 
     public static ObjectNode ShowPodcasts(CommandInput commandInput) {
-        ObjectNode result = Admin.showPodcasts(commandInput.getUsername(), commandInput.getTimestamp());
-        return result;
+        return Admin.showPodcasts(commandInput.getUsername(), commandInput.getTimestamp());
     }
 
     public static ObjectNode PrintCurrentPage(CommandInput commandInput) {
@@ -570,10 +573,9 @@ public class CommandRunner {
                 objectNode.put("message", commandInput.getUsername() + " is offline.");
                 return objectNode;
             }
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1) {
-                ObjectNode result = Admin.CurrentPage(commandInput.getUsername(), commandInput.getTimestamp());
-                return result;
+                return Admin.CurrentPage(commandInput.getUsername(), commandInput.getTimestamp());
             } else {
                 objectNode.put("message", "False");
                 return objectNode;
@@ -602,18 +604,16 @@ public class CommandRunner {
         User user = Admin.getUser(commandInput.getUsername());
         if (user == null) {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
-            return objectNode;
         } else {
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1 || type == 3) {
-                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
-                return objectNode;
+                objectNode.put("message", commandInput.getUsername() + " is not an artist.");
             } else {
                 String message = Admin.AddEvent(commandInput.getUsername(), commandInput.getName(), commandInput.getDescription(), commandInput.getDate());
                 objectNode.put("message", message);
-                return objectNode;
             }
         }
+        return objectNode;
     }
 
     public static ObjectNode AddMerch (CommandInput commandInput) {
@@ -624,18 +624,21 @@ public class CommandRunner {
         User user = Admin.getUser(commandInput.getUsername());
         if (user == null) {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
-            return objectNode;
         } else {
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1 || type == 3) {
-                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
-                return objectNode;
+                objectNode.put("message", commandInput.getUsername() + " is not an artist.");
             } else {
-                String message = Admin.AddMerch(commandInput.getUsername(),commandInput.getName(),commandInput.getDescription(),commandInput.getPrice());
+                String message = Admin.AddMerch(
+                        commandInput.getUsername(),
+                        commandInput.getName(),
+                        commandInput.getDescription(),
+                        commandInput.getPrice()
+                );
                 objectNode.put("message", message);
-                return objectNode;
             }
         }
+        return objectNode;
     }
 
     public static ObjectNode AddAnnouncement (CommandInput commandInput) {
@@ -646,18 +649,20 @@ public class CommandRunner {
         User user = Admin.getUser(commandInput.getUsername());
         if (user == null) {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
-            return objectNode;
         } else {
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1 || type == 2) {
-                objectNode.put("message",commandInput.getUsername() + " is not a host.");
-                return objectNode;
+                objectNode.put("message", commandInput.getUsername() + " is not a host.");
             } else {
-                String message = Admin.AddAnnouncement(commandInput.getUsername(), commandInput.getName(), commandInput.getDescription());
+                String message = Admin.AddAnnouncement(
+                        commandInput.getUsername(),
+                        commandInput.getName(),
+                        commandInput.getDescription()
+                );
                 objectNode.put("message", message);
-                return objectNode;
             }
         }
+        return objectNode;
     }
 
     public static ObjectNode RemoveAnnouncement (CommandInput commandInput) {
@@ -668,18 +673,17 @@ public class CommandRunner {
         User user = Admin.getUser(commandInput.getUsername());
         if (user == null) {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
-            return objectNode;
         } else {
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1 || type == 2) {
-                objectNode.put("message",commandInput.getUsername() + " is not a host.");
-                return objectNode;
+                objectNode.put("message", commandInput.getUsername() + " is not a host.");
             } else {
-                String message = Admin.RemoveAnnouncement(commandInput.getUsername(), commandInput.getName());
+                String message;
+                message = Admin.RemoveAnnouncement(commandInput.getUsername(), commandInput.getName());
                 objectNode.put("message", message);
-                return objectNode;
             }
         }
+        return objectNode;
     }
 
     public static ObjectNode RemoveEvent (CommandInput commandInput) {
@@ -690,18 +694,17 @@ public class CommandRunner {
         User user = Admin.getUser(commandInput.getUsername());
         if (user == null) {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
-            return objectNode;
         } else {
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1 || type == 3) {
-                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
-                return objectNode;
+                objectNode.put("message", commandInput.getUsername() + " is not an artist.");
             } else {
-                String message = Admin.RemoveEvent(commandInput.getUsername(), commandInput.getName());
+                String message;
+                message = Admin.RemoveEvent(commandInput.getUsername(), commandInput.getName());
                 objectNode.put("message", message);
-                return objectNode;
             }
         }
+        return objectNode;
     }
 
     public static ObjectNode RemoveAlbum (CommandInput commandInput) {
@@ -712,18 +715,17 @@ public class CommandRunner {
         User user = Admin.getUser(commandInput.getUsername());
         if (user == null) {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
-            return objectNode;
         } else {
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1 || type == 3) {
-                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
-                return objectNode;
+                objectNode.put("message", commandInput.getUsername() + " is not an artist.");
             } else {
-                String message = Admin.RemoveAlbum(commandInput.getUsername(), commandInput.getName());
+                String message;
+                message = Admin.RemoveAlbum(commandInput.getUsername(), commandInput.getName());
                 objectNode.put("message", message);
-                return objectNode;
             }
         }
+        return objectNode;
     }
 
     public static ObjectNode RemovePodcast (CommandInput commandInput) {
@@ -734,20 +736,18 @@ public class CommandRunner {
         User user = Admin.getUser(commandInput.getUsername());
         if (user == null) {
             objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
-            return objectNode;
         } else {
-            int type = user.getTypeofuser();
+            int type = user.getTypeOfUser();
             if (type == 1 || type == 2) {
-                objectNode.put("message",commandInput.getUsername() + " is not a host.");
-                return objectNode;
+                objectNode.put("message", commandInput.getUsername() + " is not a host.");
             } else {
-                String message = Admin.RemovePodcast(commandInput.getUsername(), commandInput.getName());
+                String message;
+                message = Admin.RemovePodcast(commandInput.getUsername(), commandInput.getName());
                 objectNode.put("message", message);
-                return objectNode;
             }
         }
+        return objectNode;
     }
-
 
     public static ObjectNode DeleteUser (CommandInput commandInput) {
         ObjectNode objectNode = objectMapper.createObjectNode();
@@ -763,5 +763,4 @@ public class CommandRunner {
         }
         return objectNode;
     }
-
 }

@@ -3,11 +3,13 @@ package app.PageSystem;
 import app.audio.Collections.Playlist;
 import app.audio.Files.Song;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter @Setter
 public class HomePage {
     ArrayList<Song> songs;
     ArrayList<Playlist> followedPlaylists;
@@ -19,6 +21,14 @@ public class HomePage {
 
     public final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Construieste un obiect JSON pentru a afisa informatiile despre pagina principala a unui utilizator.
+     *
+     * @param homePage   Pagina principala din care se extrag informatiile.
+     * @param username   Numele utilizatorului pentru care se afiseaza pagina.
+     * @param timestamp  Timestamp-ul momentului afisarii paginii.
+     * @return Un obiect JSON care contine informatii despre pagina principala a utilizatorului.
+     */
     public ObjectNode showPage(HomePage homePage, String username, int timestamp) {
         ObjectNode resultNode = objectMapper.createObjectNode();
         resultNode.put("user", username);
@@ -50,27 +60,8 @@ public class HomePage {
             messageBuilder.append("\t[]");
         }
 
-        // Adaugă mesajul la resultNode
         resultNode.put("message", messageBuilder.toString());
 
         return resultNode;
-    }
-
-
-
-    public ArrayList<Playlist> getFollowedPlaylists() {
-        return followedPlaylists;
-    }
-
-    public void setFollowedPlaylists(ArrayList<Playlist> followedPlaylists) {
-        this.followedPlaylists = followedPlaylists;
-    }
-
-    public ArrayList<Song> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(ArrayList<Song> songs) {
-        this.songs = songs;
     }
 }

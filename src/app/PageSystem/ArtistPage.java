@@ -3,42 +3,18 @@ package app.PageSystem;
 import app.Artist.Event;
 import app.Artist.Merch;
 import app.audio.Collections.Album;
-import app.user.Artist;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Getter @Setter
 public class ArtistPage {
     ArrayList<Album> albums;
     ArrayList<Event> events;
     ArrayList<Merch> merches;
-
-    public ArrayList<Album> getAlbums() {
-        return albums;
-    }
-
-    public void setAlbums(ArrayList<Album> albums) {
-        this.albums = albums;
-    }
-
-    public ArrayList<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(ArrayList<Event> events) {
-        this.events = events;
-    }
-
-    public ArrayList<Merch> getMerches() {
-        return merches;
-    }
-
-    public void setMerches(ArrayList<Merch> merches) {
-        this.merches = merches;
-    }
 
     public ArtistPage(ArrayList<Album> albums, ArrayList<Event> events, ArrayList<Merch> merches) {
         this.albums = albums;
@@ -48,6 +24,14 @@ public class ArtistPage {
 
     public final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Construieste un obiect JSON pentru a afisa informatiile despre o pagina de artist.
+     *
+     * @param artistPage Pagina de artist din care sa se extraga informatiile.
+     * @param username   Numele utilizatorului pentru care se afiseaza pagina.
+     * @param timestamp  Timestamp-ul momentului afisarii paginii.
+     * @return Un obiect JSON care contine informatii despre pagina de artist.
+     */
     public ObjectNode showPage(ArtistPage artistPage, String username, int timestamp) {
         ObjectNode resultNode = objectMapper.createObjectNode();
         resultNode.put("user", username);
@@ -74,6 +58,12 @@ public class ArtistPage {
         return resultNode;
     }
 
+    /**
+     * Adauga informatii despre obiectele dintr-o lista la un sir de caractere.
+     *
+     * @param builder  StringBuilder pentru construirea sirului de caractere.
+     * @param list     Lista de obiecte din care se extrag informatiile.
+     */
     private void appendListToStringBuilder(StringBuilder builder, List<?> list) {
         builder.append("[");
         for (int i = 0; i < list.size(); i++) {

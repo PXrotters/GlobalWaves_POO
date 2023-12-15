@@ -15,12 +15,12 @@ public class Album extends AudioCollection {
     private final int releaseYear;
     private final String description;
 
-    public Album(String name, String owner, List<SongInput> songs, int releaseYear, String description, List<Song> sngs) {
+    public Album(String name, String owner, List<SongInput> songs, int releaseYear, String description, List<Song> convertedSongs) {
         super(name, owner);
         this.songs = songs;
         this.releaseYear = releaseYear;
         this.description = description;
-        this.songs1 = sngs;
+        this.songs1 = convertedSongs;
     }
 
     public Album(String username) {
@@ -37,6 +37,15 @@ public class Album extends AudioCollection {
         this.songs1 = new ArrayList<>();
         this.releaseYear = 0;
         this.description = "";
+    }
+
+    /**
+     * Returneaza numarul total de aprecieri pentru toate cantecele din album.
+     *
+     * @return Numarul total de aprecieri.
+     */
+    public int getTotalLikes() {
+        return songs1.stream().mapToInt(Song::getLikes).sum();
     }
 
     @Override
