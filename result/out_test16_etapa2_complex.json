@@ -5287,7 +5287,7 @@
   "command" : "shuffle",
   "user" : "emily30",
   "timestamp" : 6674,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "jacobdean",
@@ -5301,23 +5301,23 @@
     "name" : "Soul Pandora",
     "remainedTime" : 172,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "emily30",
   "timestamp" : 6680,
-  "message" : "Skipped to next track successfully. The current track is Adventure Infinity."
+  "message" : "Skipped to next track successfully. The current track is Cascade Pulse."
 }, {
   "command" : "status",
   "user" : "emily30",
   "timestamp" : 6934,
   "stats" : {
-    "name" : "Night Ethereal",
-    "remainedTime" : 229,
+    "name" : "Harmony Rapture",
+    "remainedTime" : 205,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5386,7 +5386,7 @@
   "command" : "shuffle",
   "user" : "frank21",
   "timestamp" : 6985,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "jacobdean",
@@ -5400,30 +5400,30 @@
     "name" : "Crescendo Twilight",
     "remainedTime" : 205,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "frank21",
   "timestamp" : 6991,
-  "message" : "Skipped to next track successfully. The current track is Odyssey Reflection."
+  "message" : "Skipped to next track successfully. The current track is Zephyr Enigma."
 }, {
   "command" : "status",
   "user" : "frank21",
   "timestamp" : 7245,
   "stats" : {
-    "name" : "Odyssey Reflection",
-    "remainedTime" : 18,
+    "name" : "",
+    "remainedTime" : 0,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : false
+    "paused" : true
   }
 }, {
   "command" : "like",
   "user" : "frank21",
   "timestamp" : 7246,
-  "message" : "Loaded source is not a song."
+  "message" : "Please load a source before liking or unliking."
 }, {
   "command" : "search",
   "user" : "grace25",
@@ -5485,7 +5485,7 @@
   "command" : "shuffle",
   "user" : "grace25",
   "timestamp" : 7296,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "jsimpson",
@@ -5499,23 +5499,23 @@
     "name" : "Harmony Love",
     "remainedTime" : 272,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "grace25",
   "timestamp" : 7302,
-  "message" : "Skipped to next track successfully. The current track is Harmony Pandora."
+  "message" : "Skipped to next track successfully. The current track is Reflection Utopia."
 }, {
   "command" : "status",
   "user" : "grace25",
   "timestamp" : 7556,
   "stats" : {
     "name" : "Harmony Pandora",
-    "remainedTime" : 23,
+    "remainedTime" : 265,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5683,7 +5683,7 @@
   "command" : "shuffle",
   "user" : "irene33",
   "timestamp" : 7918,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "mccarthyluis",
@@ -5697,23 +5697,23 @@
     "name" : "Night Aurora",
     "remainedTime" : 250,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "irene33",
   "timestamp" : 7924,
-  "message" : "Skipped to next track successfully. The current track is Sunset Celestial."
+  "message" : "Skipped to next track successfully. The current track is Solitude Dance."
 }, {
   "command" : "status",
   "user" : "irene33",
   "timestamp" : 8178,
   "stats" : {
-    "name" : "Sunset Celestial",
-    "remainedTime" : 34,
+    "name" : "Solitude Dance",
+    "remainedTime" : 32,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {

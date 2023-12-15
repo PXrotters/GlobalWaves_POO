@@ -24,7 +24,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.*;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Admin {
     private static List<User> users = new ArrayList<>();
@@ -162,9 +166,37 @@ public class Admin {
             }
         }
         if (!found_event) {
-            Event event = new Event(name, description, date);
-            artist.addEvents(event);
-            return username + " has added new event successfully.";
+            boolean dateError = false;
+            boolean formatError = false;
+
+            try {
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate date1 = LocalDate.parse(date, dateTimeFormatter);
+
+                int day = date1.getDayOfMonth();
+                int month = date1.getMonthValue();
+                int year = date1.getYear();
+
+                if (month == 2 && (day > 28 || day < 1)) {
+                    dateError = true;
+                }
+                if (month > 12 || month < 1 || day > 31 || day < 1) {
+                    dateError = true;
+                }
+                if (year < 1900 || year > 2023) {
+                    dateError = true;
+                }
+            } catch (DateTimeParseException e) {
+                formatError = true;
+            }
+
+            if (formatError || dateError) {
+                return "Event for " + username + " does not have a valid date.";
+            } else {
+                Event event = new Event(name, description, date);
+                artist.addEvents(event);
+                return username + " has added new event successfully.";
+            }
         } else {
             return username + " has has another event with the same name.";
         }
@@ -250,6 +282,33 @@ public class Admin {
             return username + " has no announcement with the given name.";
         } else {
             return username + " has successfully deleted the announcement.";
+        }
+    }
+
+    public static String RemoveEvent(String username, String name) {
+        Artist artist = null;
+        boolean found_event = false;
+
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                artist = (Artist) user;
+                break;
+            }
+        }
+        ArrayList<Event> events = artist.getEvents();
+        Iterator<Event> iterator = events.iterator();
+        while (iterator.hasNext()) {
+            Event event = iterator.next();
+            if (event.getName().equals(name)) {
+                iterator.remove();
+                found_event = true;
+                break;
+            }
+        }
+        if (!found_event){
+            return username + " doesn't have an event with the given name.";
+        } else {
+            return username + " deleted the event successfully.";
         }
     }
 
@@ -424,6 +483,10 @@ public class Admin {
         int indexToRemove = -1;
         int type = 0;
         User ourUser = null;
+        List<Episode> allEpisodes = podcasts.stream()  //retinem o lista cu toate episoadele din podcasturi
+                .flatMap(podcast -> podcast.getEpisodes().stream())
+                .collect(Collectors.toList());
+
 
         for (int i = 0; i < users.size(); i++) {
             User user = users.get(i);
@@ -496,9 +559,9 @@ public class Admin {
             if (indexToRemove == -1) {
                 return "Greseala Delete User Artist";
             } else {
-                for (User user : users) {  //cautam sa vedem daca playerul tuturor userilor contine vreo melodie
+                for (User user : users) {  //cautam sa vedem daca playerul userilor contine vreo melodie de-a artistului
                     PlayerStats player = user.getPlayerStats();
-                    if (player.getRemainedTime() != 0) {  //daca gasim o melodie care ruleaza in playerul unui user
+                    if (player.getRemainedTime() != 0) {  //daca gasim o melodie care ruleaza in playerul unui user avem interactiuni
                         for (Song song : songs) {
                             if (song.getName().equals(player.getName())) {
                                 Song newsong = new Song(song.getName(), song.getDuration(), song.getAlbum(), song.getTags(), song.getLyrics(), song.getGenre(), song.getReleaseYear(), song.getArtist());
@@ -506,6 +569,11 @@ public class Admin {
                                     interactions = true;
                                 }
                             }
+                        }
+                    }
+                    if (user.getSelectArtistPage() != null) {  //cautam sa vedem daca userii se afla pe pagina artistului
+                        if (user.getSelectArtistPage().equals(username)) {
+                            interactions = true;
                         }
                     }
                 }
@@ -565,7 +633,52 @@ public class Admin {
                 }
             }
         } else {
-            return "TODO for hosts";
+            boolean interactions = false;
+            Host ourHost = null;
+            for (User user : users) {
+                if (user.getUsername().equals(username)) {
+                    ourHost = (Host) user;
+                }
+            }
+            ArrayList<Podcast> allHostPodcasts = ourHost.getPodcasts();  //selectam toate podcasturile hostului
+            List<Episode> allHostEpisodes = allHostPodcasts.stream()  //selectam toate episoadele din podcasturile hostului
+                    .flatMap(podcast -> podcast.getEpisodes().stream())
+                    .collect(Collectors.toList());
+
+
+            if (indexToRemove == -1) {
+                return "Greseala Delete User Artist";
+            } else {
+                for (User user : users) {  //cautam sa vedem daca in playerul userilor ruleaza vreun podcast de-al hostului
+                    PlayerStats player = user.getPlayerStats();
+                    if (player.getRemainedTime() != 0) {  //daca gasim o melodie care ruleaza in playerul unui user avem interactiuni
+                        interactions = allEpisodes.stream()
+                                .filter(episode -> episode.getName().equals(player.getName()))
+                                .anyMatch(episode -> allHostEpisodes.stream()
+                                        .anyMatch(hostEpisode -> hostEpisode.getName().equals(episode.getName())));
+
+                    }
+                    if (user.getSelectHostPage() != null) {  //cautam sa vedem daca userii se afla pe pagina artistului
+                        if (user.getSelectHostPage().equals(username)) {
+                            interactions = true;
+                        }
+                    }
+                }
+
+                if (interactions == true) {
+                    return username + " can't be deleted.";
+                } else {
+                    Iterator<Podcast> iterator = podcasts.iterator();
+                    while (iterator.hasNext()) {  //stergem toate podcasturile din librarie
+                        Podcast podcast = iterator.next();
+                        if (podcast.getOwner().equals(username)) {
+                            iterator.remove();
+                        }
+                    }
+                    users.remove(indexToRemove);
+                    return username + " was successfully deleted.";
+                }
+            }
         }
     }
 
@@ -618,6 +731,26 @@ public class Admin {
                         iterator.remove();
                         break;
                     }
+                }
+
+                for (User user : users) {
+                    ArrayList<Playlist> userPlaylists = user.getPlaylists();  //stergem melodiile gaiste in album din playlisturile userilor
+                    ArrayList<Song> userSongsFromPlaylists = new ArrayList<>();
+                    for (Playlist playlist : userPlaylists) {
+                        userSongsFromPlaylists.addAll(playlist.getSongs());
+                        Iterator<Song> iteratorSong = userSongsFromPlaylists.iterator();
+                        while (iteratorSong.hasNext()) {
+                            Song song = iteratorSong.next();
+                            for (Song artistSong : allartistsongs) {
+                                if (artistSong.getName().equals(song.getName())) {
+                                    iteratorSong.remove();
+                                    break;
+                                }
+                            }
+                        }
+                        playlist.setSongs(userSongsFromPlaylists);
+                    }
+                    user.setPlaylists(userPlaylists);
                 }
 
                 Iterator<Song> songIterator = songs.iterator();  //stergem toate melodiile din biblioteca si din likedsongs

@@ -347,7 +347,7 @@
   "command" : "deleteUser",
   "user" : "soundseeker",
   "timestamp" : 4010,
-  "message" : "TODO for hosts"
+  "message" : "soundseeker can't be deleted."
 }, {
   "command" : "status",
   "user" : "carol19",
@@ -363,5 +363,5 @@
   "command" : "deleteUser",
   "user" : "soundseeker",
   "timestamp" : 100000,
-  "message" : "TODO for hosts"
+  "message" : "soundseeker can't be deleted."
 } ]

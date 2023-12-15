@@ -9,6 +9,7 @@ import app.searchBar.Filters;
 import app.user.Artist;
 import app.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import fileio.input.CommandInput;
@@ -675,6 +676,28 @@ public class CommandRunner {
                 return objectNode;
             } else {
                 String message = Admin.RemoveAnnouncement(commandInput.getUsername(), commandInput.getName());
+                objectNode.put("message", message);
+                return objectNode;
+            }
+        }
+    }
+
+    public static ObjectNode RemoveEvent (CommandInput commandInput) {
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("command", commandInput.getCommand());
+        objectNode.put("user", commandInput.getUsername());
+        objectNode.put("timestamp", commandInput.getTimestamp());
+        User user = Admin.getUser(commandInput.getUsername());
+        if (user == null) {
+            objectNode.put("message", "The username " + commandInput.getUsername() + " doesn't exist.");
+            return objectNode;
+        } else {
+            int type = user.getTypeofuser();
+            if (type == 1 || type == 3) {
+                objectNode.put("message",commandInput.getUsername() + " is not an artist.");
+                return objectNode;
+            } else {
+                String message = Admin.RemoveEvent(commandInput.getUsername(), commandInput.getName());
                 objectNode.put("message", message);
                 return objectNode;
             }

@@ -124,6 +124,7 @@ public final class Main {
                 case "addMerch" -> outputs.add(CommandRunner.AddMerch(command));
                 case "addAnnouncement" -> outputs.add(CommandRunner.AddAnnouncement(command));
                 case "removeAnnouncement" -> outputs.add(CommandRunner.RemoveAnnouncement(command));
+                case "removeEvent" -> outputs.add(CommandRunner.RemoveEvent(command));
                 case "removePodcast" -> outputs.add(CommandRunner.RemovePodcast(command));
                 case "removeAlbum" -> outputs.add(CommandRunner.RemoveAlbum(command));
                 case "getAllUsers" -> outputs.add(CommandRunner.getAllUsers(command));
@@ -135,6 +136,6 @@ public final class Main {
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(filePath2), outputs);
 
-        Admin.reset();
+        admin.reset();
     }
 }

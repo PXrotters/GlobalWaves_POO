@@ -54,6 +54,10 @@ public class User {
     private String artistPage; //numele artistului selectat
     @Getter @Setter
     private String hostPage; //numele hostului selectat
+    @Getter @Setter
+    private String selectArtistPage = null;  //vedem daca userul se afla pe pagina unui artist
+    @Getter @Setter
+    private String selectHostPage = null;  //vedem daca userul se afla pe pagina unui host
     private String typeofsong = null;
 
     public User(String username, int age, String city) {
@@ -92,6 +96,8 @@ public class User {
         player.stop();
         lastSearched = true;
         ArrayList<String> results = new ArrayList<>();
+        selectHostPage = null;
+        selectArtistPage = null;
 
         if (type.equals("artist")) {
             String part = filters.getName();
@@ -133,25 +139,35 @@ public class User {
         lastSearched = false;
 
         if (searchedArtist == false && searchedHost == false) {
+            selectHostPage = null;
+            selectArtistPage = null;
             selected = searchBar.select(itemNumber);
         } else if (searchedArtist) {
             this.currentPage = 3;
             if (searchedartists != null && itemNumber > 0 && itemNumber <= searchedartists.size()) {
                 name = searchedartists.get(itemNumber - 1);
+                selectArtistPage = name;
+                selectHostPage = null;
                 this.artistPage = name;
                 selected = null;
                 searchedartists = new ArrayList<>();
             } else {
+                selectHostPage = null;
+                selectArtistPage = null;
                 return "Invalid item number.";
             }
         } else {
             this.currentPage = 4;
             if (searchedhosts != null && itemNumber > 0 && itemNumber <= searchedhosts.size()) {
                 name = searchedhosts.get(itemNumber - 1);
+                selectArtistPage = null;
+                selectHostPage = name;
                 this.hostPage = name;
                 selected = null;
                 searchedhosts = new ArrayList<>();
             } else {
+                selectHostPage = null;
+                selectArtistPage = null;
                 return "Invalid item number";
             }
         }
@@ -237,7 +253,7 @@ public class User {
         if (player.getCurrentAudioFile() == null)
             return "Please load a source before using the shuffle function.";
 
-        if (!player.getType().equals("playlist"))
+        if (!player.getType().equals("playlist") && !player.getType().equals("album"))
             return "The loaded source is not a playlist.";
 
         player.shuffle(seed);

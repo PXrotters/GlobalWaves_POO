@@ -117,7 +117,7 @@
   "command" : "addEvent",
   "user" : "melodymaster",
   "timestamp" : 395,
-  "message" : "melodymaster has added new event successfully."
+  "message" : "Event for melodymaster does not have a valid date."
 }, {
   "command" : "load",
   "user" : "bob35",
@@ -132,7 +132,7 @@
   "user" : "david27",
   "command" : "printCurrentPage",
   "timestamp" : 430,
-  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[]\n\nEvents:\n\t[Event1 - 01-01-2022:\n\tPrimul Event adaugat!, Event2 - 02-13-2021:\n\tAl doilea Event adaugat!]"
+  "message" : "Albums:\n\t[Harmonic Horizons]\n\nMerch:\n\t[]\n\nEvents:\n\t[Event1 - 01-01-2022:\n\tPrimul Event adaugat!]"
 }, {
   "command" : "removeAlbum",
   "user" : "melodymaster",
@@ -179,7 +179,7 @@
   "command" : "shuffle",
   "user" : "bob35",
   "timestamp" : 440,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "status",
   "user" : "bob35",
@@ -188,7 +188,7 @@
     "name" : "Vibrant Echoes",
     "remainedTime" : 237,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -200,7 +200,7 @@
   "command" : "addEvent",
   "user" : "melodymaster",
   "timestamp" : 785,
-  "message" : "melodymaster has has another event with the same name."
+  "message" : "melodymaster has added new event successfully."
 }, {
   "command" : "repeat",
   "user" : "carol19",
@@ -211,10 +211,10 @@
   "user" : "bob35",
   "timestamp" : 1000,
   "stats" : {
-    "name" : "Retro Rhythms",
-    "remainedTime" : 203,
+    "name" : "Digital Dreams",
+    "remainedTime" : 243,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -249,6 +249,11 @@
   "user" : "carol19",
   "timestamp" : 2435,
   "message" : "Successfully selected My playlist."
+}, {
+  "command" : "removeEvent",
+  "user" : "melodymaster",
+  "timestamp" : 2440,
+  "message" : "melodymaster deleted the event successfully."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -375,8 +380,8 @@
   "user" : "bob35",
   "timestamp" : 3250,
   "stats" : {
-    "name" : "Hustle Hard",
-    "remainedTime" : 167,
+    "name" : "Begin Again",
+    "remainedTime" : 173,
     "repeat" : "No Repeat",
     "shuffle" : true,
     "paused" : false
@@ -417,7 +422,7 @@
   "user" : "david27",
   "command" : "printCurrentPage",
   "timestamp" : 3900,
-  "message" : "Albums:\n\t[]\n\nMerch:\n\t[Merch1 - 100:\n\tPrimul Merch adaugat!]\n\nEvents:\n\t[Event1 - 01-01-2022:\n\tPrimul Event adaugat!, Event2 - 02-13-2021:\n\tAl doilea Event adaugat!]"
+  "message" : "Albums:\n\t[]\n\nMerch:\n\t[Merch1 - 100:\n\tPrimul Merch adaugat!]\n\nEvents:\n\t[Event2 - 05-02-2021:\n\tAl doilea Event adaugat!]"
 }, {
   "command" : "status",
   "user" : "bob35",
@@ -465,14 +470,14 @@
   "user" : "david27",
   "command" : "printCurrentPage",
   "timestamp" : 4400,
-  "message" : "Albums:\n\t[]\n\nMerch:\n\t[Merch1 - 100:\n\tPrimul Merch adaugat!]\n\nEvents:\n\t[Event1 - 01-01-2022:\n\tPrimul Event adaugat!, Event2 - 02-13-2021:\n\tAl doilea Event adaugat!]"
+  "message" : "Albums:\n\t[]\n\nMerch:\n\t[Merch1 - 100:\n\tPrimul Merch adaugat!]\n\nEvents:\n\t[Event2 - 05-02-2021:\n\tAl doilea Event adaugat!]"
 }, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 4410,
   "stats" : {
-    "name" : "Retro Rhythms",
-    "remainedTime" : 163,
+    "name" : "Elevate",
+    "remainedTime" : 168,
     "repeat" : "No Repeat",
     "shuffle" : true,
     "paused" : false
@@ -482,11 +487,11 @@
   "user" : "bob35",
   "timestamp" : 4750,
   "stats" : {
-    "name" : "Hustle Hard",
-    "remainedTime" : 55,
+    "name" : "",
+    "remainedTime" : 0,
     "repeat" : "No Repeat",
-    "shuffle" : true,
-    "paused" : false
+    "shuffle" : false,
+    "paused" : true
   }
 }, {
   "user" : "carol19",
@@ -510,7 +515,7 @@
   "timestamp" : 6000,
   "result" : [ {
     "name" : "My playlist",
-    "songs" : [ "Retro Rhythms", "Elevate", "I Don't Wanna Live Forever", "Hustle Hard", "Begin Again" ],
+    "songs" : [ "Elevate", "I Don't Wanna Live Forever", "Hustle Hard", "Begin Again" ],
     "visibility" : "public",
     "followers" : 1
   } ]

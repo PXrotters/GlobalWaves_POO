@@ -4923,7 +4923,7 @@
   "command" : "shuffle",
   "user" : "alice22",
   "timestamp" : 5429,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "jacobdean",
@@ -4937,30 +4937,30 @@
     "name" : "Serendipity Serendipity",
     "remainedTime" : 239,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "alice22",
   "timestamp" : 5435,
-  "message" : "Skipped to next track successfully. The current track is Melody Sunset."
+  "message" : "Please load a source before skipping to the next track."
 }, {
   "command" : "status",
   "user" : "alice22",
   "timestamp" : 5689,
   "stats" : {
-    "name" : "Rapture Odyssey",
-    "remainedTime" : 144,
+    "name" : "",
+    "remainedTime" : 0,
     "repeat" : "No Repeat",
     "shuffle" : false,
-    "paused" : false
+    "paused" : true
   }
 }, {
   "command" : "like",
   "user" : "alice22",
   "timestamp" : 5690,
-  "message" : "Loaded source is not a song."
+  "message" : "Please load a source before liking or unliking."
 }, {
   "command" : "search",
   "user" : "bob35",
@@ -5022,7 +5022,7 @@
   "command" : "shuffle",
   "user" : "bob35",
   "timestamp" : 5740,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "leslie27",
@@ -5036,23 +5036,23 @@
     "name" : "Whisper Pulse",
     "remainedTime" : 254,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "bob35",
   "timestamp" : 5746,
-  "message" : "Skipped to next track successfully. The current track is Radiance Euphoria."
+  "message" : "Skipped to next track successfully. The current track is Euphoria Luminescence."
 }, {
   "command" : "status",
   "user" : "bob35",
   "timestamp" : 6000,
   "stats" : {
-    "name" : "Odyssey Rapture",
-    "remainedTime" : 188,
+    "name" : "Dance Harmonize",
+    "remainedTime" : 173,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5126,7 +5126,7 @@
   "command" : "shuffle",
   "user" : "carol19",
   "timestamp" : 6051,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "cbutler",
@@ -5140,23 +5140,23 @@
     "name" : "Heart Bliss",
     "remainedTime" : 157,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "carol19",
   "timestamp" : 6057,
-  "message" : "Skipped to next track successfully. The current track is Pinnacle Euphoria."
+  "message" : "Skipped to next track successfully. The current track is Essence Voyage."
 }, {
   "command" : "status",
   "user" : "carol19",
   "timestamp" : 6311,
   "stats" : {
-    "name" : "Whirlwind Solitude",
-    "remainedTime" : 194,
+    "name" : "Whirlwind Serenade",
+    "remainedTime" : 218,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5324,7 +5324,7 @@
   "command" : "shuffle",
   "user" : "emily30",
   "timestamp" : 6673,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "jacobdean",
@@ -5338,23 +5338,23 @@
     "name" : "Serendipity Serendipity",
     "remainedTime" : 239,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "emily30",
   "timestamp" : 6679,
-  "message" : "Skipped to next track successfully. The current track is Melody Sunset."
+  "message" : "Skipped to next track successfully. The current track is Radiance Starlight."
 }, {
   "command" : "status",
   "user" : "emily30",
   "timestamp" : 6933,
   "stats" : {
-    "name" : "Rapture Odyssey",
-    "remainedTime" : 144,
+    "name" : "Dance Pinnacle",
+    "remainedTime" : 171,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5423,7 +5423,7 @@
   "command" : "shuffle",
   "user" : "frank21",
   "timestamp" : 6984,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "amanda16",
@@ -5437,7 +5437,7 @@
     "name" : "Luminescence Crescendo",
     "remainedTime" : 224,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5450,10 +5450,10 @@
   "user" : "frank21",
   "timestamp" : 7244,
   "stats" : {
-    "name" : "Echo Pinnacle",
-    "remainedTime" : 256,
+    "name" : "Colors Rapture",
+    "remainedTime" : 271,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5522,7 +5522,7 @@
   "command" : "shuffle",
   "user" : "grace25",
   "timestamp" : 7295,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "barmstrong",
@@ -5536,7 +5536,7 @@
     "name" : "Love Love",
     "remainedTime" : 231,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5552,7 +5552,7 @@
     "name" : "Soul Love",
     "remainedTime" : 36,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5621,7 +5621,7 @@
   "command" : "shuffle",
   "user" : "henry26",
   "timestamp" : 7606,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "amanda16",
@@ -5635,23 +5635,23 @@
     "name" : "Luminescence Crescendo",
     "remainedTime" : 224,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
   "command" : "next",
   "user" : "henry26",
   "timestamp" : 7612,
-  "message" : "Skipped to next track successfully. The current track is Bliss Rhythm."
+  "message" : "Skipped to next track successfully. The current track is Zephyr Eclipse."
 }, {
   "command" : "status",
   "user" : "henry26",
   "timestamp" : 7866,
   "stats" : {
-    "name" : "Echo Pinnacle",
-    "remainedTime" : 256,
+    "name" : "Colors Rapture",
+    "remainedTime" : 273,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5720,7 +5720,7 @@
   "command" : "shuffle",
   "user" : "irene33",
   "timestamp" : 7917,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "jacobdean",
@@ -5734,7 +5734,7 @@
     "name" : "Celestial Soul",
     "remainedTime" : 213,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5750,7 +5750,7 @@
     "name" : "Utopia Harmony",
     "remainedTime" : 44,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5819,7 +5819,7 @@
   "command" : "shuffle",
   "user" : "jack29",
   "timestamp" : 8228,
-  "message" : "The loaded source is not a playlist."
+  "message" : "Shuffle function activated successfully."
 }, {
   "command" : "removeAlbum",
   "user" : "cbutler",
@@ -5833,7 +5833,7 @@
     "name" : "Heart Bliss",
     "remainedTime" : 157,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
@@ -5846,10 +5846,10 @@
   "user" : "jack29",
   "timestamp" : 8488,
   "stats" : {
-    "name" : "Whirlwind Solitude",
-    "remainedTime" : 194,
+    "name" : "Adventure Cascade",
+    "remainedTime" : 203,
     "repeat" : "No Repeat",
-    "shuffle" : false,
+    "shuffle" : true,
     "paused" : false
   }
 }, {
