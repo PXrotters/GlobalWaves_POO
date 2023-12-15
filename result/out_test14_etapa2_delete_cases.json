@@ -238,7 +238,7 @@
   "command" : "removePodcast",
   "user" : "musicmaven",
   "timestamp" : 980,
-  "message" : "musicmaven deleted the podcast successfully."
+  "message" : "musicmaven can't delete this podcast."
 }, {
   "command" : "deleteUser",
   "user" : "audiosage",

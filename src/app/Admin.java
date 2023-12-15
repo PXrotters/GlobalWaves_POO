@@ -807,9 +807,11 @@ public class Admin {
         }
         ArrayList<Podcast> podcasts1 = host.getPodcasts();  //toate podcasturile hostului
         Podcast searchedpodcast = null;  //podcastul pe care vrem sa il stergem
+        ArrayList<Episode> episodes = new ArrayList<>();  //toate episoadele din podcastul pe care vrem sa il stergem
 
         for (Podcast podcast : podcasts1) {
             if (podcast.getName().equals(name)) {
+                episodes.addAll(podcast.getEpisodes());
                 searchedpodcast = podcast;
                 found_podcast = true;
                 break;
@@ -820,14 +822,16 @@ public class Admin {
             for (User user : users) {
                 PlayerStats player = user.getPlayerStats();
                 if (player.getRemainedTime() != 0) {
-                    if (searchedpodcast.getName().equals(player.getName())) {
-                        interactions = true;
+                    for (Episode episode : episodes) {
+                        if (episode.getName().equals(player.getName())) {
+                            interactions = true;
+                        }
                     }
                 }
             }
 
             if (interactions == true) {
-                return username + " can't delete this album.";
+                return username + " can't delete this podcast.";
             } else {  //stergem podcastul din library
                 Iterator<Podcast> podcastIterator = podcasts.iterator();  //stergem podcastul din biblioteca
                 while (podcastIterator.hasNext()) {
