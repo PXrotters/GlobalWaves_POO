@@ -2,8 +2,6 @@
 
 Lemnaru Mihai-Daniel - 322CD
 
-I have used the official solution for Stage I.
-
 ## Skel Structure
 
 * src/
